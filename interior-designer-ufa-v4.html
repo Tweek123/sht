@@ -470,12 +470,13 @@ nav.scrolled{
 }
 .pain-card{
   background:var(--surface);
-  padding:36px 28px;
+  padding:0 0 36px;
   border:1px solid var(--border);
   position:relative;overflow:hidden;
   transition:all .3s ease;
   cursor:default;
 }
+.pain-card-body{padding:28px 28px 0}
 .pain-card:hover{background:#2A241C;border-color:var(--border2)}
 .pain-card::after{
   content:'';position:absolute;bottom:0;left:0;
@@ -485,8 +486,8 @@ nav.scrolled{
 .pain-card:hover::after{width:100%}
 
 .pain-icon{
-  font-size:32px;margin-bottom:20px;display:block;
-  filter:grayscale(0.3);
+  width:100%;height:180px;margin-bottom:20px;display:block;
+  object-fit:cover;
 }
 .pain-num{
   font-family:'Playfair Display',serif;
@@ -1123,9 +1124,8 @@ footer{
     </div>
 
     <h1 class="hero-h1 anim d1">
-      Ремонт, который
-      <span class="line2">пройдёт <em>без хаоса</em></span>
-      <span class="line3">и переделок</span>
+      ИНТЕРЬЕР В УФЕ
+      <span class="line2"><em>БЕЗ ХАОСА,</em> ПЕРЕДЕЛОК И ПОТЕРИ БЮДЖЕТА</span>
     </h1>
 
     <p class="hero-sub anim d2">
@@ -1135,9 +1135,7 @@ footer{
     <div class="hero-offer anim d3">
       <span class="offer-label">Бесплатно · только сейчас</span>
       <div class="offer-h">
-        Узнайте, не потеряете ли вы<br>
-        <em>2–5 млн ₽</em> на типичных ошибках<br>
-        ещё до начала работ
+        Узнайте, не потеряете ли вы <em>2–5 млн.р.</em> на ремонте, совершив типичные ошибки. Получите аудит будущего ремонта бесплатно
       </div>
       <div class="offer-list">
         <div class="offer-item">Покажем реальный бюджет под ваш объект</div>
@@ -1155,16 +1153,16 @@ footer{
   <!-- Floating stats -->
   <div class="hero-float">
     <div class="float-card anim d3">
-      <div class="float-num">47</div>
-      <div class="float-label">проектов реализовано в Уфе</div>
+      <div class="float-num">15 ЛЕТ</div>
+      <div class="float-label">опыта в интерьерах</div>
     </div>
     <div class="float-card anim d4">
-      <div class="float-num">8</div>
-      <div class="float-label">лет опыта в дизайне</div>
+      <div class="float-num">ДОМ 530 м²</div>
+      <div class="float-label">самый крупный дом в Уфе</div>
     </div>
     <div class="float-card anim d5">
-      <div class="float-num">0</div>
-      <div class="float-label">переделок после сдачи</div>
+      <div class="float-num">72 млн ₽</div>
+      <div class="float-label">самый большой бюджет интерьера</div>
     </div>
   </div>
 </section>
@@ -1180,28 +1178,36 @@ footer{
   </div>
   <div class="pain-grid">
     <div class="pain-card anim d1">
-      <span class="pain-num">01</span>
-      <span class="pain-icon">🔍</span>
-      <div class="pain-title">Дизайнер исчезает на полпути</div>
-      <div class="pain-text">Красивый проект сдан. А кто контролирует стройку? Никто. Подрядчики принимают решения сами, и потом — переделки.</div>
+      <img class="pain-icon" src="https://tweek123.github.io/shtuka/shtuka/images/examples/desktop/slider/1.webp" alt="Дизайнер исчезает на полпути">
+      <div class="pain-card-body">
+        <span class="pain-num">01</span>
+        <div class="pain-title">Дизайнер исчезает на полпути</div>
+        <div class="pain-text">Красивый проект сдан. А кто контролирует стройку? Никто. Подрядчики принимают решения сами, и потом — переделки.</div>
+      </div>
     </div>
     <div class="pain-card anim d2">
-      <span class="pain-num">02</span>
-      <span class="pain-icon">💸</span>
-      <div class="pain-title">Бюджет растёт каждую неделю</div>
-      <div class="pain-text">«Неожиданные» расходы появляются системно. Итог — переплата 30–80% сверх первоначальной сметы.</div>
+      <img class="pain-icon" src="https://tweek123.github.io/shtuka/shtuka/images/examples/desktop/slider/2.jpg" alt="Бюджет растёт каждую неделю">
+      <div class="pain-card-body">
+        <span class="pain-num">02</span>
+        <div class="pain-title">Бюджет растёт каждую неделю</div>
+        <div class="pain-text">«Неожиданные» расходы появляются системно. Итог — переплата 30–80% сверх первоначальной сметы.</div>
+      </div>
     </div>
     <div class="pain-card anim d3">
-      <span class="pain-num">03</span>
-      <span class="pain-icon">📐</span>
-      <div class="pain-title">Рендер ≠ реальность</div>
-      <div class="pain-text">Картинка была красивой, результат — нет. Материалы выбраны не в пространстве, а на экране. Итог предсказуем.</div>
+      <img class="pain-icon" src="https://tweek123.github.io/shtuka/shtuka/images/examples/desktop/slider/3.jpg" alt="Рендер ≠ реальность">
+      <div class="pain-card-body">
+        <span class="pain-num">03</span>
+        <div class="pain-title">Рендер ≠ реальность</div>
+        <div class="pain-text">Картинка была красивой, результат — нет. Материалы выбраны не в пространстве, а на экране. Итог предсказуем.</div>
+      </div>
     </div>
     <div class="pain-card anim d4">
-      <span class="pain-num">04</span>
-      <span class="pain-icon">⏱</span>
-      <div class="pain-title">6 месяцев становятся 2 годами</div>
-      <div class="pain-text">Семья живёт в ремонте. Дети не могут нормально спать. Нервы, конфликты, и конец всё не виден.</div>
+      <img class="pain-icon" src="https://tweek123.github.io/shtuka/shtuka/images/examples/desktop/slider/4.jpg" alt="6 месяцев становятся 2 годами">
+      <div class="pain-card-body">
+        <span class="pain-num">04</span>
+        <div class="pain-title">6 месяцев становятся 2 годами</div>
+        <div class="pain-text">Семья живёт в ремонте. Дети не могут нормально спать. Нервы, конфликты, и конец всё не виден.</div>
+      </div>
     </div>
   </div>
 </section>

@@ -316,6 +316,10 @@ nav.scrolled{
   font-size:38px;font-weight:700;
   color:var(--gold);line-height:1;
 }
+.float-num.long{
+  font-size:30px;
+  line-height:1.05;
+}
 .float-label{
   font-size:11px;color:var(--text3);margin-top:4px;
   line-height:1.4;
@@ -397,8 +401,6 @@ nav.scrolled{
   display:grid;grid-template-columns:1fr 1fr;gap:80px;
   align-items:start;margin-top:64px;
 }
-.forwhom-yes{}
-.forwhom-no{}
 .forwhom-group-title{
   font-size:10px;letter-spacing:.2em;text-transform:uppercase;
   font-weight:700;margin-bottom:20px;
@@ -471,11 +473,15 @@ nav.scrolled{
 }
 .pain-card{
   background:var(--surface);
-  padding:36px 28px;
+  padding:0 0 36px;
   border:1px solid var(--border);
   position:relative;overflow:hidden;
   transition:all .3s ease;
   cursor:default;
+  min-height:440px;
+}
+.pain-card-body{
+  padding:28px 28px 0;
 }
 .pain-card:hover{background:#2A241C;border-color:var(--border2)}
 .pain-card::after{
@@ -486,8 +492,11 @@ nav.scrolled{
 .pain-card:hover::after{width:100%}
 
 .pain-icon{
-  font-size:32px;margin-bottom:20px;display:block;
-  filter:grayscale(0.3);
+  width:100%;
+  height:220px;
+  margin-bottom:0;
+  display:block;
+  object-fit:cover;
 }
 .pain-num{
   font-family:'Playfair Display',serif;
@@ -532,10 +541,42 @@ nav.scrolled{
   display:grid;grid-template-columns:1fr 1fr;gap:80px;
   align-items:start;margin-top:64px;
 }
-.sol-left{}
 .sol-lead{
   font-size:17px;line-height:1.8;color:var(--text2);
   font-weight:300;margin-top:20px;
+}
+.sol-video-wrap{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+.sol-video{
+  width:100%;
+  aspect-ratio:16/9;
+  border:1px solid var(--border);
+  background:var(--surface);
+  object-fit:cover;
+}
+.sol-video-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  padding:16px 28px;
+  border:1px solid var(--gold);
+  background:var(--gold);
+  color:var(--bg);
+  cursor:pointer;
+  font-family:'Montserrat',sans-serif;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  transition:all .25s ease;
+}
+.sol-video-btn:hover{
+  background:var(--gold2);
+  border-color:var(--gold2);
 }
 .sol-steps{
   display:flex;flex-direction:column;gap:0;
@@ -576,7 +617,6 @@ nav.scrolled{
   border-top:1px solid var(--border);
   border-bottom:1px solid var(--border);
 }
-.mid-cta-text{}
 .mid-cta-h{
   font-family:'Playfair Display',serif;
   font-size:clamp(24px,2.8vw,40px);
@@ -600,7 +640,7 @@ nav.scrolled{
 /* ─── CASES ─── */
 .cases{padding:120px 56px;background:var(--bg2)}
 .cases-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);
+  display:grid;grid-template-columns:repeat(2,1fr);
   gap:2px;margin-top:64px;
 }
 .case-card{
@@ -1051,6 +1091,7 @@ footer{
   .proc-free{display:none}
   .deficit-strip{padding:24px}
   .safety{padding:40px 24px}
+  .sol-video{aspect-ratio:4/3}
 }
 </style>
 </head>
@@ -1125,8 +1166,7 @@ footer{
 
     <h1 class="hero-h1 anim d1">
       ИНТЕРЬЕР В УФЕ
-      <span class="line2">БЕЗ ХАОСА, ПЕРЕДЕЛОК</span>
-      <span class="line3">И ПОТЕРИ БЮДЖЕТА</span>
+      <span class="line2">БЕЗ ХАОСА, ПЕРЕДЕЛОК И ПОТЕРИ БЮДЖЕТА</span>
     </h1>
 
     <p class="hero-sub anim d2">
@@ -1136,13 +1176,13 @@ footer{
     <div class="hero-offer anim d3">
       <span class="offer-label">Бесплатно · только сейчас</span>
       <div class="offer-h">
-        Получить персональный аудит и стоимость будущего ремонта
+        Узнайте, не потеряете ли вы 2–5 млн.р. на ремонте, совершив типичные ошибки. Получите аудит будущего ремонта бесплатно
       </div>
       <div class="offer-list">
         <div class="offer-item">Покажем реальные риски, диапазон бюджета и 5 решений, которые экономят миллионы ещё до начала работ.</div>
       </div>
       <button class="btn-main" onclick="go('#quiz')">
-        Узнать реальные риски моего проекта
+        Получить персональный аудит ремонта
         <span class="btn-arrow">→</span>
       </button>
       <div class="offer-note">Бесплатно · 2 минуты · без обязательств</div>
@@ -1152,16 +1192,16 @@ footer{
   <!-- Floating stats -->
   <div class="hero-float">
     <div class="float-card anim d3">
-      <div class="float-num">47</div>
-      <div class="float-label">проектов реализовано в Уфе</div>
+      <div class="float-num">15 ЛЕТ</div>
+      <div class="float-label">опыта в интерьерах</div>
     </div>
     <div class="float-card anim d4">
-      <div class="float-num">8</div>
-      <div class="float-label">лет опыта в дизайне</div>
+      <div class="float-num long">ДОМ 530 м2</div>
+      <div class="float-label">самый крупный дом в Уфе</div>
     </div>
     <div class="float-card anim d5">
-      <div class="float-num">0</div>
-      <div class="float-label">переделок после сдачи</div>
+      <div class="float-num">72 млн. р.</div>
+      <div class="float-label">Самый большой бюджет интерьера</div>
     </div>
   </div>
 </section>
@@ -1177,28 +1217,36 @@ footer{
   </div>
   <div class="pain-grid">
     <div class="pain-card anim d1">
-      <span class="pain-num">01</span>
-      <span class="pain-icon">🔍</span>
-      <div class="pain-title">Дизайнер исчезает на полпути</div>
-      <div class="pain-text">Красивый проект сдан. А кто контролирует стройку? Никто. Подрядчики принимают решения сами, и потом — переделки.</div>
+      <img class="pain-icon" src="https://tweek123.github.io/shtuka/shtuka/images/examples/desktop/slider/1.webp" alt="Дизайнер исчезает на полпути">
+      <div class="pain-card-body">
+        <span class="pain-num">01</span>
+        <div class="pain-title">Дизайнер исчезает на полпути</div>
+        <div class="pain-text">Красивый проект сдан. А кто контролирует стройку? Никто. Подрядчики принимают решения сами, и потом — переделки.</div>
+      </div>
     </div>
     <div class="pain-card anim d2">
-      <span class="pain-num">02</span>
-      <span class="pain-icon">💸</span>
-      <div class="pain-title">Бюджет растёт каждую неделю</div>
-      <div class="pain-text">«Неожиданные» расходы появляются системно. Итог — переплата 30–80% сверх первоначальной сметы.</div>
+      <img class="pain-icon" src="https://tweek123.github.io/shtuka/shtuka/images/examples/desktop/slider/2.jpg" alt="Бюджет растёт каждую неделю">
+      <div class="pain-card-body">
+        <span class="pain-num">02</span>
+        <div class="pain-title">Бюджет растёт каждую неделю</div>
+        <div class="pain-text">«Неожиданные» расходы появляются системно. Итог — переплата 30–80% сверх первоначальной сметы.</div>
+      </div>
     </div>
     <div class="pain-card anim d3">
-      <span class="pain-num">03</span>
-      <span class="pain-icon">📐</span>
-      <div class="pain-title">Рендер ≠ реальность</div>
-      <div class="pain-text">Картинка была красивой, результат — нет. Материалы выбраны не в пространстве, а на экране. Итог предсказуем.</div>
+      <img class="pain-icon" src="https://tweek123.github.io/shtuka/shtuka/images/examples/desktop/slider/3.jpg" alt="Рендер ≠ реальность">
+      <div class="pain-card-body">
+        <span class="pain-num">03</span>
+        <div class="pain-title">Рендер ≠ реальность</div>
+        <div class="pain-text">Картинка была красивой, результат — нет. Материалы выбраны не в пространстве, а на экране. Итог предсказуем.</div>
+      </div>
     </div>
     <div class="pain-card anim d4">
-      <span class="pain-num">04</span>
-      <span class="pain-icon">⏱</span>
-      <div class="pain-title">6 месяцев становятся 2 годами</div>
-      <div class="pain-text">Семья живёт в ремонте. Дети не могут нормально спать. Нервы, конфликты, и конец всё не виден.</div>
+      <img class="pain-icon" src="https://tweek123.github.io/shtuka/shtuka/images/examples/desktop/slider/4.jpg" alt="6 месяцев становятся 2 годами">
+      <div class="pain-card-body">
+        <span class="pain-num">04</span>
+        <div class="pain-title">6 месяцев становятся 2 годами</div>
+        <div class="pain-text">Семья живёт в ремонте. Дети не могут нормально спать. Нервы, конфликты, и конец всё не виден.</div>
+      </div>
     </div>
   </div>
 </section>
@@ -1222,20 +1270,20 @@ footer{
 <!-- STAT STRIP -->
 <div class="stat-strip">
   <div class="stat-item anim">
-    <div class="stat-num">47</div>
-    <div class="stat-label">проектов реализовано в Уфе</div>
+    <div class="stat-num">15 ЛЕТ</div>
+    <div class="stat-label">опыта в интерьерах</div>
   </div>
   <div class="stat-item anim d1">
-    <div class="stat-num">8</div>
-    <div class="stat-label">лет в дизайне интерьеров</div>
+    <div class="stat-num">ДОМ 530 м2</div>
+    <div class="stat-label">самый крупный дом в Уфе</div>
   </div>
   <div class="stat-item anim d2">
-    <div class="stat-num">100%</div>
-    <div class="stat-label">проектов сданы в согласованный срок</div>
+    <div class="stat-num">72 млн. р.</div>
+    <div class="stat-label">Самый большой бюджет интерьера</div>
   </div>
   <div class="stat-item anim d3">
-    <div class="stat-num">0</div>
-    <div class="stat-label">переделок после сдачи объекта</div>
+    <div class="stat-num">98% клиентов</div>
+    <div class="stat-label">Приходят по рекомендации</div>
   </div>
 </div>
 
@@ -1250,6 +1298,13 @@ footer{
   </div>
   <div class="sol-grid">
     <div class="anim">
+      <div class="sol-video-wrap">
+        <video class="sol-video" controls playsinline preload="metadata" poster="https://tweek123.github.io/shtuka/shtuka/images/hero/desktop-1.jpg">
+          <source src="https://tweek123.github.io/shtuka/shtuka/videos/ivan-intro.mp4" type="video/mp4">
+          Ваш браузер не поддерживает видео.
+        </video>
+        <button class="sol-video-btn" onclick="go('#quiz')">Получить персональный аудит</button>
+      </div>
       <p class="sol-lead">Каждый этап зафиксирован договором. Вы знаете, что происходит на стройке, кто принимает решения и почему. Никаких сюрпризов.</p>
     </div>
     <div class="sol-steps anim d1">
@@ -1584,8 +1639,8 @@ footer{
       <span class="ey-text">Первый шаг — бесплатно</span>
       <div class="ey-line"></div>
     </div>
-    <h2 class="sec-title">Узнайте, что <em>реально грозит</em><br>вашему проекту — до начала</h2>
-    <p class="sec-sub">Большинство потерь можно предотвратить. Аудит покажет это за 2 минуты — бесплатно</p>
+    <h2 class="sec-title">Узнайте, не потеряете ли вы 2–5 млн.р. на ремонте,<br>совершив типичные ошибки</h2>
+    <p class="sec-sub">Получите аудит будущего ремонта бесплатно</p>
   </div>
 
   <div class="quiz-box anim d1">
