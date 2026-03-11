@@ -843,20 +843,30 @@ nav.scrolled{
 
 /* ─── QUIZ ─── */
 .quiz-wrap{
-  padding:120px 56px;background:var(--bg3);
+  padding:120px 56px;
+  background:#19160F;
+  --text:#F0EDE8;
+  --text2:rgba(245,240,232,0.7);
+  --text3:rgba(245,240,232,0.4);
+  --border:rgba(245,240,232,0.12);
+  --border2:rgba(201,162,87,0.32);
+  --bg2:#1F1B13;
+  --bg-form:rgba(245,240,232,0.04);
+  color:#F0EDE8;
   position:relative;overflow:hidden;
 }
+.quiz-wrap .sec-title{color:#F5F0E8}
 .quiz-wrap::before{
   content:'';position:absolute;
   top:-300px;left:-300px;
   width:700px;height:700px;border-radius:50%;
-  background:radial-gradient(circle,rgba(201,162,87,0.04),transparent 70%);
+  background:radial-gradient(circle,rgba(201,162,87,0.06),transparent 70%);
 }
 .quiz-wrap::after{
   content:'';position:absolute;
   bottom:-200px;right:-200px;
   width:500px;height:500px;border-radius:50%;
-  background:radial-gradient(circle,rgba(201,162,87,0.03),transparent 70%);
+  background:radial-gradient(circle,rgba(201,162,87,0.04),transparent 70%);
 }
 
 .quiz-header{text-align:center;margin-bottom:56px;position:relative;z-index:1}
