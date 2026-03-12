@@ -1294,6 +1294,362 @@ body {
   font-weight: 300;
 }
 
+/* ─── STAT MODALS ─── */
+.stat-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15,13,10,0.88);
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.stat-modal-overlay.is-open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.stat-modal-inner {
+  background: #FDFCFA;
+  border-radius: 8px;
+  max-width: 1040px;
+  width: 100%;
+  max-height: 90vh;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.45);
+  transform: translateY(32px) scale(0.97);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+  border: 1px solid rgba(28,28,26,0.08);
+}
+
+.stat-modal-overlay.is-open .stat-modal-inner {
+  transform: translateY(0) scale(1);
+}
+
+.stat-modal-inner::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(to right, var(--gold), var(--gold2), transparent);
+  border-radius: 8px 8px 0 0;
+  z-index: 1;
+}
+
+/* TEXT — левая колонка на десктопе */
+.stat-modal-text {
+  padding: 52px 44px 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  overflow-y: auto;
+  position: relative;
+}
+
+/* GALLERY — правая колонка на десктопе */
+.stat-modal-gallery {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0 8px 8px 0;
+  background: var(--bg3);
+  min-height: 440px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Case modal image slider ── */
+.case-slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  overflow: hidden;
+}
+
+.case-slider-track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.55s cubic-bezier(0.77, 0, 0.18, 1);
+  will-change: transform;
+}
+
+.case-slide {
+  min-width: 100%;
+  width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.case-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.case-slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(15,13,10,0.5);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  transition: background 0.2s, border-color 0.2s;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.case-slider-prev { left: 14px; }
+.case-slider-next { right: 14px; }
+
+.case-slider-btn:hover {
+  background: rgba(201,169,110,0.65);
+  border-color: var(--gold);
+}
+
+.case-slider-btn svg {
+  width: 18px;
+  height: 18px;
+  stroke: #fff;
+  stroke-width: 1.5;
+}
+
+.case-slider-dots {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 7px;
+  z-index: 5;
+}
+
+.case-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.35);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  padding: 0;
+}
+
+.case-dot.active {
+  background: var(--gold);
+  width: 22px;
+  border-radius: 3px;
+}
+
+.stat-modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(28,28,26,0.12);
+  background: #1C1C1A;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, border-color 0.2s;
+  z-index: 10;
+}
+
+.stat-modal-close:hover {
+  background: rgba(201,169,110,0.18);
+  border-color: var(--gold2);
+}
+
+.stat-modal-close svg {
+  width: 14px;
+  height: 14px;
+  stroke: rgba(201,169,110,0.9);
+  stroke-width: 1.5;
+}
+
+.stat-modal-eyebrow {
+  font-family: 'Jost', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.stat-modal-eyebrow::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+.stat-modal-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(26px, 3vw, 38px);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--text);
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+
+.stat-modal-divider {
+  height: 1px;
+  background: linear-gradient(to right, var(--border2), transparent);
+  margin-bottom: 24px;
+  opacity: 0.7;
+}
+
+.stat-modal-desc {
+  font-family: 'Jost', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--text2);
+  margin-bottom: 20px;
+}
+
+.stat-modal-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.stat-modal-list li {
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.65;
+  color: var(--text2);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.stat-modal-list li::before {
+  content: '';
+  display: block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--gold);
+  margin-top: 8px;
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+
+.stat-modal-result {
+  margin-top: auto;
+  padding: 16px 20px;
+  background: var(--gold-dim);
+  border-left: 2px solid var(--gold);
+  border-radius: 0 4px 4px 0;
+}
+
+.stat-modal-result-label {
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+
+.stat-modal-result-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+/* Кликабельный stat-item */
+.stat-item {
+  cursor: pointer;
+  transition: background 0.25s ease;
+  position: relative;
+}
+
+.stat-item:hover {
+  background: rgba(201,169,110,0.1);
+}
+
+.stat-hint {
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(15,13,10,0.4);
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.stat-item:hover .stat-hint { opacity: 1; }
+
+.stat-hint::before { content: '→ '; }
+
+@media (max-width: 768px) {
+  .stat-modal-overlay { padding: 0; align-items: flex-end; }
+
+  .stat-modal-inner {
+    grid-template-columns: 1fr;
+    max-height: 92vh;
+    border-radius: 16px 16px 0 0;
+    overflow-y: auto;
+  }
+
+  .stat-modal-inner::before { border-radius: 16px 16px 0 0; }
+
+  .stat-modal-gallery {
+    order: -1;
+    border-radius: 16px 16px 0 0;
+    min-height: 260px;
+  }
+
+  .case-slider { border-radius: 16px 16px 0 0; min-height: 260px; }
+
+  .stat-modal-text {
+    padding: 28px 24px 36px;
+    overflow-y: visible;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -1513,21 +1869,25 @@ body {
 
 <!-- STAT STRIP -->
 <div class="stat-strip">
-  <div class="stat-item anim">
+  <div class="stat-item anim" onclick="openSModal('smodal-1')">
     <div class="stat-num">15 ЛЕТ</div>
     <div class="stat-label">опыта в интерьерах</div>
+    <div class="stat-hint">Подробнее</div>
   </div>
-  <div class="stat-item anim d1">
+  <div class="stat-item anim d1" onclick="openSModal('smodal-2')">
     <div class="stat-num">ДОМ 530 м2</div>
     <div class="stat-label">самый крупный дом в Уфе</div>
+    <div class="stat-hint">Подробнее</div>
   </div>
-  <div class="stat-item anim d2">
+  <div class="stat-item anim d2" onclick="openSModal('smodal-3')">
     <div class="stat-num">72 млн. р.</div>
     <div class="stat-label">Самый большой бюджет интерьера</div>
+    <div class="stat-hint">Подробнее</div>
   </div>
-  <div class="stat-item anim d3">
+  <div class="stat-item anim d3" onclick="openSModal('smodal-4')">
     <div class="stat-num">98% клиентов</div>
     <div class="stat-label">Приходят по рекомендации</div>
+    <div class="stat-hint">Подробнее</div>
   </div>
 </div>
 
@@ -1621,7 +1981,7 @@ body {
     <h2 class="sec-title">Цифры вместо <em>слов</em></h2>
   </div>
   <div class="cases-grid">
-    <div class="case-card anim d1">
+    <div class="case-card anim d1" onclick="openSModal('cmodal-1')">
       <div class="case-img">
         <video class="case-video" autoplay muted loop playsinline preload="metadata">
           <source src="images/1interiorv.mp4" type="video/mp4">
@@ -1638,7 +1998,7 @@ body {
         <div class="case-quote">Заселились в срок. Итоговый бюджет совпал с согласованным — ни рубля сверху</div>
       </div>
     </div>
-    <div class="case-card anim d2">
+    <div class="case-card anim d2" onclick="openSModal('cmodal-2')">
       <div class="case-img">
         <video class="case-video" autoplay muted loop playsinline preload="metadata">
           <source src="images/2interiorv.mp4" type="video/mp4">
@@ -1655,7 +2015,7 @@ body {
         <div class="case-quote">Клиент находился в командировках — мы вели проект без его постоянного участия</div>
       </div>
     </div>
-    <div class="case-card anim d3">
+    <div class="case-card anim d3" onclick="openSModal('cmodal-3')">
       <div class="case-img">
         <video class="case-video" autoplay muted loop playsinline preload="metadata">
           <source src="images/3interiorv.mp4" type="video/mp4">
@@ -1672,7 +2032,7 @@ body {
         <div class="case-quote">Интерьер уровня 5★ — без показной роскоши. Именно то, что и хотели</div>
       </div>
     </div>
-    <div class="case-card anim d4">
+    <div class="case-card anim d4" onclick="openSModal('cmodal-4')">
       <div class="case-img">
         <video class="case-video" autoplay muted loop playsinline preload="metadata">
           <source src="images/4interiorv.mp4" type="video/mp4">
@@ -1691,6 +2051,194 @@ body {
     </div>
   </div>
 </section>
+
+<!-- ── CASE MODAL 1: ЖК «Высота» 142 м² ── -->
+<div class="stat-modal-overlay" id="cmodal-1" onclick="closeSModalOnOverlay(event,'cmodal-1')">
+  <div class="stat-modal-inner">
+    <div class="stat-modal-text">
+      <button class="stat-modal-close" onclick="closeSModal('cmodal-1')">
+        <svg viewBox="0 0 24 24" fill="none"><line x1="18" y1="6" x2="6" y2="18" stroke-linecap="round"/><line x1="6" y1="6" x2="18" y2="18" stroke-linecap="round"/></svg>
+      </button>
+      <div class="stat-modal-eyebrow">Квартира · Уфа · 2024</div>
+      <h2 class="stat-modal-title">ЖК «Высота»<br>квартира 142 м²</h2>
+      <div class="stat-modal-divider"></div>
+      <p class="stat-modal-desc">Современная квартира в новом жилом комплексе с панорамными окнами. Клиент хотел светлый, функциональный интерьер без лишнего декора — чистые линии, натуральные материалы, продуманное зонирование.</p>
+      <ul class="stat-modal-list">
+        <li>Площадь 142 м² — открытая планировка гостиной, кухни и столовой</li>
+        <li>Бюджет 9,6 млн ₽ — зафиксирован в смете, не превышен</li>
+        <li>Срок реализации 8 месяцев — с авторским надзором на каждом этапе</li>
+        <li>Встроенная мебель на заказ в кухне, гардеробной и прихожей</li>
+      </ul>
+      <div class="stat-modal-result">
+        <div class="stat-modal-result-label">Отзыв клиента</div>
+        <div class="stat-modal-result-text">«Заселились в срок. Итоговый бюджет совпал с согласованным — ни рубля сверху.»</div>
+      </div>
+    </div>
+    <div class="stat-modal-gallery">
+      <div class="case-slider" data-current="0">
+        <div class="case-slider-track">
+          <div class="case-slide"><img src="./images/interiorufa1.jpeg" alt="Фото 1"></div>
+          <div class="case-slide"><img src="./images/interiorufa2.jpeg" alt="Фото 2"></div>
+          <div class="case-slide"><img src="./images/interiorufa3.jpeg" alt="Фото 3"></div>
+          <div class="case-slide"><img src="./images/interiorufa4.jpeg" alt="Фото 4"></div>
+        </div>
+        <button class="case-slider-btn case-slider-prev" onclick="slideCase(this,-1)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="15 18 9 12 15 6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="case-slider-btn case-slider-next" onclick="slideCase(this,1)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="case-slider-dots">
+          <span class="case-dot active" onclick="dotSlide(this,0)"></span>
+          <span class="case-dot" onclick="dotSlide(this,1)"></span>
+          <span class="case-dot" onclick="dotSlide(this,2)"></span>
+          <span class="case-dot" onclick="dotSlide(this,3)"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── CASE MODAL 2: Дом 240 м² «Берёзки» ── -->
+<div class="stat-modal-overlay" id="cmodal-2" onclick="closeSModalOnOverlay(event,'cmodal-2')">
+  <div class="stat-modal-inner">
+    <div class="stat-modal-text">
+      <button class="stat-modal-close" onclick="closeSModal('cmodal-2')">
+        <svg viewBox="0 0 24 24" fill="none"><line x1="18" y1="6" x2="6" y2="18" stroke-linecap="round"/><line x1="6" y1="6" x2="18" y2="18" stroke-linecap="round"/></svg>
+      </button>
+      <div class="stat-modal-eyebrow">Загородный дом · 2023</div>
+      <h2 class="stat-modal-title">Дом 240 м²<br>в посёлке «Берёзки»</h2>
+      <div class="stat-modal-divider"></div>
+      <p class="stat-modal-desc">Загородный дом для большой семьи. Основная сложность — клиент большую часть времени проводил в командировках. Мы взяли на себя полную координацию: согласование решений, контроль подрядчиков и еженедельные фотоотчёты.</p>
+      <ul class="stat-modal-list">
+        <li>Площадь 240 м² — 2 этажа, 5 спален, кабинет, терраса</li>
+        <li>Бюджет 18,2 млн ₽ — подрядчики выбраны и проверены нами</li>
+        <li>Срок 11 месяцев — без задержек, несмотря на удалённый контроль</li>
+        <li>Стиль: скандинавский минимализм с тёплыми акцентами</li>
+      </ul>
+      <div class="stat-modal-result">
+        <div class="stat-modal-result-label">Отзыв клиента</div>
+        <div class="stat-modal-result-text">«Клиент находился в командировках — мы вели проект без его постоянного участия.»</div>
+      </div>
+    </div>
+    <div class="stat-modal-gallery">
+      <div class="case-slider" data-current="0">
+        <div class="case-slider-track">
+          <div class="case-slide"><img src="./images/interiorufa1.jpeg" alt="Фото 1"></div>
+          <div class="case-slide"><img src="./images/interiorufa2.jpeg" alt="Фото 2"></div>
+          <div class="case-slide"><img src="./images/interiorufa3.jpeg" alt="Фото 3"></div>
+          <div class="case-slide"><img src="./images/interiorufa4.jpeg" alt="Фото 4"></div>
+        </div>
+        <button class="case-slider-btn case-slider-prev" onclick="slideCase(this,-1)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="15 18 9 12 15 6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="case-slider-btn case-slider-next" onclick="slideCase(this,1)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="case-slider-dots">
+          <span class="case-dot active" onclick="dotSlide(this,0)"></span>
+          <span class="case-dot" onclick="dotSlide(this,1)"></span>
+          <span class="case-dot" onclick="dotSlide(this,2)"></span>
+          <span class="case-dot" onclick="dotSlide(this,3)"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── CASE MODAL 3: Пентхаус 190 м² ── -->
+<div class="stat-modal-overlay" id="cmodal-3" onclick="closeSModalOnOverlay(event,'cmodal-3')">
+  <div class="stat-modal-inner">
+    <div class="stat-modal-text">
+      <button class="stat-modal-close" onclick="closeSModal('cmodal-3')">
+        <svg viewBox="0 0 24 24" fill="none"><line x1="18" y1="6" x2="6" y2="18" stroke-linecap="round"/><line x1="6" y1="6" x2="18" y2="18" stroke-linecap="round"/></svg>
+      </button>
+      <div class="stat-modal-eyebrow">Пентхаус · Уфа · 2024</div>
+      <h2 class="stat-modal-title">Пентхаус 190 м²<br>в центре города</h2>
+      <div class="stat-modal-divider"></div>
+      <p class="stat-modal-desc">Пентхаус с террасой и видом на город. Задача — создать интерьер уровня 5★ без демонстративной роскоши. Сдержанная палитра, дорогие материалы, акцент на свет и пространство.</p>
+      <ul class="stat-modal-list">
+        <li>Площадь 190 м² + открытая терраса 40 м²</li>
+        <li>Бюджет 24 млн ₽ — натуральный камень, итальянский паркет, бронзовые акценты</li>
+        <li>Срок 13 месяцев — вся мебель на заказ, без готовых коллекций</li>
+        <li>Уникальное освещение: 4 сценария под разное настроение</li>
+      </ul>
+      <div class="stat-modal-result">
+        <div class="stat-modal-result-label">Отзыв клиента</div>
+        <div class="stat-modal-result-text">«Интерьер уровня 5★ — без показной роскоши. Именно то, что и хотели.»</div>
+      </div>
+    </div>
+    <div class="stat-modal-gallery">
+      <div class="case-slider" data-current="0">
+        <div class="case-slider-track">
+          <div class="case-slide"><img src="./images/interiorufa1.jpeg" alt="Фото 1"></div>
+          <div class="case-slide"><img src="./images/interiorufa2.jpeg" alt="Фото 2"></div>
+          <div class="case-slide"><img src="./images/interiorufa3.jpeg" alt="Фото 3"></div>
+          <div class="case-slide"><img src="./images/interiorufa4.jpeg" alt="Фото 4"></div>
+        </div>
+        <button class="case-slider-btn case-slider-prev" onclick="slideCase(this,-1)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="15 18 9 12 15 6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="case-slider-btn case-slider-next" onclick="slideCase(this,1)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="case-slider-dots">
+          <span class="case-dot active" onclick="dotSlide(this,0)"></span>
+          <span class="case-dot" onclick="dotSlide(this,1)"></span>
+          <span class="case-dot" onclick="dotSlide(this,2)"></span>
+          <span class="case-dot" onclick="dotSlide(this,3)"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── CASE MODAL 4: Дом 530 м² ── -->
+<div class="stat-modal-overlay" id="cmodal-4" onclick="closeSModalOnOverlay(event,'cmodal-4')">
+  <div class="stat-modal-inner">
+    <div class="stat-modal-text">
+      <button class="stat-modal-close" onclick="closeSModal('cmodal-4')">
+        <svg viewBox="0 0 24 24" fill="none"><line x1="18" y1="6" x2="6" y2="18" stroke-linecap="round"/><line x1="6" y1="6" x2="18" y2="18" stroke-linecap="round"/></svg>
+      </button>
+      <div class="stat-modal-eyebrow">Загородный дом · Уфа · 2025</div>
+      <h2 class="stat-modal-title">Дом 530 м² —<br>полный цикл проекта</h2>
+      <div class="stat-modal-divider"></div>
+      <p class="stat-modal-desc">Наш крупнейший жилой проект. Работа велась от первого эскиза до финального расстановки декора — 14 месяцев полного погружения. Бюджет 72 млн ₽ был чётко расписан и соблюдён.</p>
+      <ul class="stat-modal-list">
+        <li>Площадь 530 м² — 3 этажа, 7 комнат, кинозал, бассейн</li>
+        <li>Бюджет 72 млн ₽ — без превышения, каждая статья согласована</li>
+        <li>Срок 14 месяцев — полный авторский надзор от нулевого цикла</li>
+        <li>Умный дом, авторская мебель, ландшафтный проект в едином стиле</li>
+      </ul>
+      <div class="stat-modal-result">
+        <div class="stat-modal-result-label">Отзыв клиента</div>
+        <div class="stat-modal-result-text">«Крупный объект реализован в запланированном бюджете — от эскиза до финальной комплектации.»</div>
+      </div>
+    </div>
+    <div class="stat-modal-gallery">
+      <div class="case-slider" data-current="0">
+        <div class="case-slider-track">
+          <div class="case-slide"><img src="./images/interiorufa1.jpeg" alt="Фото 1"></div>
+          <div class="case-slide"><img src="./images/interiorufa2.jpeg" alt="Фото 2"></div>
+          <div class="case-slide"><img src="./images/interiorufa3.jpeg" alt="Фото 3"></div>
+          <div class="case-slide"><img src="./images/interiorufa4.jpeg" alt="Фото 4"></div>
+        </div>
+        <button class="case-slider-btn case-slider-prev" onclick="slideCase(this,-1)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="15 18 9 12 15 6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="case-slider-btn case-slider-next" onclick="slideCase(this,1)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="case-slider-dots">
+          <span class="case-dot active" onclick="dotSlide(this,0)"></span>
+          <span class="case-dot" onclick="dotSlide(this,1)"></span>
+          <span class="case-dot" onclick="dotSlide(this,2)"></span>
+          <span class="case-dot" onclick="dotSlide(this,3)"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- FOR WHOM — ТРИГГЕР №3 -->
 <section class="forwhom">
@@ -2175,7 +2723,184 @@ body {
   <div class="footer-city">📍 Уфа, Республика Башкортостан</div>
 </footer>
 
+<!-- ── STAT MODAL 1: 15 ЛЕТ ── -->
+<div class="stat-modal-overlay" id="smodal-1" onclick="closeSModalOnOverlay(event,'smodal-1')">
+  <div class="stat-modal-inner">
+    <div class="stat-modal-text">
+      <button class="stat-modal-close" onclick="closeSModal('smodal-1')">
+        <svg viewBox="0 0 24 24" fill="none"><line x1="18" y1="6" x2="6" y2="18" stroke-linecap="round"/><line x1="6" y1="6" x2="18" y2="18" stroke-linecap="round"/></svg>
+      </button>
+      <div class="stat-modal-eyebrow">Наш опыт</div>
+      <h2 class="stat-modal-title">15 лет<br>в дизайне интерьера</h2>
+      <div class="stat-modal-divider"></div>
+      <p class="stat-modal-desc">С 2009 года мы создаём интерьеры в Уфе и Башкортостане. За это время реализовали более 200 проектов — от небольших квартир до загородных домов площадью 500+ м².</p>
+      <ul class="stat-modal-list">
+        <li>Более 200 реализованных объектов разного масштаба</li>
+        <li>Полный цикл: от концепции до авторского надзора на стройке</li>
+        <li>Собственная база проверенных подрядчиков и поставщиков</li>
+        <li>Работаем как с частными заказчиками, так и с бизнесом</li>
+      </ul>
+      <div class="stat-modal-result">
+        <div class="stat-modal-result-label">За эти годы</div>
+        <div class="stat-modal-result-text">Каждый проект — это новая задача, новый стиль и новый опыт. 15 лет — это не просто стаж, это сотни принятых решений и десятки счастливых клиентов.</div>
+      </div>
+    </div>
+    <div class="stat-modal-gallery">
+      <div class="stat-modal-gallery-grid">
+        <img src="https://tweek123.github.io/shtuka/shtuka/images/examples/desktop/slider/1.webp" alt="Проект 1" loading="lazy">
+        <img src="https://tweek123.github.io/shtuka/shtuka/images/projects/1.jpg" alt="Проект 2" loading="lazy">
+        <img src="https://tweek123.github.io/shtuka/shtuka/images/examples/desktop/slider/3.jpg" alt="Проект 3" loading="lazy">
+        <img src="https://tweek123.github.io/shtuka/shtuka/images/projects/2.jpg" alt="Проект 4" loading="lazy">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── STAT MODAL 2: ДОМ 530 м² ── -->
+<div class="stat-modal-overlay" id="smodal-2" onclick="closeSModalOnOverlay(event,'smodal-2')">
+  <div class="stat-modal-inner">
+    <div class="stat-modal-text">
+      <button class="stat-modal-close" onclick="closeSModal('smodal-2')">
+        <svg viewBox="0 0 24 24" fill="none"><line x1="18" y1="6" x2="6" y2="18" stroke-linecap="round"/><line x1="6" y1="6" x2="18" y2="18" stroke-linecap="round"/></svg>
+      </button>
+      <div class="stat-modal-eyebrow">Рекорд портфолио</div>
+      <h2 class="stat-modal-title">Дом 530 м² —<br>самый крупный проект</h2>
+      <div class="stat-modal-divider"></div>
+      <p class="stat-modal-desc">Загородный дом площадью 530 м² стал самым масштабным жилым проектом в нашей практике. Мы разработали дизайн-проект с нуля: от планировки и зонирования до подбора каждой детали отделки.</p>
+      <ul class="stat-modal-list">
+        <li>Три этажа: гостевая зона, приватная часть, хозяйственный блок</li>
+        <li>Авторская мебель на заказ для ключевых помещений</li>
+        <li>Цельная концепция в стиле современной классики</li>
+        <li>Реализация под авторским надзором — 14 месяцев</li>
+      </ul>
+      <div class="stat-modal-result">
+        <div class="stat-modal-result-label">Итог</div>
+        <div class="stat-modal-result-text">Дом, в котором каждая комната живёт своей жизнью — и при этом всё выглядит как единое целое.</div>
+      </div>
+    </div>
+    <div class="stat-modal-gallery">
+      <div class="stat-modal-gallery-grid">
+        <img src="https://tweek123.github.io/shtuka/shtuka/images/examples/desktop/slider/5.jpg" alt="Дом 1" loading="lazy">
+        <img src="https://tweek123.github.io/shtuka/shtuka/images/projects/8.jpg" alt="Дом 2" loading="lazy">
+        <img src="https://tweek123.github.io/shtuka/shtuka/images/examples/desktop/slider/2.jpg" alt="Дом 3" loading="lazy">
+        <img src="https://tweek123.github.io/shtuka/shtuka/images/projects/1.jpg" alt="Дом 4" loading="lazy">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── STAT MODAL 3: 72 МЛН. Р. ── -->
+<div class="stat-modal-overlay" id="smodal-3" onclick="closeSModalOnOverlay(event,'smodal-3')">
+  <div class="stat-modal-inner">
+    <div class="stat-modal-text">
+      <button class="stat-modal-close" onclick="closeSModal('smodal-3')">
+        <svg viewBox="0 0 24 24" fill="none"><line x1="18" y1="6" x2="6" y2="18" stroke-linecap="round"/><line x1="6" y1="6" x2="18" y2="18" stroke-linecap="round"/></svg>
+      </button>
+      <div class="stat-modal-eyebrow">Бюджет проекта</div>
+      <h2 class="stat-modal-title">72 млн рублей —<br>крупнейший бюджет</h2>
+      <div class="stat-modal-divider"></div>
+      <p class="stat-modal-desc">Это проект, в котором не было компромиссов: натуральный мрамор, итальянская мебель ручной работы, авторские светильники и отделка класса люкс на каждом квадратном метре.</p>
+      <ul class="stat-modal-list">
+        <li>Импортные материалы премиум-класса из Италии, Испании и Германии</li>
+        <li>Мебель, изготовленная на заказ итальянскими фабриками</li>
+        <li>Комплексный свет: рабочий, акцентный, декоративный</li>
+        <li>Умный дом: управление светом, климатом, шторами</li>
+      </ul>
+      <div class="stat-modal-result">
+        <div class="stat-modal-result-label">Результат</div>
+        <div class="stat-modal-result-text">Когда бюджет позволяет реализовать всё задуманное — рождается интерьер, который не оставляет равнодушным.</div>
+      </div>
+    </div>
+    <div class="stat-modal-gallery">
+      <div class="stat-modal-gallery-grid">
+        <img src="https://tweek123.github.io/shtuka/shtuka/images/examples/desktop/slider/4.jpg" alt="Люкс 1" loading="lazy">
+        <img src="https://tweek123.github.io/shtuka/shtuka/images/projects/2.jpg" alt="Люкс 2" loading="lazy">
+        <img src="https://tweek123.github.io/shtuka/shtuka/images/examples/desktop/slider/1.webp" alt="Люкс 3" loading="lazy">
+        <img src="https://tweek123.github.io/shtuka/shtuka/images/projects/8.jpg" alt="Люкс 4" loading="lazy">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── STAT MODAL 4: 98% КЛИЕНТОВ ── -->
+<div class="stat-modal-overlay" id="smodal-4" onclick="closeSModalOnOverlay(event,'smodal-4')">
+  <div class="stat-modal-inner">
+    <div class="stat-modal-text">
+      <button class="stat-modal-close" onclick="closeSModal('smodal-4')">
+        <svg viewBox="0 0 24 24" fill="none"><line x1="18" y1="6" x2="6" y2="18" stroke-linecap="round"/><line x1="6" y1="6" x2="18" y2="18" stroke-linecap="round"/></svg>
+      </button>
+      <div class="stat-modal-eyebrow">Рекомендации</div>
+      <h2 class="stat-modal-title">98% клиентов<br>приходят по совету</h2>
+      <div class="stat-modal-divider"></div>
+      <p class="stat-modal-desc">Лучший показатель нашей работы — это не награды, а клиенты, которые советуют нас родным и друзьям. 98% новых заказчиков узнают о нас именно так — по личной рекомендации.</p>
+      <ul class="stat-modal-list">
+        <li>Прозрачная смета без скрытых платежей и неожиданных доплат</li>
+        <li>Авторский надзор — мы сами контролируем все работы на объекте</li>
+        <li>Реализованный проект совпадает с тем, что было показано на рендерах</li>
+        <li>Сроки фиксируются в договоре и соблюдаются</li>
+      </ul>
+      <div class="stat-modal-result">
+        <div class="stat-modal-result-label">Наш принцип</div>
+        <div class="stat-modal-result-text">Довольный клиент — лучшая реклама. Именно поэтому мы никогда не идём на компромисс с качеством.</div>
+      </div>
+    </div>
+    <div class="stat-modal-gallery">
+      <div class="stat-modal-gallery-grid">
+        <img src="https://tweek123.github.io/shtuka/shtuka/images/projects/1.jpg" alt="Отзыв 1" loading="lazy">
+        <img src="https://tweek123.github.io/shtuka/shtuka/images/examples/desktop/slider/3.jpg" alt="Отзыв 2" loading="lazy">
+        <img src="https://tweek123.github.io/shtuka/shtuka/images/projects/2.jpg" alt="Отзыв 3" loading="lazy">
+        <img src="https://tweek123.github.io/shtuka/shtuka/images/examples/desktop/slider/5.jpg" alt="Отзыв 4" loading="lazy">
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
+/* ── Case Image Slider ── */
+function slideCase(btn, dir) {
+  const slider = btn.closest('.case-slider');
+  const track = slider.querySelector('.case-slider-track');
+  const total = track.querySelectorAll('.case-slide').length;
+  let cur = parseInt(slider.dataset.current) || 0;
+  cur = (cur + dir + total) % total;
+  slider.dataset.current = cur;
+  track.style.transform = 'translateX(-' + (cur * 100) + '%)';
+  slider.querySelectorAll('.case-dot').forEach(function(d, i) {
+    d.classList.toggle('active', i === cur);
+  });
+}
+
+function dotSlide(dot, idx) {
+  const slider = dot.closest('.case-slider');
+  const track = slider.querySelector('.case-slider-track');
+  slider.dataset.current = idx;
+  track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+  slider.querySelectorAll('.case-dot').forEach(function(d, i) {
+    d.classList.toggle('active', i === idx);
+  });
+}
+
+/* ── Stat Modal functions ── */
+function openSModal(id) {
+  document.getElementById(id).classList.add('is-open');
+  document.body.style.overflow = 'hidden';
+}
+function closeSModal(id) {
+  document.getElementById(id).classList.remove('is-open');
+  document.body.style.overflow = '';
+}
+function closeSModalOnOverlay(e, id) {
+  if (e.target === document.getElementById(id)) closeSModal(id);
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.stat-modal-overlay.is-open').forEach(function(m) {
+      m.classList.remove('is-open');
+    });
+    document.body.style.overflow = '';
+  }
+});
+
 function pickTime(el){
   el.closest('div').querySelectorAll('.q-opt').forEach(o=>o.classList.remove('sel'));
   el.classList.add('sel');
