@@ -96,6 +96,24 @@ body{
   letter-spacing:.06em;line-height:1.4;
 }
 
+.case-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.case-img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: var(--bg3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
 @media(max-width:768px){
   .gallery-grid{grid-template-columns:1fr 1fr}
   .gallery-item.tall{grid-row:span 1;aspect-ratio:4/3}
@@ -188,14 +206,11 @@ nav.scrolled{
   content:'';
   position:absolute;inset:0;
   z-index:1;
-  background:rgba(15,13,10,0.52);
+  background:rgba(15,13,10,0.2);
 }
 .hero-grid-overlay{
   position:absolute;inset:0;
   z-index:2;
-  background-image:
-    linear-gradient(rgba(245,240,232,0.06) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(245,240,232,0.06) 1px,transparent 1px);
   background-size:80px 80px;
   opacity:1;
 }
@@ -378,16 +393,27 @@ nav.scrolled{
 
 /* ─── SAFETY BLOCK ─── */
 .safety{
-  background:var(--bg);
+  background-image: url('./images/d1.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   padding:56px;
   border-top:1px solid var(--border);
   border-bottom:1px solid var(--border);
-  display:grid;grid-template-columns:1fr 2fr;gap:64px;
   align-items:center;
+  height: 598px;
+}
+.safety-inner {
+  max-width: 850px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 24px;
 }
 .safety-label{
   font-family:'Playfair Display',serif;
-  font-size:28px;font-weight:700;line-height:1.2;
+  font-size:32px;font-weight:700;line-height:1.2;
   color:var(--text);
 }
 .safety-label em{font-style:italic;color:var(--gold)}
@@ -515,9 +541,9 @@ nav.scrolled{
 .pain-card:hover::after{width:100%}
 
 .pain-icon{
-  width:100%;
-  height:220px;
-  margin-bottom:0;
+  width: 180px;
+  aspect-ratio: 1;
+  margin: 16px auto;
   display:block;
   object-fit:cover;
 }
@@ -686,7 +712,9 @@ nav.scrolled{
 .case-card:hover .case-body{border-top-color:var(--gold)}
 
 .case-img{
-  height:220px;background:var(--bg3);
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background:var(--bg3);
   display:flex;align-items:center;justify-content:center;
   overflow:hidden;position:relative;
 }
@@ -1135,8 +1163,29 @@ footer{
   .pain,.solution,.cases,.process,.trust,.quiz-wrap,.expert,.final,.forwhom{padding:72px 24px}
   .sol-grid,.trust-grid,.expert-grid,.forwhom-grid{grid-template-columns:1fr;gap:48px}
   .cases-grid,.pain-grid{grid-template-columns:1fr}
-  .stat-strip{grid-template-columns:1fr 1fr;padding:24px}
-  .stat-item{padding:12px 16px;border-right:none;border-bottom:1px solid rgba(15,13,10,.15)}
+  .stat-strip {
+    grid-template-columns: 1fr 1fr; /* Оставляем две колонки */
+    gap: 20px; /* Увеличиваем отступ между колонками */
+    padding: 40px 24px;
+    background: var(--gold); /* Цвет фона остается */
+  }  
+  .stat-item {
+    padding: 0; /* Убираем внутренние отступы */
+    border-right: none; /* Убираем разделители */
+    border-bottom: none; /* Убираем лишние границы */
+    text-align: center; /* Центрируем содержимое */
+  } 
+  .stat-num {
+    font-size: 36px; /* Уменьшаем цифры, но оставляем крупными */
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+  .stat-label {
+    font-size: 11px; /* Немного увеличиваем подписи */
+    line-height: 1.4;
+    color: rgba(15,13,10,0.7); /* Делаем подписи чуть ярче */
+  }
+
   .stat-item:last-child{border-bottom:none}
   .mid-cta{flex-direction:column;padding:48px 24px}
   .q-opts{grid-template-columns:1fr}
@@ -1146,9 +1195,42 @@ footer{
   .proc-item{grid-template-columns:50px 1fr;gap:20px}
   .proc-free{display:none}
   .deficit-strip{padding:24px}
-  .safety{padding:40px 24px}
+  .safety{
+    padding:40px 24px;
+    background-size: auto;
+    background-position: bottom center;
+    background-image: url('./images/d1m.png');
+  }
   .sol-video{aspect-ratio:4/3}
+
+  .hero-bg-video {
+    padding-bottom: 521px;
+  }
+
+  .deficit-strip {
+    display: none;
+  }
+
+  @media(max-width: 480px) {
+    .stat-strip {
+      grid-template-columns: 1fr; /* Одна колонка на очень узких экранах */
+      gap: 25px;
+    }
+  }
 }
+
+.text-sub-cards {
+  font-family:'Playfair Display',serif;
+  font-size: 28px;
+  font-weight:700;line-height:1.1;
+  letter-spacing:-.01em;
+}
+
+.text-sub-cards-gold {
+  color: var(--gold);
+  font-style: italic;
+}
+
 </style>
 </head>
 <body>
@@ -1184,8 +1266,9 @@ footer{
   <div class="deficit-left">
     <div class="deficit-dot"></div>
     <div class="deficit-text">
-      <strong>Сейчас в работе: 4 проекта.</strong> Мы берём ограниченное количество проектов в год, чтобы лично контролировать каждую реализацию.<br>
-      Следующее окно на старт нового проекта — <strong>июнь 2026.</strong>
+      Вы принимаете только ключевые решения.
+      <br>
+      Контроль стройки, подрядчиков и бюджета — на нас.
     </div>
   </div>
   <div class="deficit-right">
@@ -1210,8 +1293,8 @@ footer{
   <div class="hero-scan"></div>
   <div class="hero-bg-video" aria-hidden="true">
     <video autoplay muted loop playsinline preload="metadata">
-      <source src="public/ufainteriordesign.mov" type="video/mp4">
-      <source src="public/ufainteriordesign.mov" type="video/quicktime">
+      <source src="images/interiorufa_hero.mov" type="video/mp4">
+      <source src="images/interiorufa_hero.mov" type="video/quicktime">
     </video>
   </div>
 
@@ -1227,13 +1310,15 @@ footer{
     </h1>
 
     <p class="hero-sub anim d2">
-      Проектируем и реализуем интерьеры под ключ. Вы участвуете только в ключевых решениях — стройку, подрядчиков и бюджет контролируем мы.
+      Вы принимаете только ключевые решения.
+      Контроль стройки, подрядчиков и бюджета — на нас.
     </p>
 
     <div class="hero-offer anim d3">
       <span class="offer-label">Бесплатно · только сейчас</span>
       <div class="offer-h">
-        Узнайте, не потеряете ли вы 2–5 млн.р. на ремонте, совершив типичные ошибки. Получите аудит будущего ремонта бесплатно
+        Проверьте, не потеряете ли вы 2–5 млн. ₽ на ошибках ремонта.
+        Получите аудит будущего ремонта бесплатно
       </div>
       <div class="offer-list">
         <div class="offer-item">Покажем реальные риски, диапазон бюджета и 5 решений, которые экономят миллионы ещё до начала работ.</div>
@@ -1274,46 +1359,84 @@ footer{
   </div>
   <div class="pain-grid">
     <div class="pain-card anim d1">
-      <img class="pain-icon" src="https://tweek123.github.io/shtuka/shtuka/images/examples/desktop/slider/1.webp" alt="Дизайнер исчезает на полпути">
+      <img class="pain-icon" src="./images/p1.png" alt="Проект сдан — и дизайнер исчез">
       <div class="pain-card-body">
         <span class="pain-num">01</span>
-        <div class="pain-title">Дизайнер исчезает на полпути</div>
-        <div class="pain-text">Красивый проект сдан. А кто контролирует стройку? Никто. Подрядчики принимают решения сами, и потом — переделки.</div>
+        <div class="pain-title">Проект сдан — и дизайнер исчез</div>
+        <div class="pain-text">Красивый дизайн готов. Но стройка только начинается.
+          <ul>
+            <li>Строители принимают решения сами</li>
+            <li>Поставщики советуют свои материалы</li>
+            <li>Проект постепенно меняется</li>
+          </ul>
+          <p>Именно так появляются переделки и конфликты</p>
+        </div>
       </div>
     </div>
     <div class="pain-card anim d2">
-      <img class="pain-icon" src="https://tweek123.github.io/shtuka/shtuka/images/examples/desktop/slider/2.jpg" alt="Бюджет растёт каждую неделю">
+      <img class="pain-icon" src="./images/p2.png" alt="Бюджет начинает “плыть”">
       <div class="pain-card-body">
         <span class="pain-num">02</span>
-        <div class="pain-title">Бюджет растёт каждую неделю</div>
-        <div class="pain-text">«Неожиданные» расходы появляются системно. Итог — переплата 30–80% сверх первоначальной сметы.</div>
+        <div class="pain-title">Бюджет начинает “плыть”</div>
+        <div class="pain-text">Сначала +50 тысяч. Потом +200. Потом выясняется, что:
+          <ul>
+            <li>Плитка не учтена</li>
+            <li>Свет дороже</li>
+            <li>Мебель стоит в 2 раза больше</li>
+          </ul>
+          <p>И ремонт становится на 30–80% дороже</p>
+        </div>
       </div>
     </div>
     <div class="pain-card anim d3">
-      <img class="pain-icon" src="https://tweek123.github.io/shtuka/shtuka/images/examples/desktop/slider/3.jpg" alt="Рендер ≠ реальность">
+      <img class="pain-icon" src="./images/p3.png" alt="Рендер ≠ реальность">
       <div class="pain-card-body">
         <span class="pain-num">03</span>
         <div class="pain-title">Рендер ≠ реальность</div>
-        <div class="pain-text">Картинка была красивой, результат — нет. Материалы выбраны не в пространстве, а на экране. Итог предсказуем.</div>
+        <div class="pain-text">Материалы красиво смотрелись на рендере,
+          но в реальном пространстве выглядят иначе.
+          <ul>
+            <li>Освещение другое</li>
+            <li>Фактуры другие</li>
+            <li>Пропорции другие</li>
+          </ul>
+          <p>И интерьер получается не таким, как ожидали</p>
+        </div>
       </div>
     </div>
     <div class="pain-card anim d4">
-      <img class="pain-icon" src="https://tweek123.github.io/shtuka/shtuka/images/examples/desktop/slider/4.jpg" alt="6 месяцев становятся 2 годами">
+      <img class="pain-icon" src="./images/p4.png" alt="6 месяцев становятся 2 годами">
       <div class="pain-card-body">
         <span class="pain-num">04</span>
         <div class="pain-title">6 месяцев становятся 2 годами</div>
-        <div class="pain-text">Семья живёт в ремонте. Дети не могут нормально спать. Нервы, конфликты, и конец всё не виден.</div>
+        <div class="pain-text">
+          <ul>
+            <li>Работы останавливаются</li>
+            <li>Материалы задерживаются</li>
+            <li>Строители ждут решений</li>
+          </ul>
+          <p>Семья живёт среди стройки, а финал ремонта всё время отодвигается.</p>
+        </div>
       </div>
     </div>
-  </div>
+</div>
+<br />
+<p class="text-sub-cards">Почти все эти проблемы возникают по одной причине:</p>
+<p class="text-sub-cards text-sub-cards-gold">ремонтом никто не управляет системно.</p>
 </section>
 
 <!-- SAFETY BLOCK — ТРИГГЕР №2 -->
 <div class="safety anim">
-  <div class="safety-label">Поэтому мы начинаем<br>не с <em>дизайна</em></div>
+  <div class="safety-inner">
+  <div class="safety-label">Поэтому мы начинаем не с <em>дизайна</em></div>
   <div class="safety-right">
     <p class="safety-text">
-      Перед подписанием любого договора вы получаете аудит проекта. Мы показываем реальные риски, диапазон бюджета и сложные решения заранее — чтобы вы принимали решение с открытыми глазами.
+      Перед подписанием любого договора
+      вы получаете аудит проекта. Мы разбираем 
+    </br>
+      - планировку, сложные решения реальные риски
+    </br>
+      - показываем честный диапазон бюджета.
     </p>
     <div class="safety-promise">
       <div class="safety-promise-icon">◆</div>
@@ -1322,6 +1445,7 @@ footer{
       </div>
     </div>
   </div>
+</div>
 </div>
 
 <!-- STAT STRIP -->
@@ -1351,7 +1475,7 @@ footer{
       <div class="ey-line"></div>
       <span class="ey-text">Наш подход</span>
     </div>
-    <h2 class="sec-title">Мы не просто рисуем —<br><em>мы управляем результатом</em></h2>
+    <h2 class="sec-title">Мы не просто рисуем интерьер —<br><em>мы доводим ремонт до результата</em></h2>
   </div>
   <div class="sol-grid">
     <div class="anim">
@@ -1377,29 +1501,36 @@ footer{
       <div class="sol-step">
         <div class="sol-step-n">02</div>
         <div>
-          <div class="sol-step-title">Дизайн-проект</div>
-          <div class="sol-step-text">Планировка, 3D-визуализация, рабочая документация. Вы видите готовый результат до начала ремонта.</div>
+          <div class="sol-step-title">Планировка и сценарий жизни</div>
+          <div class="sol-step-text">Разрабатываем варианты переноса стен, несколько вариантов планировки
+            и обсуждаем, как будет жить семья
+            </div>
         </div>
       </div>
       <div class="sol-step">
         <div class="sol-step-n">03</div>
         <div>
-          <div class="sol-step-title">Комплектация</div>
-          <div class="sol-step-text">Подбор материалов и мебели с фиксированными ценами. Каждую позицию утверждаете вы.</div>
+          <div class="sol-step-title">Стилевой код интерьера</div>
+          <div class="sol-step-text">Определяем характер будущего пространства: цветовую палитру, материалы и стилистическое направление. На основе ваших предпочтений и образа жизни формируется стилевой код интерьера — концептуальная основа всего проекта.</div>
         </div>
       </div>
       <div class="sol-step">
         <div class="sol-step-n">04</div>
         <div>
-          <div class="sol-step-title">Авторский надзор</div>
-          <div class="sol-step-text">Еженедельные фото-отчёты, контроль качества работ, управление подрядчиками. Вы всегда в курсе.</div>
+          <div class="sol-step-title">Дизайн интерьера и бюджет</div>
+          <div class="sol-step-text">Вы увидите визуализации будущего интерьера и продуманные дизайнерские решения, отраженные в чертежах, и подобранные в согласованном бюджете на ремонт.
+            На этом этапе у вас есть не только красивый проект, но и понимание стоимости его реализации.
+            </div>
         </div>
       </div>
       <div class="sol-step">
         <div class="sol-step-n">05</div>
         <div>
-          <div class="sol-step-title">Заселение</div>
-          <div class="sol-step-text">Приёмка объекта по чеклисту, устранение всех замечаний, финальная расстановка. Въезжаете в готовый дом.</div>
+          <div class="sol-step-title">Курирование ремонта и Комплектация</div>
+          <div class="sol-step-text">Мы сопровождаем весь процесс ремонта и берём на себя коммуникацию со строителями, подрядчиками и поставщиками.</br>
+            Координируем работу всех исполнителей, решаем технические вопросы и контролируем реализацию сложных узлов, мебели, отделки, потолков и освещения.</br>
+            Вы участвуете только в ключевых решениях, а все организационные и технические вопросы, оптимизацию бюджета мы берём на себя. Сопровождаем ремонт, чтобы интерьер был реализован точно так, как задумано
+            </div>
         </div>
       </div>
     </div>
@@ -1429,7 +1560,9 @@ footer{
   <div class="cases-grid">
     <div class="case-card anim d1">
       <div class="case-img">
-        <img src="https://tweek123.github.io/shtuka/shtuka/images/portfolio/6.jpg" alt="ЖК Трилогия, квартира">
+        <video class="case-video" autoplay muted loop playsinline preload="metadata">
+          <source src="images/1interiorv.mp4" type="video/mp4">
+        </video>
       </div>
       <div class="case-body">
         <span class="case-tag">Квартира · Уфа · 2024</span>
@@ -1444,7 +1577,9 @@ footer{
     </div>
     <div class="case-card anim d2">
       <div class="case-img">
-        <img src="https://tweek123.github.io/shtuka/shtuka/images/portfolio/5.jpg" alt="Дом 500 м2">
+        <video class="case-video" autoplay muted loop playsinline preload="metadata">
+          <source src="images/2interiorv.mp4" type="video/mp4">
+        </video>
       </div>
       <div class="case-body">
         <span class="case-tag">Загородный дом · Уфимский р-н · 2023</span>
@@ -1459,7 +1594,9 @@ footer{
     </div>
     <div class="case-card anim d3">
       <div class="case-img">
-        <img src="https://tweek123.github.io/shtuka/shtuka/images/portfolio/2.jpg" alt="Дом Санкт-Петербург">
+        <video class="case-video" autoplay muted loop playsinline preload="metadata">
+          <source src="images/3interiorv.mp4" type="video/mp4">
+        </video>
       </div>
       <div class="case-body">
         <span class="case-tag">Пентхаус · Уфа · 2024</span>
@@ -1474,7 +1611,9 @@ footer{
     </div>
     <div class="case-card anim d4">
       <div class="case-img">
-        <img src="https://tweek123.github.io/shtuka/shtuka/images/portfolio/4.jpg" alt="Дом в Уфе, интерьер 530 м2">
+        <video class="case-video" autoplay muted loop playsinline preload="metadata">
+          <source src="images/4interiorv.mp4" type="video/mp4">
+        </video>
       </div>
       <div class="case-body">
         <span class="case-tag">Загородный дом · Уфа · 2025</span>
