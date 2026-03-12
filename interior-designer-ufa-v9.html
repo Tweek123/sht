@@ -4,7 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Дизайн интерьера в Уфе — без хаоса и переделок</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -16,10 +18,10 @@ html{scroll-behavior:smooth}
   --surface:#242018;
   --cream:#F5F0E8;
   --cream2:#EDE7DB;
-  --gold:#C9A257;
-  --gold2:#E8C07A;
-  --gold-dim:rgba(201,162,87,0.1);
-  --gold-dim2:rgba(201,162,87,0.06);
+  --gold:#C9A96E;
+  --gold2:#D4B47A;
+  --gold-dim:rgba(201,169,110,0.1);
+  --gold-dim2:rgba(201,169,110,0.06);
   --text:#3D3A35;
   --text2:rgba(60,56,50,0.7);
   --text3:rgba(60,56,50,0.45);
@@ -30,7 +32,7 @@ html{scroll-behavior:smooth}
 body{
   background:var(--bg);
   color:var(--text);
-  font-family:'Montserrat',sans-serif;
+  font-family:'Jost',sans-serif;
   overflow-x:hidden;
 }
 
@@ -123,7 +125,7 @@ body{
 /* ─── ANIMATIONS ─── */
 @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-@keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(201,162,87,0.35)}60%{box-shadow:0 0 0 14px rgba(201,162,87,0)}}
+@keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(201,169,110,0.35)}60%{box-shadow:0 0 0 14px rgba(201,169,110,0)}}
 @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 @keyframes float{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-10px) rotate(1deg)}}
 @keyframes scanLine{0%{top:-10%}100%{top:110%}}
@@ -148,7 +150,7 @@ nav.scrolled{
   border-color:var(--border);
 }
 .logo{
-  font-family:'Playfair Display',serif;
+  font-family:'Cormorant Garamond',serif;
   font-size:20px;font-weight:700;
   color:var(--text);letter-spacing:.02em;
 }
@@ -164,7 +166,7 @@ nav.scrolled{
 .nav-btn{
   background:var(--gold);color:var(--bg);
   padding:10px 24px;border:none;cursor:pointer;
-  font-family:'Montserrat',sans-serif;font-size:11px;
+  font-family:'Jost',sans-serif;font-size:11px;
   font-weight:600;letter-spacing:.1em;text-transform:uppercase;
   transition:all .25s ease;
 }
@@ -240,7 +242,7 @@ nav.scrolled{
 }
 
 .hero-h1{
-  font-family:'Playfair Display',serif;
+  font-family:'Cormorant Garamond',serif;
   font-size:clamp(44px,5.5vw,80px);
   font-weight:700;line-height:1.05;
   margin-bottom:28px;
@@ -278,7 +280,7 @@ nav.scrolled{
   margin-bottom:10px;display:block;
 }
 .offer-h{
-  font-family:'Playfair Display',serif;
+  font-family:'Cormorant Garamond',serif;
   font-size:22px;font-weight:700;
   color:var(--text);line-height:1.35;
   margin-bottom:20px;
@@ -304,7 +306,7 @@ nav.scrolled{
   width:100%;padding:17px 32px;
   background:var(--gold);color:var(--bg);
   border:none;cursor:pointer;
-  font-family:'Montserrat',sans-serif;font-size:12px;
+  font-family:'Jost',sans-serif;font-size:12px;
   font-weight:700;letter-spacing:.1em;text-transform:uppercase;
   transition:all .25s ease;
   animation:glow 2.8s ease infinite;
@@ -343,7 +345,7 @@ nav.scrolled{
 .float-card:nth-child(2){animation-delay:-2.5s}
 .float-card:nth-child(3){animation-delay:-1.2s}
 .float-num{
-  font-family:'Playfair Display',serif;
+  font-family:'Cormorant Garamond',serif;
   font-size:38px;font-weight:700;
   color:var(--gold);line-height:1;
 }
@@ -383,7 +385,7 @@ nav.scrolled{
 }
 .deficit-stat{text-align:center}
 .deficit-stat-n{
-  font-family:'Playfair Display',serif;
+  font-family:'Cormorant Garamond',serif;
   font-size:30px;font-weight:700;color:var(--gold);line-height:1;
 }
 .deficit-stat-l{
@@ -412,7 +414,7 @@ nav.scrolled{
   margin-top: 24px;
 }
 .safety-label{
-  font-family:'Playfair Display',serif;
+  font-family:'Cormorant Garamond',serif;
   font-size:32px;font-weight:700;line-height:1.2;
   color:var(--text);
 }
@@ -477,7 +479,7 @@ nav.scrolled{
   border-left:2px solid var(--gold);
 }
 .forwhom-filter-text{
-  font-family:'Playfair Display',serif;
+  font-family:'Cormorant Garamond',serif;
   font-size:18px;font-style:italic;font-weight:700;
   color:var(--text);line-height:1.5;
 }
@@ -510,7 +512,7 @@ nav.scrolled{
 .ey-text{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:600}
 
 .sec-title{
-  font-family:'Playfair Display',serif;
+  font-family:'Cormorant Garamond',serif;
   font-size:clamp(30px,3.5vw,52px);
   font-weight:700;line-height:1.1;
   letter-spacing:-.01em;
@@ -548,7 +550,7 @@ nav.scrolled{
   object-fit:cover;
 }
 .pain-num{
-  font-family:'Playfair Display',serif;
+  font-family:'Cormorant Garamond',serif;
   font-size:56px;font-weight:700;
   color:rgba(245,240,232,0.04);
   position:absolute;top:12px;right:16px;line-height:1;
@@ -575,7 +577,7 @@ nav.scrolled{
 .stat-item:first-child{padding-left:0}
 .stat-item:last-child{border-right:none}
 .stat-num{
-  font-family:'Playfair Display',serif;
+  font-family:'Cormorant Garamond',serif;
   font-size:48px;font-weight:700;
   color:var(--bg);line-height:1;
 }
@@ -616,7 +618,7 @@ nav.scrolled{
   background:var(--gold);
   color:var(--bg);
   cursor:pointer;
-  font-family:'Montserrat',sans-serif;
+  font-family:'Jost',sans-serif;
   font-size:12px;
   font-weight:700;
   letter-spacing:.1em;
@@ -640,7 +642,7 @@ nav.scrolled{
 .sol-step:last-child{border-bottom:none}
 .sol-step:hover{padding-left:8px}
 .sol-step-n{
-  font-family:'Playfair Display',serif;
+  font-family:'Cormorant Garamond',serif;
   font-size:40px;font-weight:700;
   color:rgba(245,240,232,0.07);line-height:1;
   margin-top:-4px;
@@ -667,7 +669,7 @@ nav.scrolled{
   border-bottom:1px solid var(--border);
 }
 .mid-cta-h{
-  font-family:'Playfair Display',serif;
+  font-family:'Cormorant Garamond',serif;
   font-size:clamp(24px,2.8vw,40px);
   font-weight:700;line-height:1.15;
   margin-bottom:10px;
@@ -680,7 +682,7 @@ nav.scrolled{
   background:transparent;border:1px solid var(--gold);
   padding:16px 36px;
   color:var(--gold);cursor:pointer;
-  font-family:'Montserrat',sans-serif;font-size:12px;
+  font-family:'Jost',sans-serif;font-size:12px;
   font-weight:600;letter-spacing:.1em;text-transform:uppercase;
   transition:all .25s;white-space:nowrap;
 }
@@ -735,7 +737,7 @@ nav.scrolled{
   font-weight:700;color:var(--gold);margin-bottom:10px;display:block;
 }
 .case-title{
-  font-family:'Playfair Display',serif;
+  font-family:'Cormorant Garamond',serif;
   font-size:21px;font-weight:700;
   color:var(--text);line-height:1.3;margin-bottom:20px;
 }
@@ -748,7 +750,7 @@ nav.scrolled{
 .case-stat{display:flex;justify-content:space-between;align-items:center}
 .case-stat-l{font-size:11px;color:var(--text3);font-weight:500}
 .case-stat-v{
-  font-family:'Playfair Display',serif;
+  font-family:'Cormorant Garamond',serif;
   font-size:16px;font-weight:700;color:var(--text);
 }
 .case-quote{
@@ -758,7 +760,7 @@ nav.scrolled{
 .case-quote::before{
   content:'"';
   color:var(--gold);
-  font-family:'Playfair Display',serif;
+  font-family:'Cormorant Garamond',serif;
   font-size:24px;line-height:0;vertical-align:-10px;margin-right:3px;
 }
 
@@ -786,7 +788,7 @@ nav.scrolled{
 .proc-item:last-child{border-bottom:none}
 
 .proc-n{
-  font-family:'Playfair Display',serif;
+  font-family:'Cormorant Garamond',serif;
   font-size:52px;font-weight:700;
   color:rgba(245,240,232,0.06);line-height:1;
   margin-top:-4px;
@@ -834,13 +836,13 @@ nav.scrolled{
 .review-text{font-size:13px;color:rgba(245,240,232,0.65);line-height:1.7;font-style:italic}
 .review-text::before{
   content:'"';color:var(--gold);
-  font-family:'Playfair Display',serif;
+  font-family:'Cormorant Garamond',serif;
   font-size:22px;line-height:0;vertical-align:-8px;margin-right:2px;
 }
 
 .trust-faq{display:flex;flex-direction:column;gap:0}
 .trust-faq-title{
-  font-family:'Playfair Display',serif;
+  font-family:'Cormorant Garamond',serif;
   font-size:32px;font-weight:700;
   margin-bottom:32px;line-height:1.2;
 }
@@ -934,7 +936,7 @@ nav.scrolled{
 
 .quiz-body{padding:32px 40px 40px}
 .q-title{
-  font-family:'Playfair Display',serif;
+  font-family:'Cormorant Garamond',serif;
   font-size:clamp(20px,2.5vw,30px);
   font-weight:700;line-height:1.2;margin-bottom:8px;
 }
@@ -961,7 +963,7 @@ nav.scrolled{
   display:inline-flex;align-items:center;gap:10px;
   background:var(--gold);color:var(--bg);
   padding:14px 36px;border:none;cursor:pointer;
-  font-family:'Montserrat',sans-serif;font-size:12px;
+  font-family:'Jost',sans-serif;font-size:12px;
   font-weight:700;letter-spacing:.1em;text-transform:uppercase;
   transition:all .25s;
 }
@@ -995,7 +997,7 @@ nav.scrolled{
   background:rgba(245,240,232,0.04);
   border:1px solid var(--border);
   padding:15px 18px;color:var(--text);
-  font-family:'Montserrat',sans-serif;font-size:14px;
+  font-family:'Jost',sans-serif;font-size:14px;
   outline:none;transition:border-color .2s;width:100%;
 }
 .q-input::placeholder{color:var(--text3)}
@@ -1005,7 +1007,7 @@ nav.scrolled{
 .ty{text-align:center;padding:16px 0}
 .ty-icon{font-size:52px;margin-bottom:20px;animation:float 3s ease infinite;display:block}
 .ty-title{
-  font-family:'Playfair Display',serif;
+  font-family:'Cormorant Garamond',serif;
   font-size:34px;font-weight:700;margin-bottom:12px;
 }
 .ty-title em{font-style:italic;color:var(--gold)}
@@ -1047,7 +1049,7 @@ nav.scrolled{
   background:var(--gold);padding:18px 22px;text-align:center;
 }
 .expert-badge-n{
-  font-family:'Playfair Display',serif;
+  font-family:'Cormorant Garamond',serif;
   font-size:38px;font-weight:700;color:var(--bg);line-height:1;
 }
 .expert-badge-t{
@@ -1056,7 +1058,7 @@ nav.scrolled{
 }
 
 .expert-name{
-  font-family:'Playfair Display',serif;
+  font-family:'Cormorant Garamond',serif;
   font-size:42px;font-weight:700;line-height:1;
   margin-bottom:4px;
 }
@@ -1069,7 +1071,7 @@ nav.scrolled{
   margin-bottom:24px;
 }
 .expert-credo{
-  font-family:'Playfair Display',serif;
+  font-family:'Cormorant Garamond',serif;
   font-size:22px;font-style:italic;font-weight:700;
   color:var(--text);line-height:1.5;
   padding:28px 0;
@@ -1100,7 +1102,7 @@ nav.scrolled{
 }
 .final-eyebrow{justify-content:center;margin-bottom:20px}
 .final-title{
-  font-family:'Playfair Display',serif;
+  font-family:'Cormorant Garamond',serif;
   font-size:clamp(38px,5vw,68px);
   font-weight:700;line-height:1.05;
   color:#F5F0E8;
@@ -1120,7 +1122,7 @@ nav.scrolled{
   display:inline-flex;align-items:center;gap:12px;
   background:var(--gold);color:var(--bg);
   padding:20px 56px;border:none;cursor:pointer;
-  font-family:'Montserrat',sans-serif;font-size:12px;
+  font-family:'Jost',sans-serif;font-size:12px;
   font-weight:700;letter-spacing:.12em;text-transform:uppercase;
   transition:all .3s;position:relative;z-index:1;
   animation:glow 2.8s ease infinite;
@@ -1140,7 +1142,7 @@ footer{
   flex-wrap:wrap;gap:16px;
 }
 .footer-logo{
-  font-family:'Playfair Display',serif;
+  font-family:'Cormorant Garamond',serif;
   font-size:18px;color:var(--text);
 }
 .footer-logo em{font-style:italic;color:var(--gold)}
@@ -1220,7 +1222,7 @@ footer{
 }
 
 .text-sub-cards {
-  font-family:'Playfair Display',serif;
+  font-family:'Cormorant Garamond',serif;
   font-size: 28px;
   font-weight:700;line-height:1.1;
   letter-spacing:-.01em;
@@ -1229,6 +1231,67 @@ footer{
 .text-sub-cards-gold {
   color: var(--gold);
   font-style: italic;
+}
+
+/* ── Cormorant Garamond: элегантные веса как в portfolio-block ── */
+
+/* Крупные числа и главные заголовки — weight 300 */
+.hero-h1,
+.sec-title,
+.final-title,
+.float-num,
+.deficit-stat-n,
+.pain-num,
+.stat-num,
+.sol-step-n,
+.proc-n,
+.text-sub-cards {
+  font-weight: 300;
+}
+
+/* Подзаголовки и имена — weight 400 */
+.logo,
+.footer-logo,
+.offer-h,
+.forwhom-filter-text,
+.safety-label,
+.mid-cta-h,
+.case-title,
+.case-stat-v,
+.case-quote::before,
+.review-text::before,
+.trust-faq-title,
+.q-title,
+.ty-title,
+.expert-badge-n,
+.expert-name,
+.expert-credo {
+  font-weight: 400;
+}
+
+/* Кнопки на Jost — weight 500 вместо 700 (менее агрессивно) */
+.nav-btn,
+.btn-main,
+.mid-cta-btn,
+.btn-next,
+.final-btn {
+  font-weight: 500;
+  letter-spacing: 0.12em;
+}
+
+/* Eyebrow-текст — стиль как в portfolio (тонкий, воздушный) */
+.hw-text {
+  font-weight: 400;
+  letter-spacing: 0.3em;
+}
+.ey-text {
+  font-weight: 400;
+  letter-spacing: 0.3em;
+}
+
+/* body — Jost weight 300 как базовый */
+body {
+  font-weight: 300;
 }
 
 </style>
