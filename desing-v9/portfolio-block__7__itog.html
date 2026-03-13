@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>От бетонной коробки до готового интерьера</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F0E8;
+    --warm-white: #FAF8F4;
+    --charcoal: #1C1C1A;
+    --stone: #8A8478;
+    --gold: #C9A96E;
+    --gold-light: #E8D5B0;
+    --dark-bg: #111110;
+  }
+
+  .portfolio-section {
+    background: var(--dark-bg);
+    color: var(--cream);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Subtle grain texture */
+  .portfolio-section::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  /* ── HEADER ── */
+  .section-header {
+    position: relative;
+    z-index: 1;
+    padding: 100px 80px 60px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .section-eyebrow {
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .section-eyebrow::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.6;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(38px, 5.5vw, 72px);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--cream);
+    margin-bottom: 28px;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .section-subtitle {
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--stone);
+    max-width: 560px;
+    letter-spacing: 0.01em;
+  }
+
+  /* ── CAROUSEL WRAPPER ── */
+  .carousel-outer {
+    position: relative;
+    z-index: 1;
+    padding: 0 0 20px;
+    flex: 1;
+    overflow: hidden;
+  }
+
+  .carousel-track-wrapper {
+    overflow: hidden;
+    border-radius: 2px;
+  }
+
+  .carousel-track {
+    display: flex;
+    transition: transform 0.8s cubic-bezier(0.77, 0, 0.18, 1);
+    will-change: transform;
+  }
+
+  .carousel-slide {
+    min-width: 100%;
+    display: grid;
+    grid-template-columns: 7fr 3fr;
+    gap: 20px;
+    align-items: start;
+  }
+
+  /* ── PROJECT CARD ── */
+  .project-card {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #1a1a18;
+  }
+
+  /* Before/After Slider */
+  .ba-slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    cursor: ew-resize;
+    user-select: none;
+    flex-shrink: 0;
+  }
+
+  /* Landscape slots (odd cards) */
+  .carousel-slide .project-card:nth-child(1) .ba-slider,
+  .carousel-slide .project-card:nth-child(odd) .ba-slider {
+    aspect-ratio: 1734 / 960;
+  }
+
+  /* Portrait slots (even cards) */
+  .carousel-slide .project-card:nth-child(2) .ba-slider,
+  .carousel-slide .project-card:nth-child(even) .ba-slider {
+    aspect-ratio: 1080 / 1490;
+  }
+
+  .ba-slider img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    pointer-events: none;
+  }
+
+  .ba-after  { z-index: 1; }
+  .ba-before { z-index: 2; clip-path: inset(0 0 0 50%); transition: clip-path 0s; }
+
+  .ba-handle {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    background: rgba(255,255,255,0.9);
+    z-index: 10;
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+
+  .ba-handle::before,
+  .ba-handle::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.95);
+    top: 50%;
+    margin-top: -20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  }
+
+  .ba-handle::after {
+    width: 36px;
+    height: 36px;
+    margin-top: -18px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231C1C1A' stroke-width='1.5'%3E%3Cpath d='M8 9l-3 3 3 3M16 9l3 3-3 3'/%3E%3C/svg%3E") center/20px no-repeat rgba(255,255,255,0.95);
+    box-shadow: none;
+  }
+
+  .ba-label {
+    position: absolute;
+    bottom: 16px;
+    z-index: 8;
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    background: rgba(0,0,0,0.4);
+    padding: 5px 10px;
+    border-radius: 2px;
+  }
+
+  .ba-label-before { right: 16px; }
+  .ba-label-after  { left: 16px; }
+
+  /* Info badge */
+  .card-info {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 20;
+    background: rgba(17, 17, 16, 0.55);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(201, 169, 110, 0.2);
+    border-radius: 6px;
+    padding: 14px 18px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    min-width: 175px;
+  }
+
+  .card-info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 6px;
+  }
+
+  .card-info-row:last-child { margin-bottom: 0; }
+
+  .card-info-label {
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--stone);
+  }
+
+  .card-info-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--gold-light);
+    white-space: nowrap;
+  }
+
+  /* Mini case */
+  .card-case {
+    padding: 22px 24px 24px;
+    background: #1a1a18;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .card-case-project {
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  .card-case-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+
+  .card-case-desc {
+    font-size: 17px;
+    font-weight: 300;
+    color: #b8b2a8;
+    line-height: 1.6;
+    margin-bottom: 8px;
+  }
+
+  .case-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .case-list li {
+    padding-left: 16px;
+    position: relative;
+    font-size: 16px;
+    color: #b8b2a8;
+    line-height: 1.6;
+  }
+
+  .case-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 12px;
+    top: 2px;
+  }
+
+  .card-case-note {
+    font-size: 15px;
+    font-weight: 300;
+    color: rgba(184, 178, 168, 0.75);
+    font-style: italic;
+  }
+
+  /* ── CAROUSEL NAV ── */
+  .carousel-top-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .carousel-with-arrows {
+    position: relative;
+    display: block;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .carousel-dots {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .carousel-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(138, 132, 120, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    padding: 0;
+  }
+
+  .carousel-dot.active {
+    background: var(--gold);
+    width: 24px;
+    border-radius: 3px;
+  }
+
+  .carousel-arrows {
+    display: flex;
+    gap: 12px;
+  }
+
+  .carousel-arrow {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid rgba(201, 169, 110, 0.3);
+    background: transparent;
+    color: var(--cream);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+  }
+
+  .carousel-arrow:hover {
+    border-color: var(--gold);
+    background: rgba(201, 169, 110, 0.1);
+  }
+
+  .carousel-arrow svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.5;
+  }
+
+  #prevBtn,
+  #nextBtn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+    background: rgba(17, 17, 16, 0.7);
+    border-color: rgba(201, 169, 110, 0.5);
+  }
+
+  #prevBtn { left: 40px; }
+  #nextBtn { right: 40px; }
+
+  .carousel-counter {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--stone);
+  }
+
+  .carousel-counter span {
+    color: var(--cream);
+  }
+
+  /* ── CTA ── */
+  .cta-block {
+    position: relative;
+    z-index: 1;
+    padding: 100px 80px 100px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 36px;
+  }
+
+  .cta-divider {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+    margin: 0 auto;
+  }
+
+  .cta-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 4vw, 52px);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--cream);
+    max-width: 600px;
+  }
+
+  .cta-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 42px;
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--cream);
+    font-family: 'Jost', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    text-decoration: none;
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-button::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gold);
+    transform: translateX(-101%);
+    transition: transform 0.4s cubic-bezier(0.77, 0, 0.18, 1);
+    z-index: -1;
+  }
+
+  .cta-button:hover::before { transform: translateX(0); }
+  .cta-button:hover { color: var(--dark-bg); }
+
+  .cta-button svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.5;
+    transition: transform 0.3s ease;
+  }
+
+  .cta-button:hover svg { transform: translateX(4px); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .section-header,
+    .cta-block {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
+    .carousel-top-nav,
+    .carousel-with-arrows {
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+
+    .carousel-slide {
+      grid-template-columns: 1fr;
+    }
+
+    .section-header { padding-top: 60px; }
+
+    #prevBtn { left: 24px; }
+    #nextBtn { right: 24px; }
+  }
+
+  @media (max-width: 600px) {
+    .section-header,
+    .cta-block {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+
+    .carousel-top-nav {
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+
+    .carousel-with-arrows {
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+
+    /* На мобильных стрелки чуть меньше, но также поверх слайдера */
+    #prevBtn,
+    #nextBtn {
+      width: 32px;
+      height: 32px;
+      border-width: 1px;
+    }
+
+    #prevBtn { left: 16px; }
+    #nextBtn { right: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<section class="portfolio-section">
+
+  <!-- Header -->
+  <div class="section-header">
+    <div class="section-eyebrow">Реализованные проекты</div>
+    <h2 class="section-title">От бетонной коробки<br>до <em>готового интерьера</em></h2>
+    <p class="section-subtitle">Мы показываем реальные фотографии ремонта наших проектов и финальный результат, чтобы вы могли увидеть, как интерьер реализуется в жизни.</p>
+  </div>
+
+  <!-- Nav above slider: counter + dots -->
+  <div class="carousel-top-nav">
+    <div class="carousel-counter">
+      <span id="currentSlide">01</span> / 03
+    </div>
+    <div class="carousel-dots">
+      <button class="carousel-dot active" data-index="0"></button>
+      <button class="carousel-dot" data-index="1"></button>
+      <button class="carousel-dot" data-index="2"></button>
+    </div>
+  </div>
+
+  <!-- Carousel with side arrows -->
+  <div class="carousel-with-arrows">
+    <button class="carousel-arrow" id="prevBtn" aria-label="Предыдущий">
+      <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <div class="carousel-outer">
+      <div class="carousel-track-wrapper">
+      <div class="carousel-track" id="carouselTrack">
+
+        <!-- SLIDE 1 -->
+        <div class="carousel-slide">
+
+          <!-- Project 1 -->
+          <div class="project-card">
+            <div class="ba-slider" data-slider>
+              <img class="ba-before" src="01before.jpg" />
+              <img class="ba-after"  src="01after.jpg" />
+              <div class="ba-handle"></div>
+              <span class="ba-label ba-label-after">РЕАЛЬНОСТЬ</span>
+              <span class="ba-label ba-label-before">РЕМОНТ</span>
+            </div>
+            <div class="card-info">
+              <div class="card-info-row">
+                <span class="card-info-label">Площадь</span>
+                <span class="card-info-value">300 м²</span>
+              </div>
+              <div class="card-info-row">
+                <span class="card-info-label">Срок</span>
+                <span class="card-info-value">14 месяцев</span>
+              </div>
+              <div class="card-info-row">
+                <span class="card-info-label">Бюджет</span>
+                <span class="card-info-value">44 млн ₽</span>
+              </div>
+            </div>
+            <div class="card-case">
+              <div class="card-case-project">Проект 01</div>
+              <div class="card-case-title">Дом для семьи с двумя детьми</div>
+              <div class="card-case-desc"><ul class="case-list">
+<li>+30 м² к полезной площади за счёт исправления ошибки в архитектурном проекте</li>
+<li>Улучшили планировку, организовали шеф-кухню, кладовую при кухне</li>
+<li>Мастер-блок для родителей и спа-зона с бассейном</li>
+<li>Курирование ремонта до заселения, координация смежных исполнителей</li>
+<li>Вся мебель авторская — скруглённые углы, зеркала, шпон</li>
+</ul></div>
+              <div class="card-case-note">Проект полностью реализован под авторским контролем студии.</div>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="project-card">
+            <div class="ba-slider" data-slider>
+              <img class="ba-before" src="02before.jpg" />
+              <img class="ba-after"  src="02after.jpg" />
+              <div class="ba-handle"></div>
+              <span class="ba-label ba-label-after">РЕАЛЬНОСТЬ</span>
+              <span class="ba-label ba-label-before">визуализация</span>
+            </div>
+            <div class="card-info">
+              <div class="card-info-row">
+                <span class="card-info-label">Площадь</span>
+                <span class="card-info-value">300 м²</span>
+              </div>
+              <div class="card-info-row">
+                <span class="card-info-label">Срок</span>
+                <span class="card-info-value">14 месяцев</span>
+              </div>
+              <div class="card-info-row">
+                <span class="card-info-label">Бюджет</span>
+                <span class="card-info-value">44 млн ₽</span>
+              </div>
+            </div>
+            <div class="card-case">
+              <div class="card-case-project">Проект 02</div>
+              <div class="card-case-title">Мастер-ванная с авторской плиткой</div>
+              <div class="card-case-desc">Создали атмосферу spa-отеля с деревом, мрамором и тёплым светом.</div>
+              <div class="card-case-note">Проект полностью реализован под авторским контролем студии.</div>
+            </div>
+          </div>
+
+        </div><!-- /slide 1 -->
+
+        <!-- SLIDE 2 -->
+        <div class="carousel-slide">
+
+          <!-- Project 3 -->
+          <div class="project-card">
+            <div class="ba-slider" data-slider>
+              <img class="ba-before" src="03before.jpg" />
+              <img class="ba-after"  src="03after.jpg" />
+              <div class="ba-handle"></div>
+              <span class="ba-label ba-label-after">РЕАЛЬНОСТЬ</span>
+              <span class="ba-label ba-label-before">визуализация</span>
+            </div>
+            <div class="card-info">
+              <div class="card-info-row">
+                <span class="card-info-label">Площадь</span>
+                <span class="card-info-value">255 м²</span>
+              </div>
+              <div class="card-info-row">
+                <span class="card-info-label">Срок</span>
+                <span class="card-info-value">11 месяцев</span>
+              </div>
+              <div class="card-info-row">
+                <span class="card-info-label">Бюджет</span>
+                <span class="card-info-value">32 млн ₽</span>
+              </div>
+            </div>
+            <div class="card-case">
+              <div class="card-case-project">Проект 03</div>
+              <div class="card-case-title">Дом 255 м² с бассейном и спа-комплексом</div>
+              <div class="card-case-desc"><ul class="case-list">
+<li>Оптимизация бюджета при сохранении эксклюзивных авторских решений</li>
+<li>Интерьер дома, СПА-зона с бассейном, хаммамом и бильярдной-кинотеатром</li>
+<li>Вся мебель и отделка просчитана заранее, поставка в нужные сроки</li>
+<li>Координация смежных исполнителей</li>
+<li>Сложные решения: сауна с эксклюзивной деревянной отделкой, мозаика в бассейне, объёмный деревянный потолок, имитация скальных блоков, скруглённые стены</li>
+</ul></div>
+              <div class="card-case-note">Проект полностью реализован под авторским контролем студии.</div>
+            </div>
+          </div>
+
+          <!-- Project 4 -->
+          <div class="project-card">
+            <div class="ba-slider" data-slider>
+              <img class="ba-before" src="04before.jpg" />
+              <img class="ba-after"  src="04after.jpg" />
+              <div class="ba-handle"></div>
+              <span class="ba-label ba-label-after">РЕАЛЬНОСТЬ</span>
+              <span class="ba-label ba-label-before">РЕМОНТ</span>
+            </div>
+            <div class="card-info">
+              <div class="card-info-row">
+                <span class="card-info-label">Площадь</span>
+                <span class="card-info-value">60 м²</span>
+              </div>
+              <div class="card-info-row">
+                <span class="card-info-label">Срок</span>
+                <span class="card-info-value">9 месяцев</span>
+              </div>
+              <div class="card-info-row">
+                <span class="card-info-label">Бюджет</span>
+                <span class="card-info-value">3,5 млн ₽</span>
+              </div>
+            </div>
+            <div class="card-case">
+              <div class="card-case-project">Проект 04</div>
+              <div class="card-case-title">Квартира с авторскими деталями</div>
+              <div class="card-case-desc"><ul class="case-list">
+<li>Тропический оазис: гостиная объединена с музыкальной зоной</li>
+<li>Г-образная кухня и ванная без прямых углов — авторская эргономичная мебель</li>
+<li>Визуальное расширение пространства дизайн-приёмами</li>
+<li>Авторские детали: 3D-панно, зеркальное панно, парящая мебель, диван и стол со встроенным синтезатором</li>
+</ul></div>
+              <div class="card-case-note">Проект полностью реализован под авторским контролем студии.</div>
+            </div>
+          </div>
+
+        </div><!-- /slide 2 -->
+
+        <!-- SLIDE 3 -->
+        <div class="carousel-slide">
+
+          <!-- Project 5 -->
+          <div class="project-card">
+            <div class="ba-slider" data-slider>
+              <img class="ba-before" src="05before.jpg" />
+              <img class="ba-after"  src="05after.jpg" />
+              <div class="ba-handle"></div>
+              <span class="ba-label ba-label-after">РЕАЛЬНОСТЬ</span>
+              <span class="ba-label ba-label-before">РЕМОНТ</span>
+            </div>
+            <div class="card-info">
+              <div class="card-info-row">
+                <span class="card-info-label">Площадь</span>
+                <span class="card-info-value">300 м²</span>
+              </div>
+              <div class="card-info-row">
+                <span class="card-info-label">Срок</span>
+                <span class="card-info-value">14 месяцев</span>
+              </div>
+              <div class="card-info-row">
+                <span class="card-info-label">Бюджет</span>
+                <span class="card-info-value">44 млн ₽</span>
+              </div>
+            </div>
+            <div class="card-case">
+              <div class="card-case-project">Проект 05</div>
+              <div class="card-case-title">Частный бассейн — зона отдыха</div>
+              <div class="card-case-desc"><ul class="case-list">
+<li>Проект в связке со специализированными подрядчиками: осушители, скиммерный бассейн, вентиляция</li>
+<li>СПА-зона с хамамом, сауной и комнатой отдыха</li>
+<li>Оптимизация бюджета и менеджмент стройкой</li>
+<li>Сложные решения: потолок с балками, панно с зеркальным ТВ, нестандартная планировка</li>
+</ul></div>
+              <div class="card-case-note">Проект полностью реализован под авторским контролем студии.</div>
+            </div>
+          </div>
+
+          <!-- Project 6 -->
+          <div class="project-card">
+            <div class="ba-slider" data-slider>
+              <img class="ba-before" src="06before.jpg" />
+              <img class="ba-after"  src="06after.jpg" />
+              <div class="ba-handle"></div>
+              <span class="ba-label ba-label-after">РЕАЛЬНОСТЬ</span>
+              <span class="ba-label ba-label-before">РЕМОНТ</span>
+            </div>
+            <div class="card-info">
+              <div class="card-info-row">
+                <span class="card-info-label">Площадь</span>
+                <span class="card-info-value">44 м²</span>
+              </div>
+              <div class="card-info-row">
+                <span class="card-info-label">Срок</span>
+                <span class="card-info-value">7 месяцев</span>
+              </div>
+              <div class="card-info-row">
+                <span class="card-info-label">Бюджет</span>
+                <span class="card-info-value">4 млн ₽</span>
+              </div>
+            </div>
+            <div class="card-case">
+              <div class="card-case-project">Проект 06</div>
+              <div class="card-case-title">Студия с островом и изолированной спальней</div>
+              <div class="card-case-desc"><ul class="case-list">
+<li>Open space со столом-островом</li>
+<li>Инвест-проект: достойный дизайн в ограниченном бюджете при плохой планировке</li>
+<li>Изолированная спальня, размещение 4 человек, вместительная кухня с пеналами и большим островом</li>
+<li>Курирование до заселения, работа с исполнителями, разработка мебели</li>
+</ul></div>
+              <div class="card-case-note">Проект полностью реализован под авторским контролем студии.</div>
+            </div>
+          </div>
+
+        </div><!-- /slide 3 -->
+
+      </div><!-- /track -->
+    </div><!-- /wrapper -->
+    </div><!-- /outer -->
+    <button class="carousel-arrow" id="nextBtn" aria-label="Следующий">
+      <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+  </div><!-- /carousel-with-arrows -->
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <div class="cta-divider"></div>
+    <h3 class="cta-title">Хотите такой же результат<br>в <em>своём интерьере?</em></h3>
+    <a href="#" class="cta-button">
+      Получить аудит планировки
+      <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+
+</section>
+
+<script>
+/* ── CAROUSEL ── */
+(function() {
+  const track = document.getElementById('carouselTrack');
+  const dots = document.querySelectorAll('.carousel-dot');
+  const counter = document.getElementById('currentSlide');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const total = 3;
+  let current = 0;
+  let startX = 0, isDragging = false;
+
+  function goTo(index) {
+    current = (index + total) % total;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    counter.textContent = String(current + 1).padStart(2, '0');
+  }
+
+  prevBtn.addEventListener('click', () => goTo(current - 1));
+  nextBtn.addEventListener('click', () => goTo(current + 1));
+  dots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.index)));
+
+  // Touch swipe
+  track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 50) goTo(dx < 0 ? current + 1 : current - 1);
+  });
+})();
+
+/* ── BEFORE/AFTER SLIDERS ── */
+document.querySelectorAll('[data-slider]').forEach(slider => {
+  const after = slider.querySelector('.ba-after');
+  const before = slider.querySelector('.ba-before');
+  const handle = slider.querySelector('.ba-handle');
+  let active = false;
+
+  function setPos(x) {
+    const rect = slider.getBoundingClientRect();
+    const pct = Math.min(Math.max((x - rect.left) / rect.width * 100, 0), 100);
+    before.style.clipPath = `inset(0 0 0 ${pct}%)`;
+    handle.style.left = pct + '%';
+  }
+
+  // Mouse
+  slider.addEventListener('mousedown', e => { active = true; setPos(e.clientX); e.preventDefault(); });
+  window.addEventListener('mousemove', e => { if (active) setPos(e.clientX); });
+  window.addEventListener('mouseup', () => { active = false; });
+
+  // Touch
+  slider.addEventListener('touchstart', e => {
+    // Only activate if touch starts near the handle (within 40px)
+    const rect = slider.getBoundingClientRect();
+    const hx = handle.offsetLeft / slider.offsetWidth * rect.width + rect.left;
+    if (Math.abs(e.touches[0].clientX - hx) < 60) {
+      active = true;
+      e.preventDefault();
+    }
+  }, { passive: false });
+  slider.addEventListener('touchmove', e => {
+    if (active) { setPos(e.touches[0].clientX); e.preventDefault(); }
+  }, { passive: false });
+  slider.addEventListener('touchend', () => { active = false; });
+});
+</script>
+
+</body>
+</html>

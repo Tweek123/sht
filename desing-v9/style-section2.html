@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Понравится ли вам будущий интерьер?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ivory:       #F8F5F0;
+  --warm-white:  #FDFBF8;
+  --linen:       #EDE8DF;
+  --linen-deep:  #DDD6CB;
+  --charcoal:    #1C1C1A;
+  --stone:       #8A8478;
+  --stone-light: #B5B0A8;
+  --gold:        #B8935A;
+  --gold-light:  #D4B483;
+  --gold-pale:   #EFE2CC;
+  --ink:         #2E2C28;
+}
+
+/* ═══════════════════════════════════
+   SECTION
+═══════════════════════════════════ */
+.style-section {
+  background: var(--warm-white);
+  color: var(--charcoal);
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  overflow: hidden;
+  position: relative;
+}
+
+.style-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+.style-section::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 80px;
+  width: 1px; height: 100%;
+  background: linear-gradient(to bottom, transparent, var(--linen) 10%, var(--linen) 90%, transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 100px 80px 110px;
+}
+
+/* ═══════════════════════════════════
+   HEADER
+═══════════════════════════════════ */
+.section-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px 80px;
+  align-items: end;
+  margin-bottom: 72px;
+}
+
+.section-eyebrow {
+  grid-column: 1 / -1;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.section-eyebrow::before {
+  content: '';
+  display: block;
+  width: 36px; height: 1px;
+  background: var(--gold);
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4.5vw, 62px);
+  font-weight: 300;
+  line-height: 1.07;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.section-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.section-subtitle {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--stone);
+  padding-top: 20px;
+  border-top: 1px solid var(--linen);
+  align-self: end;
+}
+
+.section-subtitle strong {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+
+/* ═══════════════════════════════════
+   GALLERY — ASYMMETRIC EDITORIAL GRID (desktop)
+═══════════════════════════════════ */
+.gallery-wrap {
+  margin-bottom: 56px;
+}
+
+.gallery-row {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.gallery-row:last-child { margin-bottom: 0; }
+
+/* Row A: 1 large + 3 medium */
+.gallery-row--a {
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-template-rows: 420px;
+}
+
+/* Row B: 3 medium + 1 large */
+.gallery-row--b {
+  grid-template-columns: 1fr 1fr 1fr 2fr;
+  grid-template-rows: 420px;
+}
+
+/* Gallery item */
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+  cursor: pointer;
+  background: var(--linen);
+  display: block;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  filter: saturate(0.92) brightness(0.98);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.04);
+  filter: saturate(1) brightness(0.85);
+}
+
+/* Style label (bottom-left, always visible) */
+.gallery-item__label {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  z-index: 3;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.75);
+  background: rgba(30, 28, 24, 0.38);
+  backdrop-filter: blur(6px);
+  padding: 5px 10px;
+  border-radius: 2px;
+  transition: opacity 0.35s ease;
+}
+
+.gallery-item:hover .gallery-item__label {
+  opacity: 0;
+}
+
+/* Overlay on hover */
+.gallery-item__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  background: linear-gradient(160deg, rgba(30,28,24,0.62) 0%, rgba(44,40,32,0.78) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 28px;
+  opacity: 0;
+  transition: opacity 0.38s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.gallery-item:hover .gallery-item__overlay {
+  opacity: 1;
+}
+
+.overlay-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(18px, 1.8vw, 26px);
+  font-weight: 300;
+  color: #FDFBF8;
+  line-height: 1.15;
+  margin-bottom: 6px;
+  transform: translateY(8px);
+  transition: transform 0.38s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.gallery-item:hover .overlay-title { transform: translateY(0); }
+
+.overlay-meta {
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  color: rgba(245, 240, 232, 0.62);
+  margin-bottom: 18px;
+  transform: translateY(8px);
+  transition: transform 0.42s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.gallery-item:hover .overlay-meta { transform: translateY(0); }
+
+
+
+
+
+
+/* ═══════════════════════════════════
+   GALLERY CAPTION
+═══════════════════════════════════ */
+.gallery-caption {
+  text-align: center;
+  padding: 48px 0 64px;
+  border-bottom: 1px solid var(--linen);
+  margin-bottom: 72px;
+}
+
+.gallery-caption p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(22px, 3vw, 40px);
+  font-weight: 300;
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+.gallery-caption p em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.gallery-caption span {
+  display: block;
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--stone-light);
+  letter-spacing: 0.08em;
+  margin-top: 10px;
+}
+
+/* ═══════════════════════════════════
+   PROCESS STEPS
+═══════════════════════════════════ */
+.process-wrap {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 40px 80px;
+  align-items: start;
+  margin-bottom: 64px;
+}
+
+.process-label {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  padding-top: 6px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.process-label::before {
+  content: '';
+  display: block;
+  width: 28px; height: 1px;
+  background: var(--gold);
+  opacity: 0.7;
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.step {
+  padding: 28px 24px 28px 0;
+  border-top: 1px solid var(--linen);
+  position: relative;
+}
+
+.step::before {
+  content: '';
+  position: absolute;
+  top: -1px; left: 0;
+  width: 32px; height: 2px;
+  background: var(--gold);
+  opacity: 0.6;
+}
+
+.step-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--gold);
+  margin-bottom: 16px;
+  letter-spacing: 0.1em;
+}
+
+.step-icon {
+  width: 32px; height: 32px;
+  margin-bottom: 14px;
+  color: var(--stone);
+}
+
+.step-icon svg {
+  width: 100%; height: 100%;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.step-title {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+}
+
+/* ═══════════════════════════════════
+   RISK BLOCK
+═══════════════════════════════════ */
+.risk-block {
+  background: var(--ivory);
+  border: 1px solid var(--linen);
+  border-radius: 2px;
+  padding: 44px 52px;
+  margin-bottom: 72px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 32px;
+  align-items: center;
+}
+
+.risk-icon {
+  width: 48px; height: 48px;
+  flex-shrink: 0;
+  color: var(--gold);
+}
+
+.risk-icon svg {
+  width: 100%; height: 100%;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.risk-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(18px, 2vw, 26px);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.4;
+  color: var(--ink);
+}
+
+.risk-text em {
+  font-style: normal;
+  color: var(--gold);
+}
+
+/* ═══════════════════════════════════
+   CTA BLOCK
+═══════════════════════════════════ */
+.cta-section {
+  padding-top: 56px;
+  border-top: 1px solid var(--linen);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.cta-left {}
+
+.cta-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 3vw, 44px);
+  font-weight: 300;
+  line-height: 1.12;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+
+.cta-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.cta-note {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--stone-light);
+  line-height: 1.65;
+  max-width: 400px;
+}
+
+.cta-right {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 14px;
+}
+
+.cta-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--ink);
+  color: var(--ivory);
+  text-decoration: none;
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 18px 36px;
+  border-radius: 2px;
+  border: 1px solid var(--ink);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.3s ease, gap 0.3s ease, color 0.3s ease;
+}
+
+.cta-btn-primary:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  gap: 20px;
+}
+
+.cta-btn-primary svg {
+  width: 15px; height: 15px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.3s ease;
+}
+
+.cta-btn-primary:hover svg { transform: translateX(3px); }
+
+.cta-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  color: var(--stone);
+  text-decoration: none;
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 14px 36px;
+  border-radius: 2px;
+  border: 1px solid var(--linen-deep);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.cta-btn-secondary:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* ═══════════════════════════════════
+   REVEAL
+═══════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-d1 { transition-delay: 0.08s; }
+.reveal-d2 { transition-delay: 0.18s; }
+.reveal-d3 { transition-delay: 0.28s; }
+.reveal-d4 { transition-delay: 0.40s; }
+.reveal-d5 { transition-delay: 0.54s; }
+.reveal-d6 { transition-delay: 0.68s; }
+
+/* ═══════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════ */
+@media (max-width: 1100px) {
+  .style-section::after { display: none; }
+  .section-inner { padding: 80px 48px 90px; }
+  .section-header { grid-template-columns: 1fr; gap: 28px; margin-bottom: 52px; }
+  .section-eyebrow { grid-column: auto; }
+
+  .gallery-row--a,
+  .gallery-row--b {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 280px 280px;
+  }
+
+  .gallery-row--a .gallery-item:first-child,
+  .gallery-row--b .gallery-item:last-child {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  .process-wrap { grid-template-columns: 1fr; gap: 32px; }
+  .process-steps { grid-template-columns: 1fr 1fr; gap: 20px; }
+  .risk-block { padding: 32px 36px; }
+  .cta-section { flex-direction: column; align-items: flex-start; }
+  .cta-right { align-items: flex-start; }
+}
+
+@media (max-width: 640px) {
+  .section-inner { padding: 60px 20px 72px; }
+
+  /* Галерея: Pinterest-стиль, 2 колонки (masonry) */
+  .gallery-wrap {
+    columns: 2;
+    column-gap: 8px;
+  }
+
+  .gallery-row,
+  .gallery-row--a,
+  .gallery-row--b {
+    display: contents;
+    margin-bottom: 0;
+  }
+
+  .gallery-item {
+    break-inside: avoid;
+    margin-bottom: 8px;
+    height: auto;
+  }
+
+  .gallery-item img {
+    height: auto;
+  }
+
+  .gallery-row--a .gallery-item:first-child,
+  .gallery-row--b .gallery-item:last-child {
+    height: auto;
+  }
+
+  .process-wrap { gap: 24px; }
+  .process-steps { grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  .step { padding: 20px 14px 22px 0; }
+  .step::before { width: 26px; }
+
+  .step-icon { width: 26px; height: 26px; }
+  .step-num { font-size: 10px; margin-bottom: 8px; }
+  .step-title { font-size: 12px; line-height: 1.5; }
+
+  .risk-block { grid-template-columns: 1fr; padding: 28px 24px; }
+  .risk-icon { display: none; }
+}
+</style>
+</head>
+<body>
+
+<section class="style-section">
+<div class="section-inner">
+
+  <!-- ── HEADER ── -->
+  <div class="section-header">
+    <div class="section-eyebrow reveal">Индивидуальный подход к стилю</div>
+
+    <h2 class="section-title reveal reveal-d1">
+      Понравится ли вам<br>
+      <em>будущий интерьер?</em>
+    </h2>
+
+    <div class="section-subtitle reveal reveal-d2">
+      <strong>Наши интерьеры всегда разные — потому что мы создаём их под людей, а не под один стиль.</strong>
+      Перед началом проекта мы изучаем ваши вкусы, привычки и образ жизни, чтобы интерьер был именно вашим.
+    </div>
+  </div>
+
+  <!-- ── GALLERY ── -->
+  <div class="gallery-wrap reveal reveal-d2">
+    <div class="gallery-row gallery-row--a">
+      <div class="gallery-item">
+        <img src="interiorufa1.jpeg" alt="Тёплый минимализм" loading="lazy">
+        <div class="gallery-item__label">Тёплый минимализм</div>
+        <div class="gallery-item__overlay">
+          <div class="overlay-title">Тёплый минимализм</div>
+          <div class="overlay-meta">Гостиная · Уфа</div>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="interiorufa2.jpeg" alt="Современная классика" loading="lazy">
+        <div class="gallery-item__label">Современная классика</div>
+        <div class="gallery-item__overlay">
+          <div class="overlay-title">Современная классика</div>
+          <div class="overlay-meta">Спальня · Уфа</div>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="interiorufa3.jpeg" alt="Контемпорари" loading="lazy">
+        <div class="gallery-item__label">Контемпорари</div>
+        <div class="gallery-item__overlay">
+          <div class="overlay-title">Контемпорари</div>
+          <div class="overlay-meta">Кухня-столовая · Уфа</div>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="interiorufa4.jpeg" alt="Тёмный премиальный" loading="lazy">
+        <div class="gallery-item__label">Тёмный премиальный</div>
+        <div class="gallery-item__overlay">
+          <div class="overlay-title">Тёмный премиальный</div>
+          <div class="overlay-meta">Холл · Уфа</div>
+        </div>
+      </div>
+    </div>
+    <div class="gallery-row gallery-row--b">
+      <div class="gallery-item">
+        <img src="interiorufa5.jpeg" alt="Натуральный" loading="lazy">
+        <div class="gallery-item__label">Натуральный</div>
+        <div class="gallery-item__overlay">
+          <div class="overlay-title">Натуральный</div>
+          <div class="overlay-meta">Гостиная · Уфа</div>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="interiorufa6.jpg" alt="Европейская квартира" loading="lazy">
+        <div class="gallery-item__label">Европейская квартира</div>
+        <div class="gallery-item__overlay">
+          <div class="overlay-title">Европейская квартира</div>
+          <div class="overlay-meta">Детская · Уфа</div>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="interiorufa7.jpeg" alt="Скандинавский" loading="lazy">
+        <div class="gallery-item__label">Скандинавский</div>
+        <div class="gallery-item__overlay">
+          <div class="overlay-title">Скандинавский</div>
+          <div class="overlay-meta">Спальня · Уфа</div>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="interiorufa9.jpg" alt="Арт-интерьер" loading="lazy">
+        <div class="gallery-item__label">Арт-интерьер</div>
+        <div class="gallery-item__overlay">
+          <div class="overlay-title">Арт-интерьер</div>
+          <div class="overlay-meta">Гостиная · Уфа</div>
+        </div>
+      </div>
+    </div>
+  </div><!-- /gallery-wrap -->
+
+  <!-- ── GALLERY CAPTION ── -->
+  <div class="gallery-caption reveal reveal-d3">
+    <p>Все эти интерьеры разработаны одной студией.<br><em>Но для разных людей.</em></p>
+    <span>8 реализованных проектов · 4 стилистических направления · 1 команда</span>
+  </div>
+
+  <!-- ── PROCESS STEPS ── -->
+  <div class="process-wrap">
+    <div class="process-label reveal reveal-d3">Как мы подбираем стиль</div>
+
+    <div class="process-steps">
+
+      <div class="step reveal reveal-d2">
+        <div class="step-num">01</div>
+        <div class="step-icon">
+          <svg viewBox="0 0 32 32">
+            <!-- eye / references icon -->
+            <path d="M2 16C2 16 8 6 16 6C24 6 30 16 30 16C30 16 24 26 16 26C8 26 2 16 2 16Z"/>
+            <circle cx="16" cy="16" r="5"/>
+            <circle cx="16" cy="16" r="2" fill="currentColor" stroke="none"/>
+          </svg>
+        </div>
+        <div class="step-title">Изучаем ваши референсы и предпочтения</div>
+      </div>
+
+      <div class="step reveal reveal-d3">
+        <div class="step-num">02</div>
+        <div class="step-icon">
+          <svg viewBox="0 0 32 32">
+            <!-- dialogue / lifestyle icon -->
+            <path d="M4 8C4 6.9 4.9 6 6 6H22C23.1 6 24 6.9 24 8V18C24 19.1 23.1 20 22 20H12L6 26V20H6C4.9 20 4 19.1 4 18V8Z"/>
+            <line x1="9" y1="12" x2="19" y2="12"/>
+            <line x1="9" y1="16" x2="15" y2="16"/>
+          </svg>
+        </div>
+        <div class="step-title">Обсуждаем образ жизни и привычки</div>
+      </div>
+
+      <div class="step reveal reveal-d4">
+        <div class="step-num">03</div>
+        <div class="step-icon">
+          <svg viewBox="0 0 32 32">
+            <!-- palette / direction icon -->
+            <circle cx="16" cy="16" r="12"/>
+            <circle cx="10" cy="12" r="2.5" fill="currentColor" stroke="none"/>
+            <circle cx="16" cy="8" r="2.5" fill="currentColor" stroke="none" opacity="0.6"/>
+            <circle cx="22" cy="12" r="2.5" fill="currentColor" stroke="none" opacity="0.4"/>
+            <path d="M16 20C14 20 12 21 12 23H20C20 21 18 20 16 20Z" fill="currentColor" stroke="none" opacity="0.5"/>
+          </svg>
+        </div>
+        <div class="step-title">Определяем стилистическое направление</div>
+      </div>
+
+      <div class="step reveal reveal-d5">
+        <div class="step-num">04</div>
+        <div class="step-icon">
+          <svg viewBox="0 0 32 32">
+            <!-- pencil / concept icon -->
+            <path d="M22 4L28 10L12 26L4 28L6 20L22 4Z"/>
+            <line x1="18" y1="8" x2="24" y2="14"/>
+          </svg>
+        </div>
+        <div class="step-title">Создаём концепцию будущего интерьера</div>
+      </div>
+
+    </div><!-- /process-steps -->
+  </div><!-- /process-wrap -->
+
+  <!-- ── RISK BLOCK ── -->
+  <div class="risk-block reveal reveal-d4">
+    <div class="risk-icon">
+      <svg viewBox="0 0 48 48">
+        <circle cx="24" cy="24" r="20"/>
+        <path d="M24 14V26"/>
+        <circle cx="24" cy="33" r="1.5" fill="currentColor" stroke="none"/>
+      </svg>
+    </div>
+    <p class="risk-text">
+      Если первая концепция не откликается —<br>
+      мы дорабатываем её, пока интерьер не станет <em>«вашим».</em>
+    </p>
+  </div>
+
+  <!-- ── CTA ── -->
+  <div class="cta-section reveal reveal-d5">
+    <div class="cta-left">
+      <h3 class="cta-title">Готовы обсудить<br><em>ваш будущий интерьер?</em></h3>
+      <p class="cta-note">Расскажите о себе — и мы подберём стилистическое направление, которое станет именно вашим.</p>
+    </div>
+    <div class="cta-right">
+      <a href="#" class="cta-btn-primary">
+        Обсудить будущий интерьер
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#" class="cta-btn-secondary">
+        Получить концепцию интерьера
+      </a>
+    </div>
+  </div>
+
+</div><!-- /section-inner -->
+</section>
+
+<script>
+/* ── SCROLL REVEAL ── */
+(function () {
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  els.forEach(function (el) { io.observe(el); });
+  setTimeout(function () {
+    els.forEach(function (el) {
+      if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('visible');
+    });
+  }, 80);
+})();
+</script>
+
+</body>
+</html>
