@@ -62,8 +62,6 @@
   .section-inner {
     position: relative;
     z-index: 1;
-    max-width: 1360px;
-    margin: 0 auto;
     padding: 100px 80px 110px;
   }
 
@@ -562,15 +560,17 @@
     }
 
     .stats-strip {
-      flex-direction: column;
+      flex-direction: row;
+      border-radius: 0;
     }
 
     .stat-item {
-      border-right: none;
-      border-bottom: 1px solid var(--linen);
+      border-right: 1px solid var(--linen);
+      border-bottom: none;
+      padding: 16px 10px;
     }
 
-    .stat-item:last-child { border-bottom: none; }
+    .stat-item:last-child { border-right: none; }
 
     .section-header {
       margin-bottom: 36px;

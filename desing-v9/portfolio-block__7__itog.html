@@ -546,12 +546,14 @@
       padding-right: 8px;
     }
 
-    /* На мобильных стрелки чуть меньше, но также поверх слайдера */
     #prevBtn,
     #nextBtn {
       width: 32px;
       height: 32px;
       border-width: 1px;
+      top: auto;
+      bottom: 16px;
+      transform: none;
     }
 
     #prevBtn { left: 16px; }
@@ -837,6 +839,132 @@
     </a>
   </div>
 
+</section>
+
+<section class="realization-section">
+  <div class="section-inner">
+
+    <!-- ── HEADER ── -->
+    <div class="section-header">
+      <div class="section-eyebrow reveal">Авторский контроль реализации</div>
+
+      <h2 class="section-title reveal reveal-delay-1">
+        Реализованный интерьер<br>
+        <em>под контролем студии</em>
+      </h2>
+
+      <p class="section-subtitle reveal reveal-delay-2">
+        «Мы сопровождаем проекты от разработки концепции до полного завершения ремонта и контролируем работу всех подрядчиков.»
+      </p>
+    </div>
+
+    <!-- ── MAIN CONTENT GRID ── -->
+    <div class="content-grid">
+
+      <!-- LEFT: Video + Stats -->
+      <div class="left-col reveal reveal-delay-2">
+        <div class="video-wrapper">
+          <div class="video-placeholder">
+            <!--
+              Вставьте сюда тег <video> или <iframe>:
+              <video src="your-video.mp4" controls poster="poster.jpg"></video>
+              или
+              <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+            -->
+            <button class="video-play-btn" aria-label="Воспроизвести видео">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 3l14 9-14 9V3z"/>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Badge -->
+          <div class="video-badge">
+            <span class="video-badge-dot"></span>
+            <span class="video-badge-text">Реализованный объект</span>
+          </div>
+        </div>
+
+        <!-- Stats strip -->
+        <div class="stats-strip reveal reveal-delay-3">
+          <div class="stat-item">
+            <span class="stat-label">Площадь проекта</span>
+            <span class="stat-value">205&thinsp;м²</span>
+            <span class="stat-note">Коммерческий объект</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Срок реализации</span>
+            <span class="stat-value">5&thinsp;мес.</span>
+            <span class="stat-note">От концепции до сдачи</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Формат работы</span>
+            <span class="stat-value" style="font-size:17px; line-height:1.25;">Дизайн-проект</span>
+            <span class="stat-note">+ авторский контроль</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Text content -->
+      <div class="right-col">
+        <div class="project-desc reveal reveal-delay-3">
+          <p>Этот проект был полностью реализован нашей студией — от идеи до готового пространства.</p>
+          <p>Мы подготовили дизайн-проект, рабочую документацию и сопровождали все этапы реализации. Контролировали работу строителей, отделочников и мебельных производств, чтобы интерьер был выполнен точно по проекту.</p>
+        </div>
+
+        <blockquote class="key-phrase reveal reveal-delay-4">
+          Такой же подход мы применяем при реализации <em>квартир и частных домов.</em>
+        </blockquote>
+
+        <div class="expertise-block reveal reveal-delay-4">
+          <div class="expertise-label">Что мы контролируем при реализации</div>
+          <ul class="expertise-list">
+            <li>
+              <span class="check">
+                <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+              </span>
+              Соответствие интерьера проекту
+            </li>
+            <li>
+              <span class="check">
+                <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+              </span>
+              Комплектация отделкой, сантехникой, освещением и пр.
+            </li>
+            <li>
+              <span class="check">
+                <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+              </span>
+              Изготовление мебели
+            </li>
+            <li>
+              <span class="check">
+                <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+              </span>
+              Соблюдение бюджета и сроков
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div><!-- /content-grid -->
+
+    <!-- ── CTA ── -->
+    <div class="cta-section reveal reveal-delay-5">
+      <div class="cta-left">
+        <h3 class="cta-title">Хотите, чтобы ваш проект<br><em>был реализован так же?</em></h3>
+        <p class="cta-note">Подскажем оптимальную планировку, бюджет ремонта и сроки реализации.</p>
+      </div>
+      <div class="cta-right">
+        <a href="#" class="cta-button">
+          Обсудить свой проект
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <p class="cta-sub">Подскажем планировку, бюджет и сроки</p>
+      </div>
+    </div>
+
+  </div><!-- /section-inner -->
 </section>
 
 <script>

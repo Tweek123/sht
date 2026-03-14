@@ -1319,10 +1319,8 @@ body {
 .stat-modal-inner {
   background: #FDFCFA;
   border-radius: 8px;
-  max-width: 1040px;
+  max-width: 1280px;
   width: 100%;
-  max-height: 90vh;
-  overflow: hidden;
   display: grid;
   grid-template-columns: 1fr 1fr;
   box-shadow: 0 32px 80px rgba(0,0,0,0.45);
@@ -1348,11 +1346,12 @@ body {
 
 /* TEXT — левая колонка на десктопе */
 .stat-modal-text {
-  padding: 52px 44px 44px;
+  padding: 32px 24px 24px;
   display: flex;
   flex-direction: column;
   gap: 0;
   overflow-y: auto;
+  min-height: 0;
   position: relative;
 }
 
@@ -1519,52 +1518,52 @@ body {
 
 .stat-modal-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(26px, 3vw, 38px);
+  font-size: clamp(20px, 2vw, 28px);
   font-weight: 300;
-  line-height: 1.1;
+  line-height: 1.05;
   color: var(--text);
-  margin-bottom: 12px;
+  margin-bottom: 6px;
   letter-spacing: -0.01em;
 }
 
 .stat-modal-meta {
   font-family: 'Jost', sans-serif;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 400;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--gold);
-  margin-bottom: 14px;
+  margin-bottom: 10px;
 }
 
 .stat-modal-divider {
   height: 1px;
   background: linear-gradient(to right, var(--border2), transparent);
-  margin-bottom: 24px;
+  margin-bottom: 10px;
   opacity: 0.7;
 }
 
 .stat-modal-desc {
   font-family: 'Jost', sans-serif;
-  font-size: 14px;
+  font-size: 11px;
   font-weight: 300;
-  line-height: 1.8;
+  line-height: 1.4;
   color: var(--text2);
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .stat-modal-list {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-bottom: 24px;
+  gap: 2px;
+  margin-bottom: 10px;
 }
 
 .stat-modal-list li {
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 300;
-  line-height: 1.65;
+  line-height: 1.35;
   color: var(--text2);
   display: flex;
   align-items: flex-start;
@@ -1584,8 +1583,8 @@ body {
 }
 
 .stat-modal-result {
-  margin-top: auto;
-  padding: 16px 20px;
+  margin-top: 6px;
+  padding: 10px 12px;
   background: var(--gold-dim);
   border-left: 2px solid var(--gold);
   border-radius: 0 4px 4px 0;
@@ -1602,10 +1601,10 @@ body {
 
 .stat-modal-result-text {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 16px;
+  font-size: 13px;
   font-weight: 400;
   font-style: italic;
-  line-height: 1.5;
+  line-height: 1.3;
   color: var(--text);
 }
 
@@ -1661,6 +1660,1523 @@ body {
     padding: 28px 24px 36px;
     overflow-y: visible;
   }
+}
+
+/* ── PORTFOLIO: от бетонной коробки до готового интерьера ── */
+.portfolio-section {
+  --cream: #F5F0E8;
+  --warm-white: #FAF8F4;
+  --charcoal: #1C1C1A;
+  --stone: #8A8478;
+  --gold: #C9A96E;
+  --gold-light: #E8D5B0;
+  --dark-bg: #111110;
+  background: var(--dark-bg);
+  color: var(--cream);
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  overflow: hidden;
+  position: relative;
+}
+
+.portfolio-section::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+}
+
+.portfolio-section .section-header {
+  position: relative;
+  z-index: 1;
+  padding: 80px 56px 48px;
+}
+
+.portfolio-section .section-eyebrow {
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.portfolio-section .section-eyebrow::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.6;
+}
+
+.portfolio-section .section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(38px, 5.5vw, 72px);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--cream);
+  margin-bottom: 28px;
+}
+
+.portfolio-section .section-title em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+
+.portfolio-section .section-subtitle {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--stone);
+  max-width: 560px;
+  letter-spacing: 0.01em;
+}
+
+.portfolio-section .carousel-outer {
+  position: relative;
+  z-index: 1;
+  padding: 0 0 20px;
+  flex: 1;
+  overflow: hidden;
+}
+
+.portfolio-section .carousel-track-wrapper {
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.portfolio-section .carousel-track {
+  display: flex;
+  transition: transform 0.8s cubic-bezier(0.77, 0, 0.18, 1);
+  will-change: transform;
+}
+
+.portfolio-section .carousel-slide {
+  min-width: 100%;
+  display: grid;
+  grid-template-columns: 7fr 3fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.portfolio-section .project-card {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #1a1a18;
+}
+
+.portfolio-section .ba-slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  cursor: ew-resize;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.portfolio-section .carousel-slide .project-card:nth-child(1) .ba-slider,
+.portfolio-section .carousel-slide .project-card:nth-child(odd) .ba-slider {
+  aspect-ratio: 1734 / 960;
+}
+
+.portfolio-section .carousel-slide .project-card:nth-child(2) .ba-slider,
+.portfolio-section .carousel-slide .project-card:nth-child(even) .ba-slider {
+  aspect-ratio: 1080 / 1490;
+}
+
+.portfolio-section .ba-slider img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+
+.portfolio-section .ba-after {
+  z-index: 1;
+}
+
+.portfolio-section .ba-before {
+  z-index: 2;
+  clip-path: inset(0 0 0 50%);
+  transition: clip-path 0s;
+}
+
+.portfolio-section .ba-handle {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  z-index: 10;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.portfolio-section .ba-handle::before,
+.portfolio-section .ba-handle::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  top: 50%;
+  margin-top: -20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.portfolio-section .ba-handle::after {
+  width: 36px;
+  height: 36px;
+  margin-top: -18px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231C1C1A' stroke-width='1.5'%3E%3Cpath d='M8 9l-3 3 3 3M16 9l3 3-3 3'/%3E%3C/svg%3E") center/20px no-repeat rgba(255,255,255,0.95);
+  box-shadow: none;
+}
+
+.portfolio-section .ba-label {
+  position: absolute;
+  bottom: 16px;
+  z-index: 8;
+  font-family: 'Jost', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  background: rgba(0, 0, 0, 0.4);
+  padding: 5px 10px;
+  border-radius: 2px;
+}
+
+.portfolio-section .ba-label-before {
+  right: 16px;
+}
+
+.portfolio-section .ba-label-after {
+  left: 16px;
+}
+
+.portfolio-section .card-info {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 20;
+  background: rgba(17, 17, 16, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(201, 169, 110, 0.2);
+  border-radius: 6px;
+  padding: 14px 18px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  min-width: 175px;
+}
+
+.portfolio-section .card-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 6px;
+}
+
+.portfolio-section .card-info-row:last-child {
+  margin-bottom: 0;
+}
+
+.portfolio-section .card-info-label {
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+
+.portfolio-section .card-info-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--gold-light);
+  white-space: nowrap;
+}
+
+.portfolio-section .card-case {
+  padding: 22px 24px 24px;
+  background: #1a1a18;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.portfolio-section .card-case-project {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+
+.portfolio-section .card-case-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--cream);
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.portfolio-section .card-case-desc {
+  font-size: 17px;
+  font-weight: 300;
+  color: #b8b2a8;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.portfolio-section .case-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.portfolio-section .case-list li {
+  padding-left: 16px;
+  position: relative;
+  font-size: 16px;
+  color: #b8b2a8;
+  line-height: 1.6;
+}
+
+.portfolio-section .case-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-size: 12px;
+  top: 2px;
+}
+
+.portfolio-section .card-case-note {
+  font-size: 15px;
+  font-weight: 300;
+  color: rgba(184, 178, 168, 0.75);
+  font-style: italic;
+}
+
+.portfolio-section .carousel-top-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 56px 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.portfolio-section .carousel-with-arrows {
+  position: relative;
+  display: block;
+  padding: 0 56px;
+}
+
+.portfolio-section .carousel-dots {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.portfolio-section .carousel-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(138, 132, 120, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  padding: 0;
+}
+
+.portfolio-section .carousel-dot.active {
+  background: var(--gold);
+  width: 24px;
+  border-radius: 3px;
+}
+
+.portfolio-section .carousel-arrows {
+  display: flex;
+  gap: 12px;
+}
+
+.portfolio-section .carousel-arrow {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(201, 169, 110, 0.3);
+  background: transparent;
+  color: var(--cream);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.portfolio-section .carousel-arrow:hover {
+  border-color: var(--gold);
+  background: rgba(201, 169, 110, 0.1);
+}
+
+.portfolio-section .carousel-arrow svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.5;
+}
+
+/* Позиционирование стрелок поверх слайдера (как в оригинальном блоке) */
+.portfolio-section #prevBtn,
+.portfolio-section #nextBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  background: rgba(17, 17, 16, 0.7);
+  border-color: rgba(201, 169, 110, 0.5);
+}
+
+.portfolio-section #prevBtn {
+  left: 40px;
+  right: auto;
+}
+
+.portfolio-section #nextBtn {
+  right: 40px;
+  left: auto;
+}
+
+.portfolio-section .carousel-counter {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--stone);
+}
+
+.portfolio-section .carousel-counter span {
+  color: var(--cream);
+}
+
+.portfolio-section .cta-block {
+  position: relative;
+  z-index: 1;
+  padding: 56px 56px 80px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+}
+
+.portfolio-section .cta-divider {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+  margin: 0 auto;
+}
+
+.portfolio-section .cta-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 4vw, 52px);
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--cream);
+  max-width: 600px;
+}
+
+.portfolio-section .cta-title em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+
+.portfolio-section .cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 42px;
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--cream);
+  font-family: 'Jost', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  text-decoration: none;
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-section .cta-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(201, 169, 110, 0.15), transparent 40%, transparent 60%, rgba(201, 169, 110, 0.2));
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+
+.portfolio-section .cta-button:hover {
+  border-color: var(--gold-light);
+  color: var(--cream);
+}
+
+.portfolio-section .cta-button:hover::before {
+  transform: translateX(0);
+}
+
+.portfolio-section .cta-button svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.5;
+  transition: transform 0.4s ease;
+}
+
+.portfolio-section .cta-button:hover svg {
+  transform: translateX(4px);
+}
+
+@media (max-width: 900px) {
+  .portfolio-section .section-header,
+  .portfolio-section .cta-block {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .portfolio-section .carousel-top-nav,
+  .portfolio-section .carousel-with-arrows {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .portfolio-section .carousel-slide {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-section .section-header {
+    padding-top: 60px;
+  }
+}
+
+@media (max-width: 600px) {
+  .portfolio-section .section-header,
+  .portfolio-section .cta-block {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .portfolio-section .carousel-top-nav {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .portfolio-section .carousel-with-arrows {
+    padding-left: 8px;
+    padding-right: 8px;
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas:
+      "slider slider slider"
+      "prev   .      next";
+    align-items: center;
+    row-gap: 12px;
+  }
+
+  .portfolio-section .carousel-outer {
+    grid-area: slider;
+  }
+
+  .portfolio-section #prevBtn,
+  .portfolio-section #nextBtn {
+    position: static;
+    transform: none;
+    width: 40px;
+    height: 40px;
+    border-width: 1px;
+    justify-self: center;
+  }
+
+  .portfolio-section #prevBtn {
+    grid-area: prev;
+  }
+
+  .portfolio-section #nextBtn {
+    grid-area: next;
+  }
+}
+
+/* ── REALIZATION SECTION (от бетонной коробки — блок реализации) ── */
+.realization-section {
+  --ivory: #F8F5F0;
+  --warm-white: #FDFBF8;
+  --linen: #EDE8DF;
+  --charcoal: #1C1C1A;
+  --stone: #8A8478;
+  --stone-light: #B5B0A8;
+  --gold-r: #B8935A;
+  --gold-light: #D4B483;
+  --gold-pale: #EFE2CC;
+  --ink: #2E2C28;
+  background: var(--warm-white);
+  color: var(--charcoal);
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  overflow: hidden;
+  position: relative;
+}
+.realization-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+.realization-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 80px;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, var(--linen) 15%, var(--linen) 85%, transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+.realization-section .section-inner {
+  position: relative;
+  z-index: 1;
+  padding: 100px 56px 110px;
+}
+.realization-section .section-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px 80px;
+  align-items: end;
+  margin-bottom: 64px;
+}
+.realization-section .section-eyebrow {
+  grid-column: 1 / -1;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold-r);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.realization-section .section-eyebrow::before {
+  content: '';
+  display: block;
+  width: 36px;
+  height: 1px;
+  background: var(--gold-r);
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+.realization-section .section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4.5vw, 62px);
+  font-weight: 300;
+  line-height: 1.07;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.realization-section .section-title em {
+  font-style: italic;
+  color: var(--gold-r);
+}
+.realization-section .section-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.65;
+  color: var(--ink);
+  letter-spacing: 0.01em;
+  padding-top: 24px;
+  padding-left: 22px;
+  border-top: 1px solid var(--linen);
+  border-left: 2px solid var(--gold-r);
+  align-self: end;
+  position: relative;
+}
+.realization-section .section-subtitle::before {
+  content: '\201C';
+  position: absolute;
+  top: 16px;
+  left: -18px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 72px;
+  line-height: 1;
+  color: var(--gold-r);
+  opacity: 0.25;
+  font-style: normal;
+  pointer-events: none;
+}
+.realization-section .video-wrapper {
+  position: relative;
+  width: 100%;
+  border-radius: 3px;
+  overflow: hidden;
+  background: var(--linen);
+  margin-bottom: 0;
+  box-shadow: 0 4px 24px rgba(44, 40, 32, 0.07), 0 1px 3px rgba(44, 40, 32, 0.05);
+}
+.realization-section .video-placeholder {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: linear-gradient(135deg, #EDE8DF 0%, #E2DAD0 40%, #D4CCBF 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.realization-section .video-placeholder::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, transparent 48%, rgba(184,147,90,0.06) 49%, rgba(184,147,90,0.06) 51%, transparent 52%), linear-gradient(-45deg, transparent 48%, rgba(184,147,90,0.06) 49%, rgba(184,147,90,0.06) 51%, transparent 52%);
+  background-size: 60px 60px;
+}
+.realization-section .video-placeholder video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.realization-section .video-play-btn {
+  position: relative;
+  z-index: 2;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(248, 245, 240, 0.92);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 32px rgba(44,40,32,0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(8px);
+}
+.realization-section .video-play-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 12px 40px rgba(44,40,32,0.28);
+}
+.realization-section .video-play-btn svg {
+  width: 22px;
+  height: 22px;
+  fill: var(--gold-r);
+}
+.realization-section .video-play-btn .icon-play { margin-left: 4px; }
+.realization-section .video-play-btn .icon-pause { display: none; }
+.realization-section .video-play-btn.is-playing .icon-play { display: none; }
+.realization-section .video-play-btn.is-playing .icon-pause { display: block; }
+.realization-section .video-badge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 10;
+  background: rgba(248, 245, 240, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(184, 147, 90, 0.25);
+  border-radius: 3px;
+  padding: 9px 15px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.realization-section .video-badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold-r);
+  flex-shrink: 0;
+  animation: realization-pulse-dot 2.4s ease-in-out infinite;
+}
+@keyframes realization-pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.55; transform: scale(0.85); }
+}
+.realization-section .video-badge-text {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.realization-section .content-grid {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 40px;
+  align-items: start;
+}
+.realization-section .stats-strip {
+  display: flex;
+  gap: 0;
+  border: 1px solid var(--linen);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 16px;
+}
+.realization-section .stat-item {
+  flex: 1;
+  padding: 20px 22px;
+  border-right: 1px solid var(--linen);
+  position: relative;
+}
+.realization-section .stat-item:last-child { border-right: none; }
+.realization-section .stat-label {
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--stone-light);
+  margin-bottom: 6px;
+  display: block;
+}
+.realization-section .stat-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.1;
+  display: block;
+  margin-bottom: 2px;
+}
+.realization-section .stat-note {
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--stone);
+  line-height: 1.4;
+  display: block;
+}
+.realization-section .right-col {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding-top: 4px;
+}
+.realization-section .project-desc {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--stone);
+}
+.realization-section .project-desc p + p { margin-top: 14px; }
+.realization-section .key-phrase {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.35;
+  color: var(--ink);
+  padding: 20px 0 20px 20px;
+  border-top: 1px solid var(--linen);
+  border-bottom: 1px solid var(--linen);
+  position: relative;
+}
+.realization-section .key-phrase::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: -1px;
+  bottom: -1px;
+  width: 2px;
+  background: var(--gold-r);
+  opacity: 0.7;
+}
+.realization-section .key-phrase em {
+  font-style: normal;
+  color: var(--gold-r);
+}
+.realization-section .expertise-label {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold-r);
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.realization-section .expertise-label::after {
+  content: '';
+  display: block;
+  flex: 1;
+  height: 1px;
+  background: var(--linen);
+}
+.realization-section .expertise-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+.realization-section .expertise-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--charcoal);
+  line-height: 1.5;
+}
+.realization-section .expertise-list li .check {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border: 1px solid var(--gold-pale);
+  border-radius: 2px;
+  background: var(--gold-pale);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+}
+.realization-section .expertise-list li .check svg {
+  width: 10px;
+  height: 10px;
+  stroke: var(--gold-r);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.realization-section .cta-section {
+  margin-top: 64px;
+  padding-top: 56px;
+  border-top: 1px solid var(--linen);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+.realization-section .cta-left { flex: 1; }
+.realization-section .cta-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 3vw, 44px);
+  font-weight: 300;
+  line-height: 1.12;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+.realization-section .cta-title em {
+  font-style: italic;
+  color: var(--gold-r);
+}
+.realization-section .cta-note {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--stone-light);
+  line-height: 1.65;
+  max-width: 420px;
+}
+.realization-section .cta-right { flex-shrink: 0; text-align: center; }
+.realization-section .cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--ink);
+  color: var(--ivory);
+  text-decoration: none;
+  font-family: 'Jost', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 18px 36px;
+  border-radius: 2px;
+  transition: background 0.3s ease, gap 0.3s ease;
+  white-space: nowrap;
+}
+.realization-section .cta-button:hover {
+  background: var(--gold-r);
+  gap: 20px;
+}
+.realization-section .cta-button svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.3s ease;
+}
+.realization-section .cta-button:hover svg { transform: translateX(3px); }
+.realization-section .cta-sub {
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--stone-light);
+  margin-top: 12px;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+}
+@media (max-width: 1024px) {
+  .realization-section::after { display: none; }
+  .realization-section .section-inner { padding: 80px 40px 90px; }
+  .realization-section .section-header {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    margin-bottom: 48px;
+  }
+  .realization-section .section-eyebrow { grid-column: auto; }
+  .realization-section .content-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .realization-section .cta-section {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+  }
+  .realization-section .cta-right { align-self: flex-start; }
+}
+@media (max-width: 640px) {
+  .realization-section .section-inner { padding: 60px 24px 72px; }
+  .realization-section .stats-strip { flex-direction: row; border-radius: 0; }
+  .realization-section .stat-item {
+    border-right: 1px solid var(--linen);
+    border-bottom: none;
+    padding: 16px 10px;
+  }
+  .realization-section .stat-item:last-child { border-right: none; }
+  .realization-section .section-header { margin-bottom: 36px; }
+  .realization-section .cta-button { padding: 16px 28px; font-size: 11px; }
+}
+.realization-section .reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.realization-section .reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.realization-section .reveal-delay-1 { transition-delay: 0.1s; }
+.realization-section .reveal-delay-2 { transition-delay: 0.2s; }
+.realization-section .reveal-delay-3 { transition-delay: 0.3s; }
+.realization-section .reveal-delay-4 { transition-delay: 0.45s; }
+.realization-section .reveal-delay-5 { transition-delay: 0.6s; }
+
+/* ── STYLE SECTION (Понравится ли вам будущий интерьер) ── */
+.style-section {
+  --ivory: #F8F5F0;
+  --warm-white: #FDFBF8;
+  --linen: #EDE8DF;
+  --linen-deep: #DDD6CB;
+  --charcoal: #1C1C1A;
+  --stone: #8A8478;
+  --stone-light: #B5B0A8;
+  --gold-s: #B8935A;
+  --gold-light: #D4B483;
+  --gold-pale: #EFE2CC;
+  --ink: #2E2C28;
+  background: var(--warm-white);
+  color: var(--charcoal);
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  overflow: hidden;
+  position: relative;
+}
+.style-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+.style-section::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 80px;
+  width: 1px; height: 100%;
+  background: linear-gradient(to bottom, transparent, var(--linen) 10%, var(--linen) 90%, transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+.style-section .section-inner {
+  position: relative;
+  z-index: 1;
+  padding: 100px 80px 110px;
+}
+.style-section .section-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px 80px;
+  align-items: end;
+  margin-bottom: 72px;
+}
+.style-section .section-eyebrow {
+  grid-column: 1 / -1;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold-s);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.style-section .section-eyebrow::before {
+  content: '';
+  display: block;
+  width: 36px; height: 1px;
+  background: var(--gold-s);
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+.style-section .section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4.5vw, 62px);
+  font-weight: 300;
+  line-height: 1.07;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.style-section .section-title em {
+  font-style: italic;
+  color: var(--gold-s);
+}
+.style-section .section-subtitle {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--stone);
+  padding-top: 20px;
+  border-top: 1px solid var(--linen);
+  align-self: end;
+}
+.style-section .section-subtitle strong {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+.style-section .gallery-wrap {
+  margin-bottom: 56px;
+}
+.style-section .gallery-row {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.style-section .gallery-row:last-child { margin-bottom: 0; }
+.style-section .gallery-row--a {
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-template-rows: 420px;
+}
+.style-section .gallery-row--b {
+  grid-template-columns: 1fr 1fr 1fr 2fr;
+  grid-template-rows: 420px;
+}
+.style-section .gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+  cursor: pointer;
+  background: var(--linen);
+  display: block;
+  aspect-ratio: auto;
+}
+.style-section .gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  filter: saturate(0.92) brightness(0.98);
+}
+.style-section .gallery-item:hover img {
+  transform: scale(1.04);
+  filter: saturate(1) brightness(0.85);
+}
+.style-section .gallery-item__label {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  z-index: 3;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.75);
+  background: rgba(30, 28, 24, 0.38);
+  backdrop-filter: blur(6px);
+  padding: 5px 10px;
+  border-radius: 2px;
+  transition: opacity 0.35s ease;
+}
+.style-section .gallery-item:hover .gallery-item__label {
+  opacity: 0;
+}
+.style-section .gallery-item__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  background: linear-gradient(160deg, rgba(30,28,24,0.62) 0%, rgba(44,40,32,0.78) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 28px;
+  opacity: 0;
+  transition: opacity 0.38s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.style-section .gallery-item:hover .gallery-item__overlay {
+  opacity: 1;
+}
+.style-section .overlay-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(18px, 1.8vw, 26px);
+  font-weight: 300;
+  color: #FDFBF8;
+  line-height: 1.15;
+  margin-bottom: 6px;
+  transform: translateY(8px);
+  transition: transform 0.38s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.style-section .gallery-item:hover .overlay-title { transform: translateY(0); }
+.style-section .overlay-meta {
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  color: rgba(245, 240, 232, 0.62);
+  margin-bottom: 18px;
+  transform: translateY(8px);
+  transition: transform 0.42s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.style-section .gallery-item:hover .overlay-meta { transform: translateY(0); }
+.style-section .gallery-caption {
+  text-align: center;
+  padding: 48px 0 64px;
+  border-bottom: 1px solid var(--linen);
+  margin-bottom: 72px;
+}
+.style-section .gallery-caption p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(22px, 3vw, 40px);
+  font-weight: 300;
+  line-height: 1.25;
+  color: var(--ink);
+}
+.style-section .gallery-caption p em {
+  font-style: italic;
+  color: var(--gold-s);
+}
+.style-section .gallery-caption span {
+  display: block;
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--stone-light);
+  letter-spacing: 0.08em;
+  margin-top: 10px;
+}
+.style-section .process-wrap {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 40px 80px;
+  align-items: start;
+  margin-bottom: 64px;
+}
+.style-section .process-label {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold-s);
+  padding-top: 6px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.style-section .process-label::before {
+  content: '';
+  display: block;
+  width: 28px; height: 1px;
+  background: var(--gold-s);
+  opacity: 0.7;
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+.style-section .process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.style-section .step {
+  padding: 28px 24px 28px 0;
+  border-top: 1px solid var(--linen);
+  position: relative;
+}
+.style-section .step::before {
+  content: '';
+  position: absolute;
+  top: -1px; left: 0;
+  width: 32px; height: 2px;
+  background: var(--gold-s);
+  opacity: 0.6;
+}
+.style-section .step-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--gold-s);
+  margin-bottom: 16px;
+  letter-spacing: 0.1em;
+}
+.style-section .step-icon {
+  width: 32px; height: 32px;
+  margin-bottom: 14px;
+  color: var(--stone);
+}
+.style-section .step-icon svg {
+  width: 100%; height: 100%;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.style-section .step-title {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+}
+.style-section .risk-block {
+  background: var(--ivory);
+  border: 1px solid var(--linen);
+  border-radius: 2px;
+  padding: 44px 52px;
+  margin-bottom: 72px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 32px;
+  align-items: center;
+}
+.style-section .risk-icon {
+  width: 48px; height: 48px;
+  flex-shrink: 0;
+  color: var(--gold-s);
+}
+.style-section .risk-icon svg {
+  width: 100%; height: 100%;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.style-section .risk-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(18px, 2vw, 26px);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.4;
+  color: var(--ink);
+}
+.style-section .risk-text em {
+  font-style: normal;
+  color: var(--gold-s);
+}
+.style-section .cta-section {
+  padding-top: 56px;
+  border-top: 1px solid var(--linen);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+.style-section .cta-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 3vw, 44px);
+  font-weight: 300;
+  line-height: 1.12;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+.style-section .cta-title em {
+  font-style: italic;
+  color: var(--gold-s);
+}
+.style-section .cta-note {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--stone-light);
+  line-height: 1.65;
+  max-width: 400px;
+}
+.style-section .cta-right {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 14px;
+}
+.style-section .cta-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--ink);
+  color: var(--ivory);
+  text-decoration: none;
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 18px 36px;
+  border-radius: 2px;
+  border: 1px solid var(--ink);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.3s ease, gap 0.3s ease, color 0.3s ease;
+}
+.style-section .cta-btn-primary:hover {
+  background: var(--gold-s);
+  border-color: var(--gold-s);
+  gap: 20px;
+}
+.style-section .cta-btn-primary svg {
+  width: 15px; height: 15px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.3s ease;
+}
+.style-section .cta-btn-primary:hover svg { transform: translateX(3px); }
+.style-section .cta-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  color: var(--stone);
+  text-decoration: none;
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 14px 36px;
+  border-radius: 2px;
+  border: 1px solid var(--linen-deep);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+.style-section .cta-btn-secondary:hover {
+  border-color: var(--gold-s);
+  color: var(--gold-s);
+}
+.style-section .reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.style-section .reveal.visible { opacity: 1; transform: translateY(0); }
+.style-section .reveal-d1 { transition-delay: 0.08s; }
+.style-section .reveal-d2 { transition-delay: 0.18s; }
+.style-section .reveal-d3 { transition-delay: 0.28s; }
+.style-section .reveal-d4 { transition-delay: 0.40s; }
+.style-section .reveal-d5 { transition-delay: 0.54s; }
+.style-section .reveal-d6 { transition-delay: 0.68s; }
+@media (max-width: 1100px) {
+  .style-section::after { display: none; }
+  .style-section .section-inner { padding: 80px 48px 90px; }
+  .style-section .section-header { grid-template-columns: 1fr; gap: 28px; margin-bottom: 52px; }
+  .style-section .section-eyebrow { grid-column: auto; }
+  .style-section .gallery-row--a,
+  .style-section .gallery-row--b {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 280px 280px;
+  }
+  .style-section .gallery-row--a .gallery-item:first-child,
+  .style-section .gallery-row--b .gallery-item:last-child {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+  .style-section .process-wrap { grid-template-columns: 1fr; gap: 32px; }
+  .style-section .process-steps { grid-template-columns: 1fr 1fr; gap: 20px; }
+  .style-section .risk-block { padding: 32px 36px; }
+  .style-section .cta-section { flex-direction: column; align-items: flex-start; }
+  .style-section .cta-right { align-items: flex-start; }
+}
+@media (max-width: 640px) {
+  .style-section .section-inner { padding: 60px 20px 72px; }
+  .style-section .gallery-wrap { columns: 2; column-gap: 8px; }
+  .style-section .gallery-row,
+  .style-section .gallery-row--a,
+  .style-section .gallery-row--b {
+    display: contents;
+    margin-bottom: 0;
+  }
+  .style-section .gallery-item {
+    break-inside: avoid;
+    margin-bottom: 8px;
+    height: auto;
+  }
+  .style-section .gallery-item img { height: auto; }
+  .style-section .gallery-row--a .gallery-item:first-child,
+  .style-section .gallery-row--b .gallery-item:last-child { height: auto; }
+  .style-section .process-wrap { gap: 24px; }
+  .style-section .process-steps { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .style-section .step { padding: 20px 14px 22px 0; }
+  .style-section .step::before { width: 26px; }
+  .style-section .step-icon { width: 26px; height: 26px; }
+  .style-section .step-num { font-size: 10px; margin-bottom: 8px; }
+  .style-section .step-title { font-size: 12px; line-height: 1.5; }
+  .style-section .risk-block { grid-template-columns: 1fr; padding: 28px 24px; }
+  .style-section .risk-icon { display: none; }
 }
 
 </style>
@@ -2065,6 +3581,393 @@ body {
   </div>
 </section>
 
+<!-- PORTFOLIO: от бетонной коробки до готового интерьера -->
+<section class="portfolio-section">
+
+  <!-- Header -->
+  <div class="section-header">
+    <div class="section-eyebrow">Реализованные проекты</div>
+    <h2 class="section-title">От бетонной коробки<br>до <em>готового интерьера</em></h2>
+    <p class="section-subtitle">Мы показываем реальные фотографии ремонта наших проектов и финальный результат, чтобы вы могли увидеть, как интерьер реализуется в жизни.</p>
+  </div>
+
+  <!-- Nav above slider: counter + dots -->
+  <div class="carousel-top-nav">
+    <div class="carousel-counter">
+      <span id="currentSlide">01</span> / 03
+    </div>
+    <div class="carousel-dots">
+      <button class="carousel-dot active" data-index="0"></button>
+      <button class="carousel-dot" data-index="1"></button>
+      <button class="carousel-dot" data-index="2"></button>
+    </div>
+  </div>
+
+  <!-- Carousel with side arrows -->
+  <div class="carousel-with-arrows">
+    <button class="carousel-arrow" id="prevBtn" aria-label="Предыдущий">
+      <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <div class="carousel-outer">
+      <div class="carousel-track-wrapper">
+      <div class="carousel-track" id="carouselTrack">
+
+        <!-- SLIDE 1 -->
+        <div class="carousel-slide">
+
+          <!-- Project 1 -->
+          <div class="project-card">
+            <div class="ba-slider" data-slider>
+              <img class="ba-before" src="desing-v9/01before.jpg" />
+              <img class="ba-after"  src="desing-v9/01after.jpg" />
+              <div class="ba-handle"></div>
+              <span class="ba-label ba-label-after">РЕАЛЬНОСТЬ</span>
+              <span class="ba-label ba-label-before">РЕМОНТ</span>
+            </div>
+            <div class="card-info">
+              <div class="card-info-row">
+                <span class="card-info-label">Площадь</span>
+                <span class="card-info-value">300 м²</span>
+              </div>
+              <div class="card-info-row">
+                <span class="card-info-label">Срок</span>
+                <span class="card-info-value">14 месяцев</span>
+              </div>
+              <div class="card-info-row">
+                <span class="card-info-label">Бюджет</span>
+                <span class="card-info-value">44 млн ₽</span>
+              </div>
+            </div>
+            <div class="card-case">
+              <div class="card-case-project">Проект 01</div>
+              <div class="card-case-title">Дом для семьи с двумя детьми</div>
+              <div class="card-case-desc"><ul class="case-list">
+<li>+30 м² к полезной площади за счёт исправления ошибки в архитектурном проекте</li>
+<li>Улучшили планировку, организовали шеф-кухню, кладовую при кухне</li>
+<li>Мастер-блок для родителей и спа-зона с бассейном</li>
+<li>Курирование ремонта до заселения, координация смежных исполнителей</li>
+<li>Вся мебель авторская — скруглённые углы, зеркала, шпон</li>
+</ul></div>
+              <div class="card-case-note">Проект полностью реализован под авторским контролем студии.</div>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="project-card">
+            <div class="ba-slider" data-slider>
+              <img class="ba-before" src="desing-v9/02before.jpg" />
+              <img class="ba-after"  src="desing-v9/02after.jpg" />
+              <div class="ba-handle"></div>
+              <span class="ba-label ba-label-after">РЕАЛЬНОСТЬ</span>
+              <span class="ba-label ba-label-before">визуализация</span>
+            </div>
+            <div class="card-info">
+              <div class="card-info-row">
+                <span class="card-info-label">Площадь</span>
+                <span class="card-info-value">300 м²</span>
+              </div>
+              <div class="card-info-row">
+                <span class="card-info-label">Срок</span>
+                <span class="card-info-value">14 месяцев</span>
+              </div>
+              <div class="card-info-row">
+                <span class="card-info-label">Бюджет</span>
+                <span class="card-info-value">44 млн ₽</span>
+              </div>
+            </div>
+            <div class="card-case">
+              <div class="card-case-project">Проект 02</div>
+              <div class="card-case-title">Мастер-ванная с авторской плиткой</div>
+              <div class="card-case-desc">Создали атмосферу spa-отеля с деревом, мрамором и тёплым светом.</div>
+              <div class="card-case-note">Проект полностью реализован под авторским контролем студии.</div>
+            </div>
+          </div>
+
+        </div><!-- /slide 1 -->
+
+        <!-- SLIDE 2 -->
+        <div class="carousel-slide">
+
+          <!-- Project 3 -->
+          <div class="project-card">
+            <div class="ba-slider" data-slider>
+              <img class="ba-before" src="desing-v9/03before.jpg" />
+              <img class="ba-after"  src="desing-v9/03after.jpg" />
+              <div class="ba-handle"></div>
+              <span class="ba-label ba-label-after">РЕАЛЬНОСТЬ</span>
+              <span class="ba-label ba-label-before">визуализация</span>
+            </div>
+            <div class="card-info">
+              <div class="card-info-row">
+                <span class="card-info-label">Площадь</span>
+                <span class="card-info-value">255 м²</span>
+              </div>
+              <div class="card-info-row">
+                <span class="card-info-label">Срок</span>
+                <span class="card-info-value">11 месяцев</span>
+              </div>
+              <div class="card-info-row">
+                <span class="card-info-label">Бюджет</span>
+                <span class="card-info-value">32 млн ₽</span>
+              </div>
+            </div>
+            <div class="card-case">
+              <div class="card-case-project">Проект 03</div>
+              <div class="card-case-title">Дом 255 м² с бассейном и спа-комплексом</div>
+              <div class="card-case-desc"><ul class="case-list">
+<li>Оптимизация бюджета при сохранении эксклюзивных авторских решений</li>
+<li>Интерьер дома, СПА-зона с бассейном, хаммамом и бильярдной-кинотеатром</li>
+<li>Вся мебель и отделка просчитана заранее, поставка в нужные сроки</li>
+<li>Координация смежных исполнителей</li>
+<li>Сложные решения: сауна с эксклюзивной деревянной отделкой, мозаика в бассейне, объёмный деревянный потолок, имитация скальных блоков, скруглённые стены</li>
+</ul></div>
+              <div class="card-case-note">Проект полностью реализован под авторским контролем студии.</div>
+            </div>
+          </div>
+
+          <!-- Project 4 -->
+          <div class="project-card">
+            <div class="ba-slider" data-slider>
+              <img class="ba-before" src="desing-v9/04before.jpg" />
+              <img class="ba-after"  src="desing-v9/04after.jpg" />
+              <div class="ba-handle"></div>
+              <span class="ba-label ba-label-after">РЕАЛЬНОСТЬ</span>
+              <span class="ba-label ba-label-before">РЕМОНТ</span>
+            </div>
+            <div class="card-info">
+              <div class="card-info-row">
+                <span class="card-info-label">Площадь</span>
+                <span class="card-info-value">60 м²</span>
+              </div>
+              <div class="card-info-row">
+                <span class="card-info-label">Срок</span>
+                <span class="card-info-value">9 месяцев</span>
+              </div>
+              <div class="card-info-row">
+                <span class="card-info-label">Бюджет</span>
+                <span class="card-info-value">3,5 млн ₽</span>
+              </div>
+            </div>
+            <div class="card-case">
+              <div class="card-case-project">Проект 04</div>
+              <div class="card-case-title">Квартира с авторскими деталями</div>
+              <div class="card-case-desc"><ul class="case-list">
+<li>Тропический оазис: гостиная объединена с музыкальной зоной</li>
+<li>Г-образная кухня и ванная без прямых углов — авторская эргономичная мебель</li>
+<li>Визуальное расширение пространства дизайн-приёмами</li>
+<li>Авторские детали: 3D-панно, зеркальное панно, парящая мебель, диван и стол со встроенным синтезатором</li>
+</ul></div>
+              <div class="card-case-note">Проект полностью реализован под авторским контролем студии.</div>
+            </div>
+          </div>
+
+        </div><!-- /slide 2 -->
+
+        <!-- SLIDE 3 -->
+        <div class="carousel-slide">
+
+          <!-- Project 5 -->
+          <div class="project-card">
+            <div class="ba-slider" data-slider>
+              <img class="ba-before" src="desing-v9/05before.jpg" />
+              <img class="ba-after"  src="desing-v9/05after.jpg" />
+              <div class="ba-handle"></div>
+              <span class="ba-label ba-label-after">РЕАЛЬНОСТЬ</span>
+              <span class="ba-label ba-label-before">РЕМОНТ</span>
+            </div>
+            <div class="card-info">
+              <div class="card-info-row">
+                <span class="card-info-label">Площадь</span>
+                <span class="card-info-value">300 м²</span>
+              </div>
+              <div class="card-info-row">
+                <span class="card-info-label">Срок</span>
+                <span class="card-info-value">14 месяцев</span>
+              </div>
+              <div class="card-info-row">
+                <span class="card-info-label">Бюджет</span>
+                <span class="card-info-value">44 млн ₽</span>
+              </div>
+            </div>
+            <div class="card-case">
+              <div class="card-case-project">Проект 05</div>
+              <div class="card-case-title">Частный бассейн — зона отдыха</div>
+              <div class="card-case-desc"><ul class="case-list">
+<li>Проект в связке со специализированными подрядчиками: осушители, скиммерный бассейн, вентиляция</li>
+<li>СПА-зона с хамамом, сауной и комнатой отдыха</li>
+<li>Оптимизация бюджета и менеджмент стройкой</li>
+<li>Сложные решения: потолок с балками, панно с зеркальным ТВ, нестандартная планировка</li>
+</ul></div>
+              <div class="card-case-note">Проект полностью реализован под авторским контролем студии.</div>
+            </div>
+          </div>
+
+          <!-- Project 6 -->
+          <div class="project-card">
+            <div class="ba-slider" data-slider>
+              <img class="ba-before" src="desing-v9/06before.jpg" />
+              <img class="ba-after"  src="desing-v9/06after.jpg" />
+              <div class="ba-handle"></div>
+              <span class="ba-label ba-label-after">РЕАЛЬНОСТЬ</span>
+              <span class="ba-label ba-label-before">РЕМОНТ</span>
+            </div>
+            <div class="card-info">
+              <div class="card-info-row">
+                <span class="card-info-label">Площадь</span>
+                <span class="card-info-value">44 м²</span>
+              </div>
+              <div class="card-info-row">
+                <span class="card-info-label">Срок</span>
+                <span class="card-info-value">7 месяцев</span>
+              </div>
+              <div class="card-info-row">
+                <span class="card-info-label">Бюджет</span>
+                <span class="card-info-value">4 млн ₽</span>
+              </div>
+            </div>
+            <div class="card-case">
+              <div class="card-case-project">Проект 06</div>
+              <div class="card-case-title">Студия с островом и изолированной спальней</div>
+              <div class="card-case-desc"><ul class="case-list">
+<li>Open space со столом-островом</li>
+<li>Инвест-проект: достойный дизайн в ограниченном бюджете при плохой планировке</li>
+<li>Изолированная спальня, размещение 4 человек, вместительная кухня с пеналами и большим островом</li>
+<li>Курирование до заселения, работа с исполнителями, разработка мебели</li>
+</ul></div>
+              <div class="card-case-note">Проект полностью реализован под авторским контролем студии.</div>
+            </div>
+          </div>
+
+        </div><!-- /slide 3 -->
+
+      </div><!-- /track -->
+    </div><!-- /wrapper -->
+    </div><!-- /outer -->
+    <button class="carousel-arrow" id="nextBtn" aria-label="Следующий">
+      <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+  </div><!-- /carousel-with-arrows -->
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <div class="cta-divider"></div>
+    <h3 class="cta-title">Хотите такой же результат<br>в <em>своём интерьере?</em></h3>
+    <a href="#" class="cta-button">
+      Получить аудит планировки
+      <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+
+</section>
+
+<!-- REALIZATION: реализованный интерьер под контролем студии -->
+<section class="realization-section">
+  <div class="section-inner">
+
+    <div class="section-header">
+      <div class="section-eyebrow reveal">Авторский контроль реализации</div>
+
+      <h2 class="section-title reveal reveal-delay-1">
+        Реализованный интерьер<br>
+        <em>под контролем студии</em>
+      </h2>
+
+      <p class="section-subtitle reveal reveal-delay-2">
+        «Мы сопровождаем проекты от разработки концепции до полного завершения ремонта и контролируем работу всех подрядчиков.»
+      </p>
+    </div>
+
+    <div class="content-grid">
+
+      <div class="left-col reveal reveal-delay-2">
+        <div class="video-wrapper">
+          <div class="video-placeholder">
+            <video src="images/designinteriorufareal.mov" controls playsinline preload="metadata" aria-label="Реализованный объект"></video>
+          </div>
+          <div class="video-badge">
+            <span class="video-badge-dot"></span>
+            <span class="video-badge-text">Реализованный объект</span>
+          </div>
+        </div>
+        <div class="stats-strip reveal reveal-delay-3">
+          <div class="stat-item">
+            <span class="stat-label">Площадь проекта</span>
+            <span class="stat-value">205&thinsp;м²</span>
+            <span class="stat-note">Коммерческий объект</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Срок реализации</span>
+            <span class="stat-value">5&thinsp;мес.</span>
+            <span class="stat-note">От концепции до сдачи</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Формат работы</span>
+            <span class="stat-value" style="font-size:17px; line-height:1.25;">Дизайн-проект</span>
+            <span class="stat-note">+ авторский контроль</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="right-col">
+        <div class="project-desc reveal reveal-delay-3">
+          <p>Этот проект был полностью реализован нашей студией — от идеи до готового пространства.</p>
+          <p>Мы подготовили дизайн-проект, рабочую документацию и сопровождали все этапы реализации. Контролировали работу строителей, отделочников и мебельных производств, чтобы интерьер был выполнен точно по проекту.</p>
+        </div>
+
+        <blockquote class="key-phrase reveal reveal-delay-4">
+          Такой же подход мы применяем при реализации <em>квартир и частных домов.</em>
+        </blockquote>
+
+        <div class="expertise-block reveal reveal-delay-4">
+          <div class="expertise-label">Что мы контролируем при реализации</div>
+          <ul class="expertise-list">
+            <li>
+              <span class="check">
+                <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+              </span>
+              Соответствие интерьера проекту
+            </li>
+            <li>
+              <span class="check">
+                <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+              </span>
+              Комплектация отделкой, сантехникой, освещением и пр.
+            </li>
+            <li>
+              <span class="check">
+                <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+              </span>
+              Изготовление мебели
+            </li>
+            <li>
+              <span class="check">
+                <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+              </span>
+              Соблюдение бюджета и сроков
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="cta-section reveal reveal-delay-5">
+      <div class="cta-left">
+        <h3 class="cta-title">Хотите, чтобы ваш проект<br><em>был реализован так же?</em></h3>
+        <p class="cta-note">Подскажем оптимальную планировку, бюджет ремонта и сроки реализации.</p>
+      </div>
+      <div class="cta-right">
+        <a href="#" class="cta-button">
+          Обсудить свой проект
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <p class="cta-sub">Подскажем планировку, бюджет и сроки</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- ── CASE MODAL 1: ЖК «Высота» 142 м² ── -->
 <div class="stat-modal-overlay" id="cmodal-1" onclick="closeSModalOnOverlay(event,'cmodal-1')">
   <div class="stat-modal-inner">
@@ -2073,7 +3976,7 @@ body {
         <svg viewBox="0 0 24 24" fill="none"><line x1="18" y1="6" x2="6" y2="18" stroke-linecap="round"/><line x1="6" y1="6" x2="18" y2="18" stroke-linecap="round"/></svg>
       </button>
       <div class="stat-modal-eyebrow">Дом · Уфа · 2024</div>
-      <h2 class="stat-modal-title">Дом в селе Чесноковка, реконструкция недостроя, 351 м²</h2>
+      <h2 class="stat-modal-title">Дом в селе Чесноковка,<br>реконструкция&nbsp;недостроя,&nbsp;351&nbsp;м²</h2>
       <div class="stat-modal-meta">39 млн ₽ · 11 месяцев · полная перестройка</div>
       <div class="stat-modal-divider"></div>
       <p class="stat-modal-desc">«Мы искали место, где можно одновременно продуктивно работать из дома и шумно отдыхать с друзьями. И чтобы был запас на будущее — для детей». Результат, который получила молодая семья: из проблемного недостроя мы сделали дом, который «дышит» вместе с хозяевами — теперь у них есть идеальный баланс: публичный первый этаж для встреч и приватный второй — для сна и работы.</p>
@@ -2323,57 +4226,6 @@ body {
   </div>
 </section>
 
-<!-- PROCESS -->
-<section class="process">
-  <div class="proc-inner">
-    <div class="section-head anim">
-      <div class="eyebrow">
-        <div class="ey-line"></div>
-        <span class="ey-text">Как это работает</span>
-      </div>
-      <h2 class="sec-title">Всё прозрачно —<br><em>с первого дня</em></h2>
-    </div>
-    <div class="proc-list">
-      <div class="proc-item anim">
-        <div class="proc-n">1</div>
-        <div>
-          <div class="proc-title">Аудит объекта и стратегия</div>
-          <div class="proc-text">Выезжаем на объект, делаем замеры, анализируем риски. Вы получаете честный прогноз бюджета и сроков ещё до подписания договора. Без скрытых условий.</div>
-        </div>
-        <div class="proc-free">Бесплатно</div>
-      </div>
-      <div class="proc-item anim">
-        <div class="proc-n">2</div>
-        <div>
-          <div class="proc-title">Дизайн-проект</div>
-          <div class="proc-text">Планировочное решение, 3D-визуализация каждой комнаты, рабочая документация. Вы видите, как будет выглядеть результат, до начала ремонта.</div>
-        </div>
-      </div>
-      <div class="proc-item anim">
-        <div class="proc-n">3</div>
-        <div>
-          <div class="proc-title">Комплектация</div>
-          <div class="proc-text">Подбираем материалы, мебель и декор с фиксированными ценами. Вы утверждаете каждую позицию. Без вашего одобрения — ни одна лишняя трата не происходит.</div>
-        </div>
-      </div>
-      <div class="proc-item anim">
-        <div class="proc-n">4</div>
-        <div>
-          <div class="proc-title">Авторский надзор на стройке</div>
-          <div class="proc-text">Еженедельно выезжаем на объект, принимаем работы по строительным нормам, присылаем фото-отчёты. Подрядчики работают по нашим техзаданиям. Даже если вы за границей — всё под контролем.</div>
-        </div>
-      </div>
-      <div class="proc-item anim">
-        <div class="proc-n">5</div>
-        <div>
-          <div class="proc-title">Сдача и заселение</div>
-          <div class="proc-text">Принимаем объект по детальному чеклисту, устраняем все замечания, расставляем мебель. Вы въезжаете в готовый дом и занимаетесь жизнью.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- TRUST + FAQ -->
 <section class="trust">
   <div class="trust-grid">
@@ -2472,6 +4324,180 @@ body {
             <p class="faq-a-t">Создаём только реализуемые проекты. Каждый материал проверяется на доступность до начала работ. Если что-то изменится — предложим равноценную замену до, а не во время.</p>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STYLE SECTION: Понравится ли вам будущий интерьер -->
+<section class="style-section">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-eyebrow reveal">Индивидуальный подход к стилю</div>
+      <h2 class="section-title reveal reveal-d1">
+        Понравится ли вам<br>
+        <em>будущий интерьер?</em>
+      </h2>
+      <div class="section-subtitle reveal reveal-d2">
+        <strong>Наши интерьеры всегда разные — потому что мы создаём их под людей, а не под один стиль.</strong>
+        Перед началом проекта мы изучаем ваши вкусы, привычки и образ жизни, чтобы интерьер был именно вашим.
+      </div>
+    </div>
+
+    <div class="gallery-wrap reveal reveal-d2">
+      <div class="gallery-row gallery-row--a">
+        <div class="gallery-item">
+          <img src="images/interiorufa1.jpeg" alt="Тёплый минимализм" loading="lazy">
+          <div class="gallery-item__label">Тёплый минимализм</div>
+          <div class="gallery-item__overlay">
+            <div class="overlay-title">Тёплый минимализм</div>
+            <div class="overlay-meta">Гостиная · Уфа</div>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/interiorufa2.jpeg" alt="Современная классика" loading="lazy">
+          <div class="gallery-item__label">Современная классика</div>
+          <div class="gallery-item__overlay">
+            <div class="overlay-title">Современная классика</div>
+            <div class="overlay-meta">Спальня · Уфа</div>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/interiorufa3.jpeg" alt="Контемпорари" loading="lazy">
+          <div class="gallery-item__label">Контемпорари</div>
+          <div class="gallery-item__overlay">
+            <div class="overlay-title">Контемпорари</div>
+            <div class="overlay-meta">Кухня-столовая · Уфа</div>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/interiorufa4.jpeg" alt="Тёмный премиальный" loading="lazy">
+          <div class="gallery-item__label">Тёмный премиальный</div>
+          <div class="gallery-item__overlay">
+            <div class="overlay-title">Тёмный премиальный</div>
+            <div class="overlay-meta">Холл · Уфа</div>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-row gallery-row--b">
+        <div class="gallery-item">
+          <img src="images/interiorufa5.jpeg" alt="Натуральный" loading="lazy">
+          <div class="gallery-item__label">Натуральный</div>
+          <div class="gallery-item__overlay">
+            <div class="overlay-title">Натуральный</div>
+            <div class="overlay-meta">Гостиная · Уфа</div>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/interiorufa6.jpg" alt="Европейская квартира" loading="lazy">
+          <div class="gallery-item__label">Европейская квартира</div>
+          <div class="gallery-item__overlay">
+            <div class="overlay-title">Европейская квартира</div>
+            <div class="overlay-meta">Детская · Уфа</div>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/interiorufa7.jpeg" alt="Скандинавский" loading="lazy">
+          <div class="gallery-item__label">Скандинавский</div>
+          <div class="gallery-item__overlay">
+            <div class="overlay-title">Скандинавский</div>
+            <div class="overlay-meta">Спальня · Уфа</div>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/interiorufa9.jpg" alt="Арт-интерьер" loading="lazy">
+          <div class="gallery-item__label">Арт-интерьер</div>
+          <div class="gallery-item__overlay">
+            <div class="overlay-title">Арт-интерьер</div>
+            <div class="overlay-meta">Гостиная · Уфа</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-caption reveal reveal-d3">
+      <p>Все эти интерьеры разработаны одной студией.<br><em>Но для разных людей.</em></p>
+      <span>8 реализованных проектов · 4 стилистических направления · 1 команда</span>
+    </div>
+
+    <div class="process-wrap">
+      <div class="process-label reveal reveal-d3">Как мы подбираем стиль</div>
+      <div class="process-steps">
+        <div class="step reveal reveal-d2">
+          <div class="step-num">01</div>
+          <div class="step-icon">
+            <svg viewBox="0 0 32 32">
+              <path d="M2 16C2 16 8 6 16 6C24 6 30 16 30 16C30 16 24 26 16 26C8 26 2 16 2 16Z"/>
+              <circle cx="16" cy="16" r="5"/>
+              <circle cx="16" cy="16" r="2" fill="currentColor" stroke="none"/>
+            </svg>
+          </div>
+          <div class="step-title">Изучаем ваши референсы и предпочтения</div>
+        </div>
+        <div class="step reveal reveal-d3">
+          <div class="step-num">02</div>
+          <div class="step-icon">
+            <svg viewBox="0 0 32 32">
+              <path d="M4 8C4 6.9 4.9 6 6 6H22C23.1 6 24 6.9 24 8V18C24 19.1 23.1 20 22 20H12L6 26V20H6C4.9 20 4 19.1 4 18V8Z"/>
+              <line x1="9" y1="12" x2="19" y2="12"/>
+              <line x1="9" y1="16" x2="15" y2="16"/>
+            </svg>
+          </div>
+          <div class="step-title">Обсуждаем образ жизни и привычки</div>
+        </div>
+        <div class="step reveal reveal-d4">
+          <div class="step-num">03</div>
+          <div class="step-icon">
+            <svg viewBox="0 0 32 32">
+              <circle cx="16" cy="16" r="12"/>
+              <circle cx="10" cy="12" r="2.5" fill="currentColor" stroke="none"/>
+              <circle cx="16" cy="8" r="2.5" fill="currentColor" stroke="none" opacity="0.6"/>
+              <circle cx="22" cy="12" r="2.5" fill="currentColor" stroke="none" opacity="0.4"/>
+              <path d="M16 20C14 20 12 21 12 23H20C20 21 18 20 16 20Z" fill="currentColor" stroke="none" opacity="0.5"/>
+            </svg>
+          </div>
+          <div class="step-title">Определяем стилистическое направление</div>
+        </div>
+        <div class="step reveal reveal-d5">
+          <div class="step-num">04</div>
+          <div class="step-icon">
+            <svg viewBox="0 0 32 32">
+              <path d="M22 4L28 10L12 26L4 28L6 20L22 4Z"/>
+              <line x1="18" y1="8" x2="24" y2="14"/>
+            </svg>
+          </div>
+          <div class="step-title">Создаём концепцию будущего интерьера</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="risk-block reveal reveal-d4">
+      <div class="risk-icon">
+        <svg viewBox="0 0 48 48">
+          <circle cx="24" cy="24" r="20"/>
+          <path d="M24 14V26"/>
+          <circle cx="24" cy="33" r="1.5" fill="currentColor" stroke="none"/>
+        </svg>
+      </div>
+      <p class="risk-text">
+        Если первая концепция не откликается —<br>
+        мы дорабатываем её, пока интерьер не станет <em>«вашим».</em>
+      </p>
+    </div>
+
+    <div class="cta-section reveal reveal-d5">
+      <div class="cta-left">
+        <h3 class="cta-title">Готовы обсудить<br><em>ваш будущий интерьер?</em></h3>
+        <p class="cta-note">Расскажите о себе — и мы подберём стилистическое направление, которое станет именно вашим.</p>
+      </div>
+      <div class="cta-right">
+        <a href="#quiz" class="cta-btn-primary">
+          Обсудить будущий интерьер
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#quiz" class="cta-btn-secondary">
+          Получить концепцию интерьера
+        </a>
       </div>
     </div>
   </div>
@@ -2879,6 +4905,93 @@ body {
 </div>
 
 <script>
+/* ── CAROUSEL (portfolio-section) ── */
+(function() {
+  const track = document.getElementById('carouselTrack');
+  if (!track) return;
+  const dots = document.querySelectorAll('.portfolio-section .carousel-dot');
+  const counter = document.getElementById('currentSlide');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const total = 3;
+  let current = 0;
+  let startX = 0;
+
+  function goTo(index) {
+    current = (index + total) % total;
+    track.style.transform = 'translateX(-' + (current * 100) + '%)';
+    dots.forEach(function(d, i) { d.classList.toggle('active', i === current); });
+    if (counter) counter.textContent = String(current + 1).padStart(2, '0');
+  }
+
+  if (prevBtn) prevBtn.addEventListener('click', function() { goTo(current - 1); });
+  if (nextBtn) nextBtn.addEventListener('click', function() { goTo(current + 1); });
+  dots.forEach(function(d) {
+    d.addEventListener('click', function() { goTo(+d.dataset.index); });
+  });
+
+  // Touch swipe (только для экранов шире 600px)
+  track.addEventListener('touchstart', function(e) {
+    if (window.innerWidth <= 600) return;
+    startX = e.touches[0].clientX;
+  }, { passive: true });
+
+  track.addEventListener('touchend', function(e) {
+    if (window.innerWidth <= 600) return;
+    const dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 50) goTo(dx < 0 ? current + 1 : current - 1);
+  });
+})();
+
+/* ── BEFORE/AFTER SLIDERS (portfolio-section) ── */
+document.querySelectorAll('.portfolio-section [data-slider]').forEach(function(slider) {
+  const after = slider.querySelector('.ba-after');
+  const before = slider.querySelector('.ba-before');
+  const handle = slider.querySelector('.ba-handle');
+  let active = false;
+
+  function setPos(x) {
+    const rect = slider.getBoundingClientRect();
+    const pct = Math.min(Math.max((x - rect.left) / rect.width * 100, 0), 100);
+    before.style.clipPath = 'inset(0 0 0 ' + pct + '%)';
+    handle.style.left = pct + '%';
+  }
+
+  // Mouse
+  slider.addEventListener('mousedown', function(e) {
+    active = true;
+    setPos(e.clientX);
+    e.preventDefault();
+  });
+  window.addEventListener('mousemove', function(e) {
+    if (active) setPos(e.clientX);
+  });
+  window.addEventListener('mouseup', function() {
+    active = false;
+  });
+
+  // Touch
+  slider.addEventListener('touchstart', function(e) {
+    const rect = slider.getBoundingClientRect();
+    const hx = handle.offsetLeft / slider.offsetWidth * rect.width + rect.left;
+    if (Math.abs(e.touches[0].clientX - hx) < 60) {
+      active = true;
+      e.preventDefault();
+    }
+  }, { passive: false });
+
+  slider.addEventListener('touchmove', function(e) {
+    if (active) {
+      setPos(e.touches[0].clientX);
+      e.preventDefault();
+    }
+  }, { passive: false });
+
+  slider.addEventListener('touchend', function() {
+    active = false;
+  });
+});
+
 /* ── Case Image Slider ── */
 function slideCase(btn, dir) {
   const slider = btn.closest('.case-slider');
@@ -3007,6 +5120,116 @@ function submitQuiz(){
   document.querySelector('.quiz-prog').style.opacity='.3';
   document.getElementById('qStepLabel').textContent='';
 }
+
+/* ── CAROUSEL ── */
+(function() {
+  const track = document.getElementById('carouselTrack');
+  const dots = document.querySelectorAll('.carousel-dot');
+  const counter = document.getElementById('currentSlide');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const total = 3;
+  let current = 0;
+  let startX = 0, isDragging = false;
+
+  function goTo(index) {
+    current = (index + total) % total;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    counter.textContent = String(current + 1).padStart(2, '0');
+  }
+
+  if (track && prevBtn && nextBtn && counter && dots.length) {
+    prevBtn.addEventListener('click', () => goTo(current - 1));
+    nextBtn.addEventListener('click', () => goTo(current + 1));
+    dots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.index)));
+
+    // Touch swipe (только на десктопе / шире 600px)
+    track.addEventListener('touchstart', e => {
+      if (window.innerWidth <= 600) return;
+      startX = e.touches[0].clientX;
+    }, { passive: true });
+    track.addEventListener('touchend', e => {
+      if (window.innerWidth <= 600) return;
+      const dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 50) goTo(dx < 0 ? current + 1 : current - 1);
+    });
+  }
+})();
+
+/* ── BEFORE/AFTER SLIDERS ── */
+document.querySelectorAll('[data-slider]').forEach(slider => {
+  const after = slider.querySelector('.ba-after');
+  const before = slider.querySelector('.ba-before');
+  const handle = slider.querySelector('.ba-handle');
+  let active = false;
+
+  function setPos(x) {
+    const rect = slider.getBoundingClientRect();
+    const pct = Math.min(Math.max((x - rect.left) / rect.width * 100, 0), 100);
+    before.style.clipPath = `inset(0 0 0 ${pct}%)`;
+    handle.style.left = pct + '%';
+  }
+
+  // Mouse
+  slider.addEventListener('mousedown', e => { active = true; setPos(e.clientX); e.preventDefault(); });
+  window.addEventListener('mousemove', e => { if (active) setPos(e.clientX); });
+  window.addEventListener('mouseup', () => { active = false; });
+
+  // Touch
+  slider.addEventListener('touchstart', e => {
+    // Only activate if touch starts near the handle (within 40px)
+    const rect = slider.getBoundingClientRect();
+    const hx = handle.offsetLeft / slider.offsetWidth * rect.width + rect.left;
+    if (Math.abs(e.touches[0].clientX - hx) < 60) {
+      active = true;
+      e.preventDefault();
+    }
+  }, { passive: false });
+  slider.addEventListener('touchmove', e => {
+    if (active) { setPos(e.touches[0].clientX); e.preventDefault(); }
+  }, { passive: false });
+  slider.addEventListener('touchend', () => { active = false; });
+});
+
+/* ── REALIZATION SECTION: scroll reveal ── */
+(function () {
+  const els = document.querySelectorAll('.realization-section .reveal');
+  const observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  els.forEach(function (el) { observer.observe(el); });
+  setTimeout(function () {
+    els.forEach(function (el) {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight) el.classList.add('visible');
+    });
+  }, 100);
+})();
+
+/* ── STYLE SECTION: scroll reveal ── */
+(function () {
+  const els = document.querySelectorAll('.style-section .reveal');
+  const observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  els.forEach(function (el) { observer.observe(el); });
+  setTimeout(function () {
+    els.forEach(function (el) {
+      if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('visible');
+    });
+  }, 80);
+})();
 </script>
 </body>
 </html>
