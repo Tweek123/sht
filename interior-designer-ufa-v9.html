@@ -36,6 +36,572 @@ body{
   overflow-x:hidden;
 }
 
+/* ─── REGALIA SECTION (из regalia-block4.html) ─── */
+.regalia-section {
+  background: #F7F4EF;
+  color: #1C1C1A;
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  overflow: hidden;
+  position: relative;
+}
+.regalia-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+.regalia-header,
+.regalia-divider,
+.regalia-grid-wrapper,
+.regalia-footnote {
+  position: relative;
+  z-index: 1;
+}
+.regalia-header {
+  padding: 100px 80px 64px;
+}
+.section-eyebrow {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #C9A96E;
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.section-eyebrow::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: #C9A96E;
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 4.5vw, 60px);
+  font-weight: 300;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: #1C1C1A;
+  margin-bottom: 24px;
+  max-width: 780px;
+}
+.section-title em {
+  font-style: italic;
+  color: #C9A96E;
+}
+.section-subtitle {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: #7A7468;
+  max-width: 540px;
+  letter-spacing: 0.01em;
+}
+.regalia-divider {
+  padding: 0 80px;
+}
+.regalia-divider::after {
+  content: '';
+  display: block;
+  height: 1px;
+  background: linear-gradient(to right, #C9A96E, rgba(201,169,110,0.15));
+  opacity: 0.5;
+}
+.regalia-grid-wrapper {
+  padding: 56px 80px 0;
+}
+.regalia-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  align-items: stretch;
+}
+.regalia-card {
+  background: #FDFCFA;
+  border: 1px solid rgba(28,28,26,0.08);
+  border-radius: 6px;
+  box-shadow: 0 2px 24px rgba(28,28,26,0.07);
+  padding: 36px 20px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
+}
+.regalia-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 30px rgba(28,28,26,0.12);
+  border-color: #E8D5B0;
+}
+.regalia-card--featured {
+  background: #1C1C1A;
+  border-color: transparent;
+  box-shadow: 0 8px 40px rgba(28,28,26,0.18);
+}
+.regalia-card--featured:hover {
+  box-shadow: 0 20px 40px rgba(28,28,26,0.25);
+}
+.card-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #C9A96E;
+  margin-bottom: 2px;
+}
+.card-tag::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 1px;
+  background: #C9A96E;
+  opacity: 0.6;
+}
+.card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.1;
+  color: #1C1C1A;
+  letter-spacing: 0.01em;
+}
+.regalia-card--featured .card-title {
+  color: #F5F0E8;
+}
+.card-body {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: #7A7468;
+  flex: 1;
+}
+.regalia-card--featured .card-body {
+  color: rgba(245,240,232,0.6);
+  font-size: 15px;
+}
+.card-years {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding-top: 4px;
+}
+.card-year {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: #C9A96E;
+  border: 1px solid #E8D5B0;
+  padding: 4px 10px;
+  border-radius: 2px;
+  background: rgba(201,169,110,0.18);
+}
+.card-logos {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+.card-logo-badge {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #E8D5B0;
+  border: 1px solid rgba(201,169,110,0.35);
+  padding: 6px 14px;
+  border-radius: 2px;
+  background: rgba(201,169,110,0.08);
+}
+.regalia-footnote {
+  padding: 44px 80px 100px;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+.footnote-line {
+  width: 1px;
+  height: 56px;
+  background: linear-gradient(to bottom, transparent, #C9A96E, transparent);
+  flex-shrink: 0;
+  opacity: 0.5;
+}
+.footnote-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(16px, 1.6vw, 21px);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.55;
+  color: #7A7468;
+  max-width: 640px;
+  letter-spacing: 0.01em;
+}
+
+/* Regalia modal */
+.regalia-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(18, 17, 15, 0.88);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.regalia-modal-overlay.is-open {
+  opacity: 1;
+  pointer-events: all;
+}
+.regalia-modal-inner {
+  background: #FDFCFA;
+  border-radius: 8px;
+  max-width: 1040px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.4);
+  transform: translateY(32px) scale(0.97);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+  border: 1px solid rgba(28,28,26,0.08);
+}
+.regalia-modal-overlay.is-open .regalia-modal-inner {
+  transform: translateY(0) scale(1);
+}
+.regalia-modal-inner::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(to right, #C9A96E, #E8D5B0, transparent);
+  border-radius: 8px 8px 0 0;
+}
+.regalia-modal-photo {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px 0 0 8px;
+  min-height: 420px;
+}
+.regalia-modal-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.97);
+}
+.regalia-modal-content {
+  padding: 52px 44px 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+}
+.regalia-modal-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #C9A96E;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.regalia-modal-eyebrow::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: #C9A96E;
+  opacity: 0.6;
+}
+.regalia-modal-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 400;
+  line-height: 1.1;
+  color: #1C1C1A;
+  margin-bottom: 12px;
+  letter-spacing: 0.01em;
+}
+.regalia-modal-meta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+.regalia-modal-meta-item {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #A9A49C;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.regalia-modal-meta-item::before {
+  content: '';
+  display: block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #C9A96E;
+  opacity: 0.6;
+}
+.regalia-modal-divider {
+  height: 1px;
+  background: linear-gradient(to right, #E8D5B0, transparent);
+  opacity: 0.5;
+  margin-bottom: 28px;
+}
+.regalia-modal-description {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: #7A7468;
+  margin-bottom: 20px;
+}
+.regalia-modal-list-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: italic;
+  color: #1C1C1A;
+  margin-bottom: 12px;
+}
+.regalia-modal-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+.regalia-modal-list li {
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.65;
+  color: #7A7468;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.regalia-modal-list li::before {
+  content: '';
+  display: block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #C9A96E;
+  margin-top: 7px;
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+.regalia-modal-result {
+  margin-top: auto;
+  padding: 16px 20px;
+  background: rgba(201,169,110,0.18);
+  border-left: 2px solid #C9A96E;
+  border-radius: 0 4px 4px 0;
+}
+.regalia-modal-result-label {
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #C9A96E;
+  margin-bottom: 6px;
+}
+.regalia-modal-result-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px;
+  font-style: italic;
+  color: #1C1C1A;
+}
+.regalia-modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(28,28,26,0.08);
+  background: #1C1C1A;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, border-color 0.2s;
+  z-index: 10;
+}
+.regalia-modal-close:hover {
+  background: rgba(201,169,110,0.18);
+  border-color: #E8D5B0;
+}
+.regalia-modal-close svg {
+  width: 14px;
+  height: 14px;
+  stroke: #E8D5B0;
+  stroke-width: 1.5;
+}
+
+.card-view-hint {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #1C1C1A;
+  background: transparent;
+  border: 1px solid #C9A96E;
+  border-radius: 40px;
+  padding: 10px 22px 10px 24px;
+  width: fit-content;
+  margin-top: 20px;
+  position: relative;
+  overflow: hidden;
+  opacity: 1 !important;
+  transform: none !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  transition: all 0.3s cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+.card-view-hint::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(201,169,110,0.18);
+  transform: translate(-50%, -50%);
+  transition: width 0.5s ease, height 0.5s ease;
+  z-index: -1;
+}
+.card-view-hint::after {
+  content: '→';
+  font-size: 14px;
+  line-height: 1;
+  color: #C9A96E;
+  transition: transform 0.3s ease, color 0.3s ease;
+  margin-left: 4px;
+}
+.card-view-hint:hover {
+  background: #C9A96E;
+  border-color: #C9A96E;
+  color: #fff;
+  box-shadow: 0 8px 18px rgba(201,169,110,0.25);
+  transform: translateY(-2px) !important;
+}
+.card-view-hint:hover::before {
+  width: 300px;
+  height: 300px;
+}
+.card-view-hint:hover::after {
+  transform: translateX(6px);
+  color: #fff;
+}
+.regalia-card--featured .card-view-hint {
+  border-color: #E8D5B0;
+  color: #E8D5B0;
+}
+.regalia-card--featured .card-view-hint::after {
+  color: #E8D5B0;
+}
+.regalia-card--featured .card-view-hint:hover {
+  background: #C9A96E;
+  border-color: #C9A96E;
+  color: #1C1C1A;
+}
+.regalia-card--featured .card-view-hint:hover::after {
+  color: #1C1C1A;
+}
+
+@media (max-width:1100px){
+  .regalia-grid{grid-template-columns:1fr 1fr}
+  .regalia-card--featured{grid-column:span 2}
+}
+@media (max-width:900px){
+  .regalia-header,
+  .regalia-divider,
+  .regalia-grid-wrapper,
+  .regalia-footnote{
+    padding-left:32px;
+    padding-right:32px;
+  }
+  .regalia-header{padding-top:72px;padding-bottom:48px}
+  .regalia-footnote{padding-bottom:72px}
+  .regalia-modal-overlay{padding:16px;align-items:flex-end}
+  .regalia-modal-inner{
+    grid-template-columns:1fr;
+    max-height:92vh;
+    border-radius:12px 12px 8px 8px;
+  }
+  .regalia-modal-photo{
+    min-height:unset;
+    height:190px;
+    border-radius:12px 12px 0 0;
+    flex-shrink:0;
+  }
+  .regalia-modal-content{padding:28px 24px 28px;overflow-y:auto}
+}
+@media (max-width:640px){
+  .regalia-grid{grid-template-columns:1fr;gap:24px}
+  .regalia-card--featured{grid-column:span 1}
+  .regalia-header,
+  .regalia-divider,
+  .regalia-grid-wrapper,
+  .regalia-footnote{
+    padding-left:20px;
+    padding-right:20px;
+  }
+  .regalia-header{padding-top:56px;padding-bottom:36px}
+  .regalia-footnote{
+    padding-bottom:56px;
+    padding-top:32px;
+    flex-direction:column;
+    gap:16px;
+  }
+  .footnote-line{
+    width:40px;
+    height:1px;
+    background:linear-gradient(to right, transparent, #C9A96E, transparent);
+  }
+  .regalia-grid-wrapper{padding-top:36px}
+  .regalia-modal-inner{
+    width:100%;
+    max-width:100%;
+    border-radius:20px 20px 0 0;
+  }
+  .regalia-modal-photo{
+    height:220px;
+    border-radius:20px 20px 0 0;
+  }
+  .regalia-modal-content{
+    padding:24px 20px 28px;
+  }
+  .regalia-modal-close{
+    top:12px;
+    right:12px;
+  }
+}
+
 /* ─── HERO BG SLIDER ─── */
 .hero-bg-slider{
   position:absolute;inset:0;z-index:0;
@@ -59,45 +625,6 @@ body{
 }
 .hbs-slide.active{opacity:0.12}
 
-/* ─── GALLERY ─── */
-.gallery-sec{
-  background:var(--bg2);
-  padding:120px 56px;
-}
-.gallery-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  grid-template-rows:auto;
-  gap:3px;
-  margin-top:64px;
-}
-.gallery-item{
-  position:relative;overflow:hidden;
-  aspect-ratio:4/3;
-  cursor:pointer;
-}
-.gallery-item.tall{
-  aspect-ratio:unset;
-  grid-row:span 2;
-}
-.gallery-item img{
-  width:100%;height:100%;
-  object-fit:cover;display:block;
-  transition:transform .6s ease;
-}
-.gallery-item:hover img{transform:scale(1.05)}
-.gallery-overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(to top,rgba(15,13,10,0.85) 0%,transparent 60%);
-  opacity:0;transition:opacity .3s ease;
-  display:flex;align-items:flex-end;padding:20px;
-}
-.gallery-item:hover .gallery-overlay{opacity:1}
-.gallery-overlay span{
-  font-size:12px;color:var(--text2);
-  letter-spacing:.06em;line-height:1.4;
-}
-
 .case-video {
   width: 100%;
   height: 100%;
@@ -114,12 +641,6 @@ body{
   justify-content: center;
   overflow: hidden;
   position: relative;
-}
-
-@media(max-width:768px){
-  .gallery-grid{grid-template-columns:1fr 1fr}
-  .gallery-item.tall{grid-row:span 1;aspect-ratio:4/3}
-  .gallery-sec{padding:72px 24px}
 }
 
 /* ─── ANIMATIONS ─── */
@@ -1028,19 +1549,21 @@ nav.scrolled{
 .q-step.active{display:block}
 
 /* ─── EXPERT ─── */
-.expert{padding:120px 56px;background:var(--bg)}
+.expert{padding:80px 56px;background:var(--bg)}
 .expert-grid{
   display:grid;grid-template-columns:1fr 2fr;gap:80px;
-  align-items:start;margin-top:64px;
+  align-items:start;
 }
 .expert-photo-wrap{position:relative}
 .expert-photo{
-  aspect-ratio:3/4;
-  background:var(--surface);border:1px solid var(--border);
-  display:flex;align-items:center;justify-content:center;
+  border:1px solid var(--border);
   overflow:hidden;
 }
-.expert-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.expert-photo img{
+  width:100%;
+  height:auto;
+  display:block;
+}
 .expert-photo-ph{text-align:center;opacity:.2}
 .expert-photo-ph div:first-child{font-size:64px}
 .expert-photo-ph div:last-child{font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin-top:10px}
@@ -4647,61 +5170,272 @@ body {
   </div>
 </section>
 
+<section class="regalia-section">
 
-<!-- PORTFOLIO GALLERY -->
-<section class="gallery-sec">
-  <div class="section-head anim">
-    <div class="eyebrow">
-      <div class="ey-line"></div>
-      <span class="ey-text">Портфолио</span>
-    </div>
-    <h2 class="sec-title">Реализованные <em>проекты</em></h2>
+  <div class="regalia-header">
+    <div class="section-eyebrow">Регалии и признание</div>
+    <h2 class="section-title">Профессиональное признание<br>и <em>доверие заказчиков</em></h2>
+    <p class="section-subtitle">Наши проекты получают признание профессионального сообщества, публикуются в интерьерных изданиях и реализуются для частных и корпоративных заказчиков.</p>
   </div>
-  <div class="gallery-grid anim d1">
-    <div class="gallery-item tall">
-      <img src="https://tweek123.github.io/shtuka/shtuka/images/examples/desktop/slider/1.webp" alt="Эклектичный люкс">
-      <div class="gallery-overlay"><span>Эклектичный люкс · Частный дом</span></div>
-    </div>
-    <div class="gallery-item">
-      <img src="https://tweek123.github.io/shtuka/shtuka/images/examples/desktop/slider/2.jpg" alt="Современный и тёмный">
-      <div class="gallery-overlay"><span>Современный и тёмный · Квартира</span></div>
-    </div>
-    <div class="gallery-item">
-      <img src="https://tweek123.github.io/shtuka/shtuka/images/examples/desktop/slider/3.jpg" alt="Традиционная классика">
-      <div class="gallery-overlay"><span>Традиционная классика · Загородный дом</span></div>
-    </div>
-    <div class="gallery-item">
-      <img src="https://tweek123.github.io/shtuka/shtuka/images/examples/desktop/slider/4.jpg" alt="Современный эко">
-      <div class="gallery-overlay"><span>Современный эко · Квартира</span></div>
-    </div>
-    <div class="gallery-item">
-      <img src="https://tweek123.github.io/shtuka/shtuka/images/examples/desktop/slider/5.jpg" alt="Премиум интерьер">
-      <div class="gallery-overlay"><span>Премиум · Частный дом</span></div>
-    </div>
-    <div class="gallery-item tall">
-      <img src="https://tweek123.github.io/shtuka/shtuka/images/projects/2.jpg" alt="Ванная с зимним садом">
-      <div class="gallery-overlay"><span>Ванная с зимним садом</span></div>
-    </div>
-    <div class="gallery-item">
-      <img src="https://tweek123.github.io/shtuka/shtuka/images/projects/1.jpg" alt="Холл частного дома">
-      <div class="gallery-overlay"><span>Холл частного дома · Роспись художника</span></div>
-    </div>
-    <div class="gallery-item">
-      <img src="https://tweek123.github.io/shtuka/shtuka/images/projects/8.jpg" alt="Кухня в коттедже">
-      <div class="gallery-overlay"><span>Кухня в коттедже · Шпонированные потолки</span></div>
+
+  <div class="regalia-divider"></div>
+
+  <div class="regalia-grid-wrapper">
+    <div class="regalia-grid">
+
+      <!-- Card 1 — Featured -->
+      <div class="regalia-card regalia-card--featured" onclick="openRegaliaModal('regalia-modal-1')">
+        <div class="card-tag">Корпоративные клиенты</div>
+        <div class="card-title">УГНТУ</div>
+        <div class="card-body">Кафетерий Уфимского Государственного Нефтяного Технического Университета — реализованный интерьер.</div>
+        <div class="card-logos">
+          <span class="card-logo-badge">ремонт - 2 мес.</span>
+        </div>
+        <div class="card-view-hint">Смотреть проект</div>
+      </div>
+
+      <!-- Card 1 — Featured -->
+      <div class="regalia-card regalia-card--featured" onclick="openRegaliaModal('regalia-modal-2')">
+        <div class="card-tag">Корпоративные клиенты</div>
+        <div class="card-title">ГАЗПРОМ</div>
+        <div class="card-body">Опен-спейс офис, 2 кабинета администрации, переговорная, радиорубка и фойе.</div>
+        <div class="card-logos">
+          <span class="card-logo-badge">Площадь 308 м2</span>
+        </div>
+        <div class="card-view-hint">Смотреть проект</div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="regalia-card" onclick="openRegaliaModal('regalia-modal-3')">
+        <div class="card-tag">Выставка</div>
+        <div class="card-title">Российские дни дизайна</div>
+        <div class="card-body">Участие в крупнейшей профессиональной выставке архитектуры и дизайна.</div>
+        <div class="card-years">
+          <span class="card-year">2023</span>
+          <span class="card-year">2024</span>
+          <span class="card-year">2025</span>
+        </div>
+        <div class="card-view-hint">Смотреть проект</div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="regalia-card" onclick="openRegaliaModal('regalia-modal-4')">
+        <div class="card-tag">Пресса</div>
+        <div class="card-title">Журнал «Собака»</div>
+        <div class="card-body">Публикация проекта в интерьерном и lifestyle-издании.</div>
+        <div class="card-view-hint">Смотреть публикацию</div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="regalia-card" onclick="openRegaliaModal('regalia-modal-5')">
+        <div class="card-tag">Конкурс</div>
+        <div class="card-title">Призовое место</div>
+        <div class="card-body">Конкурс дизайна интерьера от 1ТРЕСТ и ВДНХ-Дом на выставке УФА-ЭКСПО.</div>
+        <div class="card-view-hint">Смотреть проект</div>
+      </div>
+
     </div>
   </div>
+
+  <div class="regalia-footnote">
+    <div class="footnote-line"></div>
+    <p class="footnote-text">Для нас главное — не количество наград, а результат: интерьер, который полностью реализован и продуман до деталей.</p>
+  </div>
+
 </section>
+
+<!-- ── MODAL 1 — УГНТУ ── -->
+<div class="regalia-modal-overlay" id="regalia-modal-1" onclick="handleRegaliaOverlayClick(event, 'regalia-modal-1')">
+  <div class="regalia-modal-inner">
+    <div class="regalia-modal-photo">
+      <picture>
+        <!-- Мобильная версия (до 700px) -->
+        <source media="(max-width: 700px)" srcset="images/mREG1.jpg">
+        <!-- Десктоп версия -->
+        <img src="images/REG1.jpg" alt="УГНТУ проект">
+      </picture>
+    </div>
+    <div class="regalia-modal-content">
+      <button class="regalia-modal-close" onclick="closeRegaliaModal('regalia-modal-1')">
+        <svg viewBox="0 0 14 14" fill="none"><line x1="1" y1="1" x2="13" y2="13"/><line x1="13" y1="1" x2="1" y2="13"/></svg>
+      </button>
+      <div class="regalia-modal-eyebrow">Корпоративный проект</div>
+      <div class="regalia-modal-title">Кафетерий и переговорная УГНТУ</div>
+      <div class="regalia-modal-meta">
+        <span class="regalia-modal-meta-item">Срок реализации: 2 месяца</span>
+      </div>
+      <div class="regalia-modal-divider"></div>
+      <p class="regalia-modal-description">Для Уфимского Государственного Нефтяного Технического Университета мы реализовали интерьер кафетерия. Главная задача - создать современное пространство, отражающее специфику нефтяного университета.</p>
+      <div class="regalia-modal-list-title">Что мы сделали</div>
+      <ul class="regalia-modal-list">
+        <li>Разработали интерьер в сжатые сроки летних каникул</li>
+        <li>Уникальная идея — мебель из баррелей (нефтяных бочек), специально перекрашенных и адаптированных</li>
+        <li>Изготовили барные стулья с мягкими сиденьями и встроенные умывальники из бочек</li>
+        <li>Полностью сопровождали реализацию от идеи до контроля всех работ</li>
+      </ul>
+      <div class="regalia-modal-result">
+        <div class="regalia-modal-result-label">Результат</div>
+        <div class="regalia-modal-result-text">Яркий кафетерий отражает тематику нефтяной отрасли, много посадочных мест и современный стиль</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── MODAL 2 — ГАЗПРОМ ── -->
+<div class="regalia-modal-overlay" id="regalia-modal-2" onclick="handleRegaliaOverlayClick(event, 'regalia-modal-2')">
+  <div class="regalia-modal-inner">
+    <div class="regalia-modal-photo">
+      <picture>
+        <!-- Мобильная версия (до 700px) -->
+        <source media="(max-width: 700px)" srcset="images/mREG5.jpg">
+        <!-- Десктоп версия -->
+        <img src="images/REG5.jpg" alt="ГАЗПРОМ офис">
+      </picture>
+    </div>
+    <div class="regalia-modal-content">
+      <button class="regalia-modal-close" onclick="closeRegaliaModal('regalia-modal-2')">
+        <svg viewBox="0 0 14 14" fill="none"><line x1="1" y1="1" x2="13" y2="13"/><line x1="13" y1="1" x2="1" y2="13"/></svg>
+      </button>
+      <div class="regalia-modal-eyebrow">Корпоративный проект</div>
+      <div class="regalia-modal-title">Офис ГАЗПРОМ НЕФТЬ</div>
+      <div class="regalia-modal-meta">
+        <span class="regalia-modal-meta-item">Площадь : 308 м2</span>
+      </div>
+      <div class="regalia-modal-divider"></div>
+      <p class="regalia-modal-description">Мы разработали интерьер офисного пространства для компании ГАЗПРОМ НЕФТЬ общей площадью 308 м².</p>
+      <p class="regalia-modal-description">
+        В проект вошли: open-space рабочая зона, переговорные комнаты, аудитории, фойе, кабинеты администрации и радиорубка.
+        Главной задачей было создать современный и презентабельный офис в фирменной стилистике компании — с использованием контрастной чёрно-белой палитры — и при этом оптимизировать интерьерные решения под бюджет реализации.
+      </p>
+      <div class="regalia-modal-list-title">Что мы сделали</div>
+      <ul class="regalia-modal-list">
+        <li>Разработали концепцию интерьера и адаптировали её под бюджет проекта</li>
+        <li>Спроектировали пространство с необходимым количеством рабочих мест и удобной логикой перемещения сотрудников</li>
+        <li>Предложили решения по отделке больших площадей потолка и стен, которые позволили избежать перерасхода бюджета</li>
+        <li>Продумали проект так, чтобы его можно было реализовать силами обычных подрядчиков и без сложных технических решений</li>
+        <li>Подготовили смету проекта, включая мебель и отделочные материалы</li>
+        <li>Проект был полностью согласован и утверждён заказчиком.</li>
+      </ul>
+      <div class="regalia-modal-result">
+        <div class="regalia-modal-result-label">Результат</div>
+        <div class="regalia-modal-result-text">Функциональное пространство, в котором дизайн отражает тематику нефтяной отрасли и остаётся современным и презентабельным.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── MODAL 3 — РДД ── -->
+<div class="regalia-modal-overlay" id="regalia-modal-3" onclick="handleRegaliaOverlayClick(event, 'regalia-modal-3')">
+  <div class="regalia-modal-inner">
+    <div class="regalia-modal-photo">
+      <picture>
+        <!-- Мобильная версия (до 700px) -->
+        <source media="(max-width: 700px)" srcset="images/mREG2.jpg">
+        <!-- Десктоп версия -->
+        <img src="images/REG2.jpg" alt="Российские дни дизайна">
+      </picture>
+    </div>
+    <div class="regalia-modal-content">
+      <button class="regalia-modal-close" onclick="closeRegaliaModal('regalia-modal-3')">
+        <svg viewBox="0 0 14 14" fill="none"><line x1="1" y1="1" x2="13" y2="13"/><line x1="13" y1="1" x2="1" y2="13"/></svg>
+      </button>
+      <div class="regalia-modal-eyebrow">Выставка</div>
+      <div class="regalia-modal-title">Российские дни дизайна</div>
+      <div class="regalia-modal-meta">
+        <span class="regalia-modal-meta-item">15 м²</span>
+        <span class="regalia-modal-meta-item">2 недели</span>
+        <span class="regalia-modal-meta-item">2023 · 2024 · 2025</span>
+      </div>
+      <div class="regalia-modal-divider"></div>
+      <p class="regalia-modal-description">Мы разработали концепцию выставочного стенда для крупнейшей интерьерной выставки «Российские дни дизайна». Каждый год стенд имеет свою тему — «Сновидения», «Африка» — задача создать яркое пространство, передающее атмосферу.</p>
+      <div class="regalia-modal-list-title">Что мы сделали</div>
+      <ul class="regalia-modal-list">
+        <li>Разработали оригинальную концепцию и сценарий пространства</li>
+        <li>Подготовили все схемы изготовления и монтажа конструкций</li>
+        <li>Выполнили авторскую художественную роспись</li>
+        <li>Спроектировали авторскую мебель: диваны, кресла и декоративные элементы</li>
+      </ul>
+      <div class="regalia-modal-result">
+        <div class="regalia-modal-result-label">Результат</div>
+        <div class="regalia-modal-result-text">Стенд стал заметной частью выставки и привлёк большое внимание благодаря необычной концепции и авторскому исполнению.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── MODAL 4 — Собака ── -->
+<div class="regalia-modal-overlay" id="regalia-modal-4" onclick="handleRegaliaOverlayClick(event, 'regalia-modal-4')">
+  <div class="regalia-modal-inner">
+    <div class="regalia-modal-photo">
+      <picture>
+        <!-- Мобильная версия (до 700px) -->
+        <source media="(max-width: 700px)" srcset="images/mREG3.jpg">
+        <!-- Десктоп версия -->
+        <img src="images/REG3.jpeg" alt="Журнал Собака">
+      </picture>
+    </div>
+    <div class="regalia-modal-content">
+      <button class="regalia-modal-close" onclick="closeRegaliaModal('regalia-modal-4')">
+        <svg viewBox="0 0 14 14" fill="none"><line x1="1" y1="1" x2="13" y2="13"/><line x1="13" y1="1" x2="1" y2="13"/></svg>
+      </button>
+      <div class="regalia-modal-eyebrow">Пресса</div>
+      <div class="regalia-modal-title">Журнал «Собака»</div>
+      <div class="regalia-modal-meta">
+        <span class="regalia-modal-meta-item">Интерьерный и lifestyle-журнал</span>
+      </div>
+      <div class="regalia-modal-divider"></div>
+      <p class="regalia-modal-description">Наш проект был опубликован в одном из ведущих интерьерных и lifestyle-изданий — журнале «Собака». Публикация в профессиональных медиа подтверждает уровень наших работ и их соответствие актуальным тенденциям в дизайне интерьера.</p>
+      <div class="regalia-modal-list-title">О публикации</div>
+      <ul class="regalia-modal-list">
+        <li>Редакционная статья о студии и подходе к проектированию</li>
+      </ul>
+      <div class="regalia-modal-result">
+        <div class="regalia-modal-result-label">Признание</div>
+        <div class="regalia-modal-result-text">Публикация в ведущем lifestyle-издании — подтверждение высокого уровня наших проектов в глазах профессионального сообщества.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── MODAL 5 — Конкурс ── -->
+<div class="regalia-modal-overlay" id="regalia-modal-5" onclick="handleRegaliaOverlayClick(event, 'regalia-modal-5')">
+  <div class="regalia-modal-inner">
+    <div class="regalia-modal-photo">
+      <picture>
+        <!-- Мобильная версия (до 700px) -->
+        <source media="(max-width: 700px)" srcset="images/mREG4.jpg">
+        <!-- Десктоп версия -->
+        <img src="images/REG4.jpg" alt="Конкурс">
+      </picture>
+    </div>
+    <div class="regalia-modal-content">
+      <button class="regalia-modal-close" onclick="closeRegaliaModal('regalia-modal-5')">
+        <svg viewBox="0 0 14 14" fill="none"><line x1="1" y1="1" x2="13" y2="13"/><line x1="13" y1="1" x2="1" y2="13"/></svg>
+      </button>
+      <div class="regalia-modal-eyebrow">Конкурс · 2 место</div>
+      <div class="regalia-modal-title">Лучший дизайн-проект<br>квартиры в ЖК «Соты»</div>
+      <div class="regalia-modal-meta">
+        <span class="regalia-modal-meta-item">1 ТРЕСТ · УФА ЭКСПО</span>
+        <span class="regalia-modal-meta-item">ВДНХ-Дом</span>
+      </div>
+      <div class="regalia-modal-divider"></div>
+      <p class="regalia-modal-description">В рамках конкурса от 1 ТРЕСТ и УФА ЭКСПО мы разработали концепцию интерьера для однокомнатной квартиры визажиста. Главной задачей было создать пространство, одновременно комфортное для жизни и удобное для работы с клиентами.</p>
+      <div class="regalia-modal-list-title">Что мы сделали</div>
+      <ul class="regalia-modal-list">
+        <li>Разработали уникальную open-space планировку</li>
+        <li>Объединили жилую зону, кухню и бьюти-пространство</li>
+        <li>Создали интерьер, в котором квартира превращается в стильную студию для работы</li>
+      </ul>
+      <div class="regalia-modal-result">
+        <div class="regalia-modal-result-label">Результат</div>
+        <div class="regalia-modal-result-text">2 место по выбору экспертного жюри — за нестандартный подход к планировке и функциональности пространства.</div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- EXPERT -->
 <section class="expert">
-  <div class="section-head anim">
-    <div class="eyebrow">
-      <div class="ey-line"></div>
-      <span class="ey-text">Дизайнер</span>
-    </div>
-    <h2 class="sec-title">Личный подход<br>к <em>каждому проекту</em></h2>
-  </div>
   <div class="expert-grid">
     <div class="expert-photo-wrap anim">
       <div class="expert-photo">
@@ -5230,6 +5964,38 @@ document.querySelectorAll('[data-slider]').forEach(slider => {
     });
   }, 80);
 })();
+
+/* ── REGALIA MODALS ── */
+function openRegaliaModal(id) {
+  const modal = document.getElementById(id);
+  if (!modal) return;
+  modal.classList.add('is-open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeRegaliaModal(id) {
+  const modal = document.getElementById(id);
+  if (!modal) return;
+  modal.classList.remove('is-open');
+  document.body.style.overflow = '';
+}
+
+function handleRegaliaOverlayClick(e, id) {
+  const modal = document.getElementById(id);
+  if (!modal) return;
+  if (e.target === modal) {
+    closeRegaliaModal(id);
+  }
+}
+
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.regalia-modal-overlay.is-open').forEach(function (m) {
+      m.classList.remove('is-open');
+    });
+    document.body.style.overflow = '';
+  }
+});
 </script>
 </body>
 </html>
