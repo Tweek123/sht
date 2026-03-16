@@ -293,6 +293,30 @@ body{
   background: linear-gradient(to right, #C9A96E, #E8D5B0, transparent);
   border-radius: 8px 8px 0 0;
 }
+
+/* Quiz modal ~90% of viewport */
+#quiz-modal.regalia-modal-overlay {
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+#quiz-modal .regalia-modal-inner {
+  width: 90vw;
+  height: 90vh;
+  border-radius: 8px;
+  grid-template-columns: 1fr;
+  overflow: hidden;
+}
+
+#quiz-modal .regalia-modal-inner::before {
+  border-radius: 8px 8px 0 0;
+}
+
+#quiz-modal .regalia-modal-body {
+  height: 100%;
+  overflow: hidden;
+}
 .regalia-modal-photo {
   position: relative;
   overflow: hidden;
@@ -2133,32 +2157,9 @@ body {
 
 /* Кликабельный stat-item */
 .stat-item {
-  cursor: pointer;
   transition: background 0.25s ease;
   position: relative;
 }
-
-.stat-item:hover {
-  background: rgba(201,169,110,0.1);
-}
-
-.stat-hint {
-  font-size: 9px;
-  font-weight: 400;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(15,13,10,0.4);
-  margin-top: 6px;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  opacity: 0;
-  transition: opacity 0.25s ease;
-}
-
-.stat-item:hover .stat-hint { opacity: 1; }
-
-.stat-hint::before { content: '→ '; }
 
 @media (max-width: 768px) {
   .stat-modal-overlay { padding: 0; align-items: flex-end; }
@@ -3712,7 +3713,7 @@ body {
   <div class="nav-right">
     <a class="nav-link" href="#process">Процесс</a>
     <a class="nav-link" href="#cases">Проекты</a>
-    <button class="nav-btn" onclick="go('#quiz')">Узнать риски проекта</button>
+    <button class="nav-btn" onclick="openQuizModal()">Узнать риски проекта</button>
   </div>
 </nav>
 
@@ -3794,10 +3795,10 @@ body {
       <div class="offer-list">
         <div class="offer-item">Покажем реальные риски, диапазон бюджета и 5 решений, которые экономят миллионы ещё до начала работ.</div>
       </div>
-      <button class="btn-main" onclick="go('#quiz')">
+      <a class="btn-main" href="#" onclick="openQuizModal(); return false;">
         Получить персональный аудит ремонта
         <span class="btn-arrow">→</span>
-      </button>
+      </a>
       <div class="offer-note">Бесплатно · 2 минуты · без обязательств</div>
     </div>
   </div>
@@ -3921,25 +3922,21 @@ body {
 
 <!-- STAT STRIP -->
 <div class="stat-strip">
-  <div class="stat-item anim" onclick="openSModal('smodal-1')">
+  <div class="stat-item anim">
     <div class="stat-num">15 ЛЕТ</div>
     <div class="stat-label">опыта в интерьерах</div>
-    <div class="stat-hint">Подробнее</div>
   </div>
-  <div class="stat-item anim d1" onclick="openSModal('smodal-2')">
+  <div class="stat-item anim d1">
     <div class="stat-num">ДОМ 530 м2</div>
     <div class="stat-label">самый крупный дом в Уфе</div>
-    <div class="stat-hint">Подробнее</div>
   </div>
-  <div class="stat-item anim d2" onclick="openSModal('smodal-3')">
+  <div class="stat-item anim d2">
     <div class="stat-num">72 млн. р.</div>
     <div class="stat-label">Самый большой бюджет интерьера</div>
-    <div class="stat-hint">Подробнее</div>
   </div>
-  <div class="stat-item anim d3" onclick="openSModal('smodal-4')">
+  <div class="stat-item anim d3">
     <div class="stat-num">98% клиентов</div>
     <div class="stat-label">Приходят по рекомендации</div>
-    <div class="stat-hint">Подробнее</div>
   </div>
 </div>
 
@@ -3960,7 +3957,7 @@ body {
           <source src="public/ufainteriordesign.mov" type="video/quicktime">
           Ваш браузер не поддерживает видео.
         </video>
-        <button class="sol-video-btn" onclick="go('#quiz')">Получить персональный аудит</button>
+        <button class="sol-video-btn" onclick="openQuizModal()">Получить персональный аудит</button>
       </div>
       <p class="sol-lead">Каждый этап зафиксирован договором. Вы знаете, что происходит на стройке, кто принимает решения и почему. Никаких сюрпризов.</p>
     </div>
@@ -4020,7 +4017,7 @@ body {
     </div>
     <p class="mid-cta-sub">Большинство клиентов узнают о дорогих ошибках, когда деньги уже потрачены. Аудит показывает риски до начала работ — бесплатно, без обязательств.</p>
   </div>
-  <button class="mid-cta-btn" onclick="go('#quiz')">Узнать риски моего проекта →</button>
+  <a class="mid-cta-btn" href="#" onclick="openQuizModal(); return false;">Узнать риски моего проекта →</a>
 </div>
 
 <!-- CASES -->
@@ -4040,14 +4037,14 @@ body {
         </video>
       </div>
       <div class="case-body">
-        <span class="case-tag">Квартира · Уфа · 2024</span>
-        <div class="case-title">ЖК «Высота», квартира 142 м²</div>
+        <div class="stat-modal-eyebrow">Дом · Уфа · 2024</div>
+        <h2 class="stat-modal-title">Реконструкция дома, Чесноковка, 351 м²</h2>
         <div class="case-stats">
-          <div class="case-stat"><span class="case-stat-l">Площадь</span><span class="case-stat-v">142 м²</span></div>
-          <div class="case-stat"><span class="case-stat-l">Бюджет</span><span class="case-stat-v">9,6 млн ₽</span></div>
-          <div class="case-stat"><span class="case-stat-l">Срок</span><span class="case-stat-v">8 мес.</span></div>
+          <div class="case-stat"><span class="case-stat-l">Площадь</span><span class="case-stat-v">351 м²</span></div>
+          <div class="case-stat"><span class="case-stat-l">Бюджет</span><span class="case-stat-v">39 млн ₽ </span></div>
+          <div class="case-stat"><span class="case-stat-l">Срок</span><span class="case-stat-v">11 месяцев</span></div>
         </div>
-        <div class="case-quote">Заселились в срок. Итоговый бюджет совпал с согласованным — ни рубля сверху</div>
+        <div class="case-quote">Реконструировалли недострой и сделали дом со вторым светом и панорамным остеклением</div>
       </div>
     </div>
     <div class="case-card anim d2" onclick="openSModal('cmodal-2')">
@@ -4057,14 +4054,14 @@ body {
         </video>
       </div>
       <div class="case-body">
-        <span class="case-tag">Загородный дом · Уфимский р-н · 2023</span>
-        <div class="case-title">Дом 240 м² в пос. «Берёзки»</div>
+        <span class="case-tag">Загородный дом · Уфимский р-н · 2026</span>
+        <div class="case-title">Дом 384 м² в пос.  «Титул»</div>
         <div class="case-stats">
-          <div class="case-stat"><span class="case-stat-l">Площадь</span><span class="case-stat-v">240 м²</span></div>
-          <div class="case-stat"><span class="case-stat-l">Бюджет</span><span class="case-stat-v">18,2 млн ₽</span></div>
-          <div class="case-stat"><span class="case-stat-l">Срок</span><span class="case-stat-v">11 мес.</span></div>
+          <div class="case-stat"><span class="case-stat-l">Площадь</span><span class="case-stat-v">381 м²</span></div>
+          <div class="case-stat"><span class="case-stat-l">Бюджет</span><span class="case-stat-v">71 млн ₽</span></div>
+          <div class="case-stat"><span class="case-stat-l">Срок</span><span class="case-stat-v">14 мес.</span></div>
         </div>
-        <div class="case-quote">Клиент находился в командировках — мы вели проект без его постоянного участия</div>
+        <div class="case-quote">Клиент находился в командировках — студия ведет ремонт без его присутствия</div>
       </div>
     </div>
     <div class="case-card anim d3" onclick="openSModal('cmodal-3')">
@@ -4074,14 +4071,14 @@ body {
         </video>
       </div>
       <div class="case-body">
-        <span class="case-tag">Пентхаус · Уфа · 2024</span>
-        <div class="case-title">Пентхаус 190 м² в центре города</div>
+        <span class="case-tag">Квартира · Севастополь · 2025</span>
+        <div class="case-title">Квартира 42 м² в курортной зоне</div>
         <div class="case-stats">
-          <div class="case-stat"><span class="case-stat-l">Площадь</span><span class="case-stat-v">190 м²</span></div>
-          <div class="case-stat"><span class="case-stat-l">Бюджет</span><span class="case-stat-v">24 млн ₽</span></div>
-          <div class="case-stat"><span class="case-stat-l">Срок</span><span class="case-stat-v">13 мес.</span></div>
+          <div class="case-stat"><span class="case-stat-l">Площадь</span><span class="case-stat-v">42 м²</span></div>
+          <div class="case-stat"><span class="case-stat-l">Бюджет</span><span class="case-stat-v">3,5 млн ₽</span></div>
+          <div class="case-stat"><span class="case-stat-l">Срок</span><span class="case-stat-v">6 мес.</span></div>
         </div>
-        <div class="case-quote">Интерьер уровня 5★ — без показной роскоши. Именно то, что и хотели</div>
+        <div class="case-quote">Инвест ремонт в сжатом бюджете. Удаленный проект с комплетацией</div>
       </div>
     </div>
     <div class="case-card anim d4" onclick="openSModal('cmodal-4')">
@@ -4091,14 +4088,14 @@ body {
         </video>
       </div>
       <div class="case-body">
-        <span class="case-tag">Загородный дом · Уфа · 2025</span>
-        <div class="case-title">Дом 530 м² · полный цикл проекта</div>
+        <span class="case-tag">Дом · Ленинградская обл. · 2024</span>
+        <div class="case-title">Дом 315 м² · пос. премиум-класса «Ламбери»</div>
         <div class="case-stats">
-          <div class="case-stat"><span class="case-stat-l">Площадь</span><span class="case-stat-v">530 м²</span></div>
-          <div class="case-stat"><span class="case-stat-l">Бюджет</span><span class="case-stat-v">72 млн ₽</span></div>
-          <div class="case-stat"><span class="case-stat-l">Срок</span><span class="case-stat-v">14 мес.</span></div>
+          <div class="case-stat"><span class="case-stat-l">Площадь</span><span class="case-stat-v">315 м²</span></div>
+          <div class="case-stat"><span class="case-stat-l">Бюджет</span><span class="case-stat-v">48,5 млн ₽</span></div>
+          <div class="case-stat"><span class="case-stat-l">Срок</span><span class="case-stat-v">16 мес.</span></div>
         </div>
-        <div class="case-quote">Крупный объект реализован в запланированном бюджете — от эскиза до финальной комплектации</div>
+        <div class="case-quote">Удаленный проект и комплектация</div>
       </div>
     </div>
   </div>
@@ -4375,7 +4372,7 @@ body {
   <div class="cta-block">
     <div class="cta-divider"></div>
     <h3 class="cta-title">Хотите такой же результат<br>в <em>своём интерьере?</em></h3>
-    <a href="#" class="cta-button">
+    <a href="#" class="cta-button" onclick="openQuizModal(); return false;">
       Получить аудит планировки
       <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
@@ -4480,7 +4477,7 @@ body {
         <p class="cta-note">Подскажем оптимальную планировку, бюджет ремонта и сроки реализации.</p>
       </div>
       <div class="cta-right">
-        <a href="#" class="cta-button">
+        <a href="#" class="cta-button" onclick="openQuizModal(); return false;">
           Обсудить свой проект
           <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
@@ -5014,11 +5011,11 @@ body {
         <p class="cta-note">Расскажите о себе — и мы подберём стилистическое направление, которое станет именно вашим.</p>
       </div>
       <div class="cta-right">
-        <a href="#quiz" class="cta-btn-primary">
+        <a href="#quiz" class="cta-btn-primary" onclick="openQuizModal(); return false;">
           Обсудить будущий интерьер
           <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
-        <a href="#quiz" class="cta-btn-secondary">
+        <a href="#quiz" class="cta-btn-secondary" onclick="openQuizModal(); return false;">
           Получить концепцию интерьера
         </a>
       </div>
@@ -5038,135 +5035,11 @@ body {
     <p class="sec-sub">Получите аудит будущего ремонта бесплатно</p>
   </div>
 
-  <div class="quiz-box anim d1">
-    <div class="quiz-top">
-      <span class="quiz-step-label" id="qStepLabel">Шаг 1 из 5</span>
-      <div class="quiz-prog" id="qProg">
-        <div class="prog-dot active"></div>
-        <div class="prog-dot"></div>
-        <div class="prog-dot"></div>
-        <div class="prog-dot"></div>
-        <div class="prog-dot"></div>
-      </div>
-    </div>
-    <div class="quiz-body">
-
-      <!-- Step 1 -->
-      <div class="q-step active" id="qs1">
-        <div class="q-title">Какой у вас объект?</div>
-        <div class="q-sub">Тип объекта влияет на риски и оптимальную стратегию</div>
-        <div class="q-opts">
-          <div class="q-opt" onclick="pickOpt(this)"><span class="q-opt-i">🏢</span>Квартира в новостройке</div>
-          <div class="q-opt" onclick="pickOpt(this)"><span class="q-opt-i">🏠</span>Квартира во вторичке</div>
-          <div class="q-opt" onclick="pickOpt(this)"><span class="q-opt-i">🏡</span>Загородный дом</div>
-          <div class="q-opt" onclick="pickOpt(this)"><span class="q-opt-i">🔝</span>Пентхаус / таунхаус</div>
-        </div>
-        <div class="q-actions">
-          <button class="btn-next" onclick="qNext(2,1)">Далее →</button>
-        </div>
-      </div>
-
-      <!-- Step 2 -->
-      <div class="q-step" id="qs2">
-        <div class="q-title">Площадь <em>объекта?</em></div>
-        <div class="q-sub">Площадь определяет масштаб рисков и диапазон бюджета</div>
-        <div class="q-opts">
-          <div class="q-opt" onclick="pickOpt(this)"><span class="q-opt-i">📐</span>До 80 м²</div>
-          <div class="q-opt" onclick="pickOpt(this)"><span class="q-opt-i">📏</span>80–130 м²</div>
-          <div class="q-opt" onclick="pickOpt(this)"><span class="q-opt-i">🏛</span>130–200 м²</div>
-          <div class="q-opt" onclick="pickOpt(this)"><span class="q-opt-i">🌟</span>Более 200 м²</div>
-        </div>
-        <div class="q-actions">
-          <button class="btn-next" onclick="qNext(3,2)">Далее →</button>
-          <button class="btn-back" onclick="qNext(1,2)">← Назад</button>
-        </div>
-      </div>
-
-      <!-- Step 3 -->
-      <div class="q-step" id="qs3">
-        <div class="q-title">На какой <em>стадии</em> объект?</div>
-        <div class="q-sub">От этого зависит, с какого этапа мы начнём</div>
-        <div class="q-opts">
-          <div class="q-opt" onclick="pickOpt(this)"><span class="q-opt-i">🔑</span>Только получил ключи</div>
-          <div class="q-opt" onclick="pickOpt(this)"><span class="q-opt-i">🧱</span>Черновой ремонт начат</div>
-          <div class="q-opt" onclick="pickOpt(this)"><span class="q-opt-i">🎨</span>Нужен редизайн</div>
-          <div class="q-opt" onclick="pickOpt(this)"><span class="q-opt-i">📋</span>Пока только планирую</div>
-        </div>
-        <div class="q-actions">
-          <button class="btn-next" onclick="qNext(4,3)">Далее →</button>
-          <button class="btn-back" onclick="qNext(2,3)">← Назад</button>
-        </div>
-      </div>
-
-      <!-- Step 4 -->
-      <div class="q-step" id="qs4">
-        <div class="q-title">Что беспокоит <em>сильнее всего?</em></div>
-        <div class="q-sub">Ответ определит, на чём именно сосредоточится аудит</div>
-        <div class="q-opts">
-          <div class="q-opt" onclick="pickOpt(this)"><span class="q-opt-i">💰</span>Выйду за бюджет</div>
-          <div class="q-opt" onclick="pickOpt(this)"><span class="q-opt-i">⏰</span>Затянутые сроки</div>
-          <div class="q-opt" onclick="pickOpt(this)"><span class="q-opt-i">🛠</span>Плохие подрядчики</div>
-          <div class="q-opt" onclick="pickOpt(this)"><span class="q-opt-i">🎯</span>Результат не понравится</div>
-        </div>
-        <div class="q-actions">
-          <button class="btn-next" onclick="qNext(5,4)">Далее →</button>
-          <button class="btn-back" onclick="qNext(3,4)">← Назад</button>
-        </div>
-      </div>
-
-      <!-- Step 5 — Contact -->
-      <div class="q-step" id="qs5">
-        <div class="q-title">Куда прислать <em>ваш аудит?</em></div>
-        <div class="q-sub">Подготовим в течение 24 часов — лично под ваш объект</div>
-
-        <div class="wyg">
-          <div class="wyg-title">Вы получите бесплатно:</div>
-          <div class="wyg-list">
-            <div class="wyg-item">Предварительную стратегию именно вашего проекта</div>
-            <div class="wyg-item">Реальный диапазон бюджета под ваш тип объекта</div>
-            <div class="wyg-item">5 критичных ошибок для вашей ситуации</div>
-            <div class="wyg-item">3 персональные рекомендации от дизайнера</div>
-          </div>
-        </div>
-
-        <div class="q-form">
-          <input class="q-input" type="text" placeholder="Ваше имя" id="fName">
-          <input class="q-input" type="tel" placeholder="Телефон (WhatsApp или звонок)" id="fPhone">
-        </div>
-        <div class="q-actions">
-          <button class="btn-next" style="flex:1;justify-content:center" onclick="submitQuiz()">Узнать риски моего проекта →</button>
-          <button class="btn-back" onclick="qNext(4,5)">← Назад</button>
-        </div>
-        <div style="margin-top:14px;font-size:11px;color:var(--text3);text-align:center;line-height:1.6">
-          Нажимая кнопку, вы соглашаетесь с обработкой данных.<br>Мы не звоним без договорённости и не передаём данные третьим лицам.
-        </div>
-      </div>
-
-      <!-- Thank You -->
-      <div class="q-step" id="qsTy">
-        <div class="ty">
-          <span class="ty-icon">✦</span>
-          <div class="ty-title">Заявка <em>принята</em></div>
-          <div class="ty-text">
-            Свяжемся в течение 2 часов в рабочее время. Выберите удобное время для звонка:
-          </div>
-          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:24px 0">
-            <div class="q-opt" onclick="pickTime(this)" style="justify-content:center;font-size:12px;padding:12px 8px">10:00–12:00</div>
-            <div class="q-opt" onclick="pickTime(this)" style="justify-content:center;font-size:12px;padding:12px 8px">12:00–15:00</div>
-            <div class="q-opt" onclick="pickTime(this)" style="justify-content:center;font-size:12px;padding:12px 8px">15:00–18:00</div>
-            <div class="q-opt" onclick="pickTime(this)" style="justify-content:center;font-size:12px;padding:12px 8px">18:00–20:00</div>
-            <div class="q-opt" onclick="pickTime(this)" style="justify-content:center;font-size:12px;padding:12px 8px;grid-column:span 2">Любое время — перезвоните сами</div>
-          </div>
-          <div class="ty-box">
-            <div class="ty-box-title">Что будет дальше</div>
-            <div class="ty-box-text">
-              Короткий звонок 15–20 минут. Разберём риски вашего объекта, покажем реальный бюджет и план. Без продажи, без давления — только честный разговор о вашем проекте.
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
+  <div class="quiz-box anim d1" style="display:flex;justify-content:center;align-items:center;padding:32px 40px;">
+    <a href="#" class="btn-main"
+       style="text-decoration:none;display:inline-flex;align-items:center;gap:10px;" onclick="openQuizModal(); return false;">
+       Получить персональный аудит ремонта →
+    </a>
   </div>
 </section>
 
@@ -5488,9 +5361,9 @@ body {
   <p class="final-sub anim d2">
     Узнайте реальные риски и бюджет до начала работ. Бесплатно, без давления, без обязательств.
   </p>
-  <button class="final-btn anim d3" onclick="go('#quiz')">
+  <a class="final-btn anim d3" href="#" onclick="openQuizModal(); return false;">
     Узнать реальные риски моего проекта →
-  </button>
+  </a>
   <div class="final-note anim d4" style="margin-top:24px;font-size:13px;color:var(--text3)">
     Большинство наших клиентов приходят по рекомендации — поэтому для нас важен результат, а не количество проектов.
   </div>
@@ -5505,6 +5378,22 @@ body {
   <div class="footer-copy">© 2024 · Все права защищены</div>
   <div class="footer-city">📍 Уфа, Республика Башкортостан</div>
 </footer>
+
+<!-- ── QUIZ MODAL (Marquiz iframe) ── -->
+<div class="regalia-modal-overlay" id="quiz-modal" onclick="handleRegaliaOverlayClick(event, 'quiz-modal')">
+  <div class="regalia-modal-inner">
+    <button class="regalia-modal-close" onclick="closeRegaliaModal('quiz-modal')" aria-label="Закрыть квиз">
+      <svg viewBox="0 0 24 24" fill="none">
+        <line x1="18" y1="6" x2="6" y2="18" stroke-linecap="round" />
+        <line x1="6" y1="6" x2="18" y2="18" stroke-linecap="round" />
+      </svg>
+    </button>
+    <div class="regalia-modal-body">
+      <iframe src="https://mrqz.me/1shtuka?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio&amp;fbclid=PAZnRzaAQlHrZleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAafvE7ZPPZGIvcM5WAkYOeTZtV_7g7O8PM5FVyu7PylXlaCdqVOJCungXN58yQ_aem_x4VNkoIOrCcnDJg-ZuOPyQ"
+              style="border:0;width:100%;height:100%;min-height:400px;" loading="lazy"></iframe>
+    </div>
+  </div>
+</div>
 
 <!-- ── STAT MODAL 1: 15 ЛЕТ ── -->
 <div class="stat-modal-overlay" id="smodal-1" onclick="closeSModalOnOverlay(event,'smodal-1')">
@@ -5986,6 +5875,11 @@ function handleRegaliaOverlayClick(e, id) {
   if (e.target === modal) {
     closeRegaliaModal(id);
   }
+}
+
+// Quiz modal (Marquiz iframe)
+function openQuizModal() {
+  openRegaliaModal('quiz-modal');
 }
 
 document.addEventListener('keydown', function (e) {
