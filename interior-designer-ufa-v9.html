@@ -695,15 +695,24 @@ nav.scrolled{
   border-color:var(--border);
 }
 .logo{
-  font-family:'Cormorant Garamond',serif;
-  font-size:20px;font-weight:700;
-  color:var(--text);letter-spacing:.02em;
+  font-family:'Jost',sans-serif;
+  font-size:18px;
+  font-weight:800;
+  color:#F5F0E8;
+  letter-spacing:.16em;
+  text-transform:uppercase;
 }
-.logo em{font-style:italic;color:var(--gold)}
+.logo em{
+  font-style:normal;
+  font-weight:800;
+  color:var(--gold);
+}
 
 .nav-right{display:flex;align-items:center;gap:32px}
 .nav-link{
-  font-size:12px;color:var(--text2);letter-spacing:.08em;
+  font-size:12px;
+  color:#F5F0E8;
+  letter-spacing:.08em;
   text-transform:uppercase;text-decoration:none;
   transition:color .2s;
 }
@@ -716,6 +725,23 @@ nav.scrolled{
   transition:all .25s ease;
 }
 .nav-btn:hover{background:var(--gold2)}
+
+.nav-phone{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-family:'Jost',sans-serif;
+  font-size:15px;
+  font-weight:600;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--gold);
+}
+.nav-phone span{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+}
 
 /* ─── TICKER ─── */
 .ticker{
@@ -1690,11 +1716,22 @@ footer{
 }
 .footer-logo{
   font-family:'Cormorant Garamond',serif;
-  font-size:18px;color:var(--text);
+  font-size:18px;
+  color:#11110F;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
 }
 .footer-logo em{font-style:italic;color:var(--gold)}
-.footer-copy{font-size:11px;color:var(--text3)}
-.footer-city{font-size:11px;color:var(--text3);letter-spacing:.1em;text-transform:uppercase}
+.footer-copy{font-size:11px;color:#11110F}
+.footer-city{font-size:11px;color:#11110F;letter-spacing:.1em;text-transform:uppercase}
+
+.footer-phone{
+  font-size:13px;
+  font-weight:600;
+  color:#11110F;
+  letter-spacing:.06em;
+}
 
 /* ─── RESPONSIVE ─── */
 @media(max-width:1100px){
@@ -2810,7 +2847,7 @@ body {
   grid-template-columns: 1fr 1fr;
   gap: 40px 80px;
   align-items: end;
-  margin-bottom: 64px;
+  margin-bottom: 40px;
 }
 .realization-section .section-eyebrow {
   grid-column: 1 / -1;
@@ -3272,7 +3309,7 @@ body {
   grid-template-columns: 1fr 1fr;
   gap: 40px 80px;
   align-items: end;
-  margin-bottom: 72px;
+  margin-bottom: 40px;
 }
 .style-section .section-eyebrow {
   grid-column: 1 / -1;
@@ -3324,6 +3361,8 @@ body {
   margin-bottom: 10px;
 }
 .style-section .gallery-wrap {
+  max-width: 820px;
+  margin: 0 auto;
   margin-bottom: 56px;
 }
 .style-section .gallery-row {
@@ -3334,11 +3373,9 @@ body {
 .style-section .gallery-row:last-child { margin-bottom: 0; }
 .style-section .gallery-row--a {
   grid-template-columns: 2fr 1fr 1fr 1fr;
-  grid-template-rows: 420px;
 }
 .style-section .gallery-row--b {
   grid-template-columns: 1fr 1fr 1fr 2fr;
-  grid-template-rows: 420px;
 }
 .style-section .gallery-item {
   position: relative;
@@ -3709,10 +3746,14 @@ body {
 
 <!-- NAV -->
 <nav id="nav">
-  <div class="logo">Студия <em>ШТУКА</em></div>
+  <div class="logo">СТУДИЯ <em>ШТУКА</em></div>
   <div class="nav-right">
     <a class="nav-link" href="#process">Процесс</a>
     <a class="nav-link" href="#cases">Проекты</a>
+    <div class="nav-phone">
+      <span>☎</span>
+      <span>+7 987 021 99 12</span>
+    </div>
     <button class="nav-btn" onclick="openQuizModal()">Узнать риски проекта</button>
   </div>
 </nav>
@@ -3749,11 +3790,11 @@ body {
       <div class="deficit-stat-l">проекта в работе</div>
     </div>
     <div class="deficit-stat">
-      <div class="deficit-stat-n">0</div>
+      <div class="deficit-stat-n" id="topFreeSlots">1</div>
       <div class="deficit-stat-l">свободных мест сейчас</div>
     </div>
     <div class="deficit-stat">
-      <div class="deficit-stat-n">Июнь</div>
+      <div class="deficit-stat-n" id="topNextMonth">Июнь</div>
       <div class="deficit-stat-l">следующий старт</div>
     </div>
   </div>
@@ -4870,7 +4911,7 @@ body {
           <img src="images/interiorufa1.jpeg" alt="Тёплый минимализм" loading="lazy">
           <div class="gallery-item__label">Тёплый минимализм</div>
           <div class="gallery-item__overlay">
-            <div class="overlay-title">Тёплый минимализм</div>
+            <div class="overlay-title">Квартира 130 м²</div>
             <div class="overlay-meta">Гостиная · Уфа</div>
           </div>
         </div>
@@ -4878,57 +4919,57 @@ body {
           <img src="images/interiorufa2.jpeg" alt="Современная классика" loading="lazy">
           <div class="gallery-item__label">Современная классика</div>
           <div class="gallery-item__overlay">
-            <div class="overlay-title">Современная классика</div>
-            <div class="overlay-meta">Спальня · Уфа</div>
+            <div class="overlay-title">Дом 315 м²</div>
+            <div class="overlay-meta">Гостиная · Санкт-Петербург</div>
           </div>
         </div>
         <div class="gallery-item">
-          <img src="images/interiorufa3.jpeg" alt="Контемпорари" loading="lazy">
-          <div class="gallery-item__label">Контемпорари</div>
+          <img src="images/interiorufa3.jpeg" alt="Современный с акцентом" loading="lazy">
+          <div class="gallery-item__label">Современный с акцентом</div>
           <div class="gallery-item__overlay">
-            <div class="overlay-title">Контемпорари</div>
-            <div class="overlay-meta">Кухня-столовая · Уфа</div>
+            <div class="overlay-title">Квартира 45 м²</div>
+            <div class="overlay-meta">Кухня-гостиная · Москва</div>
           </div>
         </div>
         <div class="gallery-item">
           <img src="images/interiorufa4.jpeg" alt="Тёмный премиальный" loading="lazy">
           <div class="gallery-item__label">Тёмный премиальный</div>
           <div class="gallery-item__overlay">
-            <div class="overlay-title">Тёмный премиальный</div>
-            <div class="overlay-meta">Холл · Уфа</div>
+            <div class="overlay-title">Дом 315 м²</div>
+            <div class="overlay-meta">Кабинет · Уфа</div>
           </div>
         </div>
       </div>
       <div class="gallery-row gallery-row--b">
         <div class="gallery-item">
-          <img src="images/interiorufa5.jpeg" alt="Натуральный" loading="lazy">
-          <div class="gallery-item__label">Натуральный</div>
+          <img src="images/interiorufa5.jpeg" alt="Американский коттеджный" loading="lazy">
+          <div class="gallery-item__label">Американский коттеджный</div>
           <div class="gallery-item__overlay">
-            <div class="overlay-title">Натуральный</div>
+            <div class="overlay-title">Коттедж 450 м²</div>
             <div class="overlay-meta">Гостиная · Уфа</div>
           </div>
         </div>
         <div class="gallery-item">
-          <img src="images/interiorufa6.jpg" alt="Европейская квартира" loading="lazy">
-          <div class="gallery-item__label">Европейская квартира</div>
+          <img src="images/interiorufa6.jpg" alt="Яркий фьюжн" loading="lazy">
+          <div class="gallery-item__label">Яркий фьюжн</div>
           <div class="gallery-item__overlay">
-            <div class="overlay-title">Европейская квартира</div>
-            <div class="overlay-meta">Детская · Уфа</div>
+            <div class="overlay-title">Дом 315 м²</div>
+            <div class="overlay-meta">Детская ванна · Уфа</div>
           </div>
         </div>
         <div class="gallery-item">
           <img src="images/interiorufa7.jpeg" alt="Скандинавский" loading="lazy">
           <div class="gallery-item__label">Скандинавский</div>
           <div class="gallery-item__overlay">
-            <div class="overlay-title">Скандинавский</div>
-            <div class="overlay-meta">Спальня · Уфа</div>
+            <div class="overlay-title">Дом 270 м²</div>
+            <div class="overlay-meta">Гостиная · Уфа</div>
           </div>
         </div>
         <div class="gallery-item">
-          <img src="images/interiorufa9.jpg" alt="Арт-интерьер" loading="lazy">
-          <div class="gallery-item__label">Арт-интерьер</div>
+          <img src="images/interiorufa9.jpg" alt="Премиум эклектика" loading="lazy">
+          <div class="gallery-item__label">Премиум эклектика</div>
           <div class="gallery-item__overlay">
-            <div class="overlay-title">Арт-интерьер</div>
+            <div class="overlay-title">Дом 500 м²</div>
             <div class="overlay-meta">Гостиная · Уфа</div>
           </div>
         </div>
@@ -5364,19 +5405,20 @@ body {
   <a class="final-btn anim d3" href="#" onclick="openQuizModal(); return false;">
     Узнать реальные риски моего проекта →
   </a>
-  <div class="final-note anim d4" style="margin-top:24px;font-size:13px;color:var(--text3)">
+  <div class="final-note anim d4" style="margin-top:24px;font-size:13px;color:rgba(245,240,232,0.7)">
     Большинство наших клиентов приходят по рекомендации — поэтому для нас важен результат, а не количество проектов.
   </div>
-  <div class="final-note anim d5" style="margin-top:10px;color:var(--gold);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase">
-    Свободно 0 мест сейчас · Следующий старт — июнь 2026
+  <div class="final-note anim d5" id="nextStartLabel" style="margin-top:10px;color:var(--gold);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase">
+    Свободно 1 мест сейчас · Следующий старт — апрель 2026
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">Студия <em>ШТУКА</em></div>
+  <div class="footer-logo">СТУДИЯ <em>ШТУКА</em></div>
   <div class="footer-copy">© 2024 · Все права защищены</div>
-  <div class="footer-city">📍 Уфа, Республика Башкортостан</div>
+  <div class="footer-city">📍 УФА, ОФИС: МЕНДЕЛЕЕВА, 158 · ТВК «ЭКСПО-ДОМ»</div>
+  <div class="footer-phone">☎ +7 987 021 99 12</div>
 </footer>
 
 <!-- ── QUIZ MODAL (Marquiz iframe) ── -->
@@ -5743,6 +5785,30 @@ function submitQuiz(){
   document.querySelector('.quiz-prog').style.opacity='.3';
   document.getElementById('qStepLabel').textContent='';
 }
+
+// Final CTA: dynamic next month label
+(function(){
+  const labelEl = document.getElementById('nextStartLabel');
+  if (!labelEl) return;
+  const months = ['январь','февраль','март','апрель','май','июнь','июль','август','сентябрь','октябрь','ноябрь','декабрь'];
+  const now = new Date();
+  const nextMonthIndex = (now.getMonth() + 1) % 12;
+  const yearOffset = now.getMonth() === 11 ? 1 : 0;
+  const year = now.getFullYear() + yearOffset;
+  const monthName = months[nextMonthIndex];
+  labelEl.textContent = `Свободно 1 мест сейчас · Следующий старт — ${monthName} ${year}`;
+})();
+
+// Hero deficit strip: dynamic next month label
+(function(){
+  const monthEl = document.getElementById('topNextMonth');
+  if (!monthEl) return;
+  const months = ['январь','февраль','март','апрель','май','июнь','июль','август','сентябрь','октябрь','ноябрь','декабрь'];
+  const now = new Date();
+  const nextMonthIndex = (now.getMonth() + 1) % 12;
+  const monthName = months[nextMonthIndex];
+  monthEl.textContent = monthName.charAt(0).toUpperCase() + monthName.slice(1);
+})();
 
 /* ── CAROUSEL ── */
 (function() {
